@@ -13,7 +13,7 @@ body{
   margin-left:100px;
 }
 .tower-option{
-    background:linear-gradient(90deg, #acacac , #bbb8bd);
+    background:linear-gradient(90deg, #939393 , #bbb8bd);
     border:#2f2f2f 5px solid;
     border-radius:35%;
     display:flex;
