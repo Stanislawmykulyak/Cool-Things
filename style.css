@@ -1,0 +1,49 @@
+body{
+    background:linear-gradient(90deg, #771fd5 , #e40d80)
+}
+.tower-choice {
+  width: 300px;
+  height: 300px;
+  border: 10px solid #2f2f2f;
+  border-radius: 50%;
+  background: transparent;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top:100px;
+  margin-left:100px;
+}
+.tower-option{
+    background:linear-gradient(90deg, #acacac , #bbb8bd);
+    border:#2f2f2f 5px solid;
+    border-radius:35%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:90px;
+    height:90px;
+    
+}
+#archer{
+    position:relative;
+    top:-40px;
+    left:90px;
+}
+#mage{
+    position:relative;
+    top:-40px;
+    left:-40px;
+}
+#engineer{
+    position:relative;
+    top:10px;
+}
+#wild-hunter{
+    position:relative;
+    top:-90px;
+    left:180px;
+}
+#barracks{
+    position:relative;
+    top:-340px;
+    left:220px;
+}
