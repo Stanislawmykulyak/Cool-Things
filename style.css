@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cause:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
 body{
     background:linear-gradient(90deg, #771fd5 , #e40d80)
 }
@@ -28,6 +30,22 @@ body{
     cursor:pointer;
     transition:all 0.3s;
     transform:scale(1.1);
+}
+.tower-cost{
+    position:absolute;
+    top:90px;
+    background:linear-gradient(90deg, #939393 , #bbb8bd);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:3px solid #2f2f2f;
+    width:50px;
+    height:20px;
+    border-radius:0 0 10px 10px;
+    color:rgb(218, 150, 24);
+    font-family:'Sour Gummy', cursive;
+    text-shadow: 0 1px 0 rgba(200, 96, 11, 0.859), 0 3px 6px rgba(255, 132, 0, 0.623);
+    font-size:20px;
 }
 #archer{
     position:relative;
