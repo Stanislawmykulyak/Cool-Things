@@ -1,0 +1,130 @@
+body{
+    background:linear-gradient(to right , rgb(129, 170, 216) , rgb(145, 196, 222));
+    font-size:35px;
+    color:aliceblue;
+}
+canvas{
+    display:block;
+    margin:0 auto;
+}
+.game-container {
+    position: relative;
+    width: 1280px;
+    height: 768px;
+    display:block;
+    margin:0 auto;
+}
+.wave-display {
+    margin: 5px 0;
+    font-size: 50px;
+    font-weight: bold;
+}
+.game-over{
+    font-size: 200px;
+    font-weight: bold;
+    background:linear-gradient(to right , #00eeff , #078da2);
+    background-clip:text;
+    -webkit-background-clip: text;
+    -webkit-color:transparent;
+    color:transparent;
+    font-family: 'Sour Gummy', cursive;
+    position:absolute;
+}
+.stats{
+    position: fixed;
+    top:8px;
+    left: 310px;
+    padding: 10px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    font-family: 'Sour Gummy', cursive;
+    border-radius: 0 0 5px 0;
+}
+.tower-option {
+    position: absolute;
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    display: none;
+    pointer-events: auto;
+    background: rgba(61, 61, 61, 0);
+}
+
+
+.tower-options {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;                  
+    box-shadow: none;              
+    border-radius: 0;              
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.tower-options:hover {
+    transform: scale(1.05);
+    border: none; 
+}
+.tower-options:hover {
+    transform: scale(1.12);
+    border-color: rgba(200, 200, 200, 0.8);
+    box-shadow: 0 0 12px 2px rgba(100, 150, 200, 0.2);
+}
+
+.tower-options img {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: contain;
+    pointer-events: none;
+}
+
+#tower-menu {
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    border: 6px solid rgba(120, 120, 120, 0.9);
+    border-radius: 50%;
+    display: none;
+    background: none;
+    box-shadow: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+}
+
+.close-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -20px;
+    left: 52%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 2px solid rgba(51, 51, 51, 0.8);
+    background:rgb(118, 118, 118);
+    color: rgba(51, 51, 51, 0.8);
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.close-btn:hover {
+    background: none;
+    border-color: rgba(200, 200, 200, 0.8);
+    color: rgba(200, 200, 200, 0.8);
+    transform: translateX(-50%) scale(1.15);
+    background:rgb(88, 88, 88);
+}
