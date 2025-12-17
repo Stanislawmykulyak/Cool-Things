@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cause:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 
 body{
-    background:linear-gradient(90deg, #771fd5 , #e40d80)
+    background:linear-gradient(90deg, #771fd5 , #e40d80);
 }
 .tower-choice {
   width: 300px;
@@ -51,10 +51,31 @@ body{
 .cost{
     filter:brightness(150%)
 }
+.title{
+    font-family:'Sour Gummy', cursive;
+    background:linear-gradient(90deg, #771fd5 , #e40d80);
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip:text;
+    font-size:50px;
+    font-weight:500;
+}
+.hidden{
+    display:none;
+}
+
 #archer{
     position:relative;
     top:-40px;
     left:90px;
+}
+.archer-stats{
+    position:absolute;
+    top:50px;
+    right:80px;
+    width:450px;
+    height:600px;
+    background:rgba(0,0,0,0.5);
 }
 #mage{
     position:relative;
