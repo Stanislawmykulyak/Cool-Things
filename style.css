@@ -46,6 +46,10 @@ body{
     font-family:'Sour Gummy', cursive;
     text-shadow: 0 1px 0 rgba(200, 96, 11, 0.859), 0 3px 6px rgba(255, 132, 0, 0.623);
     font-size:20px;
+    
+}
+.cost{
+    filter:brightness(150%)
 }
 #archer{
     position:relative;
