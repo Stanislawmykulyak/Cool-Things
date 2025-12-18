@@ -1,15 +1,15 @@
 // Tower stats data
 const towerData = {
     archer: {
-        name: 'Archer Tower Stats',
-        description: 'A basic tower that shoots arrows at enemies from a distance.',
+        name: 'Archer Tower',
+        description: '"A basic tower which shoots arrows at enemies from a great distance."',
         attackSpeed: '1.0s',
         damage: '15',
         range: '120',
         ability: 'None'
     },
     mage: {
-        name: 'Mage Tower Stats',
+        name: 'Mage Tower',
         description: 'A magic tower that casts spells on enemies.',
         attackSpeed: '1.5s',
         damage: '20',
@@ -17,7 +17,7 @@ const towerData = {
         ability: 'Chain Lightning'
     },
     engineer: {
-        name: 'Engineer Tower Stats',
+        name: 'Engineer Tower',
         description: 'A utility tower that builds defensive structures.',
         attackSpeed: '2.0s',
         damage: '10',
@@ -25,7 +25,7 @@ const towerData = {
         ability: 'Deploy Turret'
     },
     'wild-hunter': {
-        name: 'Wild Hunter Tower Stats',
+        name: 'Wild Hunter Tower',
         description: 'A fast tower that shoots multiple targets.',
         attackSpeed: '0.8s',
         damage: '12',
@@ -33,7 +33,7 @@ const towerData = {
         ability: 'Multi-Shot'
     },
     barracks: {
-        name: 'Barracks Stats',
+        name: 'Barracks',
         description: 'A support tower that trains units.',
         attackSpeed: '3.0s',
         damage: '8',
@@ -48,10 +48,10 @@ function showTowerStats(towerId) {
     
     document.getElementById('stats-title').textContent = stats.name;
     document.getElementById('stats-description').textContent = stats.description;
-    document.getElementById('stats-attack-speed').textContent = 'Attack Speed: ' + stats.attackSpeed;
-    document.getElementById('stats-damage').textContent = 'Damage: ' + stats.damage;
-    document.getElementById('stats-range').textContent = 'Range: ' + stats.range;
-    document.getElementById('stats-ability').textContent = 'Ability: ' + stats.ability;
+    document.getElementById('stats-attack-speed').innerHTML = 'Attack Speed <img src="media/wind.png" height="40" width="40"></img>: ' + stats.attackSpeed;
+    document.getElementById('stats-damage').innerHTML = 'Damage <img src="media/sword.png" height="40" width="40"></img>: ' + stats.damage;
+    document.getElementById('stats-range').innerHTML = 'Range <img src="media/bullseye.png" height="50" width="50"></img>: ' + stats.range;
+    document.getElementById('stats-ability').textContent = 'Special Ability: ' + stats.ability;
     
     statsDiv.classList.toggle('hidden');
 }

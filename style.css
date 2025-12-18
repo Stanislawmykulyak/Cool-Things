@@ -57,26 +57,48 @@ body{
     color:transparent;
     -webkit-background-clip:text;
     background-clip:text;
-    font-size:50px;
+    font-size:70px;
     font-weight:500;
+}
+.stats-container{
+    margin-left:20px;
+}
+.description{
+    font-family:'Sour Gummy', cursive;
+    background:linear-gradient(90deg, #28d7c0 , #560fda);
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip:text;
+    font-size:40px;
+    margin:20px;
+}
+.stats{
+    background:linear-gradient(90deg, #771fd5 , #e40d80);
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip:text;
+    font-size:40px;
+    font-family:'Sour Gummy', cursive;
 }
 .hidden{
     display:none;
 }
-
 #archer{
     position:relative;
     top:-40px;
     left:90px;
 }
+
 .tower-stats{
     position:absolute;
     top:50px;
     right:80px;
-    width:450px;
+    width:500px;
     height:600px;
     background:rgba(0,0,0,0.5);
 }
+
+
 #mage{
     position:relative;
     top:-40px;
