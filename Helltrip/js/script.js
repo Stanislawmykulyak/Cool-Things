@@ -216,45 +216,110 @@ window.addEventListener('mousemove', (event) => {
 
 
 
+// Hide old menu (when clicking outside) — keep default hidden until tile click
 window.addEventListener('click', (event) => {
-  const menu = document.getElementById('tower-menu')
-  if (!menu.contains(event.target) && event.target !== canvas) {
-    menu.style.display = 'none'
-    selectedTile = null
+  const menu = document.querySelector('.tower-choice');
+  const statsDiv = document.getElementById('tower-stats');
+  if (menu && !menu.contains(event.target) && event.target !== canvas && (!statsDiv || !statsDiv.contains(event.target))) {
+    // only hide when clicking outside menu/stats/canvas
+    menu.style.display = 'none';
+    selectedTile = null;
   }
-})
+});
 
+// Show on canvas click (when active tile clicked)
+canvas.addEventListener('click', (event) => {
+  if (!activeTile || activeTile.isOccupied) return;
+  showTowerChoiceAtTile(activeTile);
+});
 
+// Center menu on tile and use translate(-50%,-50%) so border/padding don't affect centering
+function showTowerChoiceAtTile(tile) {
+  const menu = document.querySelector('.tower-choice');
+  if (!menu || !tile) return;
+  const rect = canvas.getBoundingClientRect();
+  const centerX = rect.left + tile.position.x + tile.size / 2;
+  const centerY = rect.top + tile.position.y + tile.size / 2;
+  menu.style.display = 'block';
+  menu.style.position = 'fixed';
+  menu.style.left = `${centerX}px`;
+  menu.style.top = `${centerY}px`;
+  menu.style.transform = 'translate(-50%, -50%)';
+  menu.style.zIndex = '1000';
+  selectedTile = tile;
+  requestAnimationFrame(() => arrangeTowerOptionsInCircle(menu));
+}
 
-function arrangeButtonsInCircle() {
-    const menu = document.getElementById("tower-menu");
-    const buttons = menu.querySelectorAll(".tower-options");
+function hideTowerChoice() {
+  const menu = document.querySelector('.tower-choice');
+  if (menu) menu.style.display = 'none';
+  const statsDiv = document.getElementById('tower-stats');
+  if (statsDiv) statsDiv.classList.add('hidden');
+  const btnPlace = document.getElementById('place-tower-btn');
+  if (btnPlace) btnPlace.remove();
+  selectedTowerId = null;
+  selectedTile = null;
+}
 
-    const count = buttons.length;
-    
+// Arrange options on top-half of circle based on actual menu size
+function arrangeTowerOptionsInCircle(menu) {
+  if (!menu) return;
+  const buttons = menu.querySelectorAll('.tower-option');
+  const count = buttons.length;
+  if (count === 0) return;
 
-    const menuRadius = 80;
-    
-    const buttonSize = 80;
-    const buttonHalfSize = buttonSize / 2;
-    
+  const menuRect = menu.getBoundingClientRect();
+  const centerX = menu.clientWidth / 2;
+  const centerY = menu.clientHeight / 2;
+  const buttonHalf = (buttons[0].offsetWidth || 80) / 2;
+  const radius = Math.min(centerX, centerY) - buttonHalf - 8; // safe padding
 
-    const outerRadius = menuRadius + buttonHalfSize; 
-    
-    const centerX = 125;
-    const centerY = 125;
+  buttons.forEach((btn, i) => {
+    let angle;
+    if (count === 1) angle = -Math.PI / 2;
+    else angle = -Math.PI / 2 + (i / (count - 1)) * Math.PI; // -90 to +90
 
-    buttons.forEach((btn, i) => {
+    const x = centerX + Math.cos(angle) * radius - buttonHalf;
+    const y = centerY + Math.sin(angle) * radius - buttonHalf;
 
-        const angle = (i / count) * (2 * Math.PI) - Math.PI / 2;
+    btn.style.position = 'absolute';
+    btn.style.left = `${Math.round(x)}px`;
+    btn.style.top = `${Math.round(y)}px`;
 
-        const buttonCenterX = centerX + Math.cos(angle) * outerRadius;
-        const buttonCenterY = centerY + Math.sin(angle) * outerRadius;
+    // Setup click to show stats and place button
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const towerId = btn.id;
+      selectedTowerId = towerId;
+      const stats = towerData[towerId];
+      const statsDiv = document.getElementById('tower-stats');
+      document.getElementById('stats-title').textContent = stats.name;
+      document.getElementById('stats-description').textContent = stats.description;
+      document.getElementById('stats-attack-speed').innerHTML = 'Attack Speed <img src="media/wind.png" height="40" width="40"></img>: ' + stats.attackSpeed;
+      document.getElementById('stats-damage').innerHTML = 'Damage <img src="media/sword.png" height="40" width="40"></img>: ' + stats.damage;
+      document.getElementById('stats-range').innerHTML = 'Range <img src="media/bullseye.png" height="50" width="50"></img>: ' + stats.range;
+      document.getElementById('stats-ability').textContent = 'Special Ability: ' + stats.ability;
+      statsDiv.classList.remove('hidden');
 
-        const x = buttonCenterX - buttonHalfSize; 
-        const y = buttonCenterY - buttonHalfSize;
+      let btnPlace = document.getElementById('place-tower-btn');
+      if (!btnPlace) {
+        btnPlace = document.createElement('button');
+        btnPlace.id = 'place-tower-btn';
+        btnPlace.textContent = 'Place tower';
+        btnPlace.style.marginTop = '20px';
+        btnPlace.style.fontSize = '18px';
+        document.querySelector('.stats-container').appendChild(btnPlace);
+      }
 
-        btn.style.left = `${x}px`;
-        btn.style.top = `${y}px`;
-    });
+      btnPlace.onclick = (ev) => {
+        ev.stopPropagation();
+        if (!selectedTile || !selectedTowerId) return;
+        placeTowerOnTile(selectedTile, selectedTowerId);
+        statsDiv.classList.add('hidden');
+        btnPlace.remove();
+        selectedTowerId = null;
+        hideTowerChoice();
+      };
+    };
+  });
 }
