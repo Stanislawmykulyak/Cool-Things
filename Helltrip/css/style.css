@@ -53,30 +53,45 @@ canvas{
 
 .tower-options {
     position: absolute;
-    width: 90px;
-    height: 90px;
-    
+    width: 100px;
+    height: 100px;
     background-size: 100% 100%; 
     background-repeat: no-repeat;
     background-position: center;
-    background-color: transparent;
-    border: none;                  
-    box-shadow: none;              
-    border-radius: 0;              
+    background-color:#acacac;   
+    border-radius: 10%;         
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    border:#4d4d4d 5px solid;
 }
-
+.tower-cost{
+    position:absolute;
+    top:90px;
+    background:linear-gradient(90deg, #939393 , #bbb8bd);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border: 6px solid rgba(53, 53, 53, 0.9);
+    width:50px;
+    height:20px;
+    border-radius:0 0 10px 10px;
+    color:rgb(218, 150, 24);
+    font-family:'Sour Gummy', cursive;
+    text-shadow: 0 1px 0 rgba(200, 96, 11, 0.859), 0 3px 6px rgba(255, 132, 0, 0.623);
+    font-size:20px;
+    
+}
+.cost{
+    filter:brightness(150%)
+}
 .tower-options:hover {
     transform: scale(1.05);
-    border: none; 
+    border-color: #3e3e3e;
 }
 .tower-options:hover {
-    transform: scale(1.12);
-    border-color: rgba(200, 200, 200, 0.8);
     box-shadow: 0 0 12px 2px rgba(100, 150, 200, 0.2);
 }
 
@@ -92,7 +107,7 @@ canvas{
     position: fixed;
     width: 250px;
     height: 250px;
-    border: 6px solid rgba(120, 120, 120, 0.9);
+    border: 6px solid rgba(53, 53, 53, 0.9);
     border-radius: 50%;
     display: none;
     background: none;
@@ -105,12 +120,12 @@ canvas{
     position: absolute;
     width: 40px;
     height: 40px;
-    bottom: -20px;
-    left: 52%;
+    bottom:-50px;
+    left: 54%;
     transform: translateX(-50%);
     border-radius: 50%;
     border: 2px solid rgba(51, 51, 51, 0.8);
-    background:rgb(118, 118, 118);
+    background:rgb(177, 177, 177);
     color: rgba(51, 51, 51, 0.8);
     font-size: 24px;
     cursor: pointer;

@@ -233,7 +233,7 @@ function arrangeButtonsInCircle() {
     const count = buttons.length;
     
 
-    const menuRadius = 60;
+    const menuRadius = 80;
     
     const buttonSize = 80;
     const buttonHalfSize = buttonSize / 2;
