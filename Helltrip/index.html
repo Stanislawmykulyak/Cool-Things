@@ -18,36 +18,40 @@
             </div>
 
     </div>
-    
-    <div class="game-over">Game Over</div>
-    <div id="tower-menu">
-
-        <button id="archer-tower" class="tower-options">
-            <img src="media/archer.png" height="60px" width="60px">
-        </button>
-
-        <button id="mage-tower" class="tower-options">
-            <img src="media/mage.png" height="60px" width="60px">
-        </button>
-
-        <button id="barracks" class="tower-options">
-            <img src="media/barracks.png" height="80px" width="80px">
-        </button>
-
-        <button id="soul-hunter" class="tower-options">
-            <img src="media/soul-hunter.png" height="60px" width="60px">
-        </button>
-
-        <button id="workshop" class="tower-options">
-            <img src="media/workshop.png" height="60px" width="60px">
-        </button>
-
-        <button id="close-tower-menu" class="close-btn">✕</button>
-
-    </div>
     <div class="tower-choice">
-        
+        <div class ="tower-option" id="archer">
+            <img src="media/archer.png" alt="Archer Tower" height="65" width="65">
+            <div class="tower-cost"><p class="cost">70</p></div>
+        </div>
+        <div class ="tower-option" id="mage">
+            <img src="media/mage.png" alt="Mage Tower" height="65" width="65">
+            <div class="tower-cost"><p class="cost">110</p></div>
+        </div>
+        <div class="tower-option" id="engineer">
+            <img src="media/engineer.png" alt="Engineer Tower" height="65" width="65">
+            <div class="tower-cost"><p class="cost">280</p></div>
+        </div>
+        <div class="tower-option" id="wild-hunter">
+            <img src="media/wild-hunter.png" alt="Wild Hunter Tower" height="65" width="65">
+            <div class="tower-cost"><p class="cost">310</p></div>
+        </div>
+        <div class="tower-option" id="barracks">
+            <img src="media/barracks.png" alt="Barracks" height="65" width="65">
+            <div class="tower-cost"><p class="cost">80</p></div>
+        </div>
     </div>
+    <div id="tower-stats" class="tower-stats hidden">
+        <div class="title" id="stats-title">Tower Stats</div>
+        <div class="stats-container">
+            <div class="description " id="stats-description"></div>
+            <div class="attack-speed stats" id="stats-attack-speed"></div>
+            <div class="damage stats" id="stats-damage"></div>
+            <div class="range stats" id="stats-range"></div>
+            <div class="special-ability stats" id="stats-ability"></div>
+        </div>
+    </div>
+    <div class="game-over">Game Over</div>
+    
     <script src="js/placement.js"></script>
     <script src="js/waypoints.js"></script>
     <script src="js/classes.js"></script>
