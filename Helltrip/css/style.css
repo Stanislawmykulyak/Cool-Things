@@ -40,118 +40,91 @@ canvas{
     font-family: 'Sour Gummy', cursive;
     border-radius: 0 0 5px 0;
 }
-.tower-choice {
-  width: 300px;
-  height: 300px;
-  border: 10px solid #2f2f2f;
-  border-radius: 50%;
-  background: transparent;
-  display: inline-block;
-  box-sizing: border-box;
-  margin-top:100px;
-  margin-left:100px;
+.tower-option {
+    position: absolute;
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    display: none;
+    pointer-events: auto;
+    background: rgba(61, 61, 61, 0);
 }
-.tower-option{
-    background:linear-gradient(90deg, #939393 , #bbb8bd);
-    border:#2f2f2f 5px solid;
-    border-radius:35%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:90px;
-    height:90px;
-    transition:all 0.3s;
-}
-.tower-option:hover{
-    filter:brightness(115%);
-    cursor:pointer;
-    transition:all 0.3s;
-    transform:scale(1.1);
-}
-.tower-cost{
-    position:absolute;
-    top:90px;
-    background:linear-gradient(90deg, #939393 , #bbb8bd);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border:3px solid #2f2f2f;
-    width:50px;
-    height:20px;
-    border-radius:0 0 10px 10px;
-    color:rgb(218, 150, 24);
-    font-family:'Sour Gummy', cursive;
-    text-shadow: 0 1px 0 rgba(200, 96, 11, 0.859), 0 3px 6px rgba(255, 132, 0, 0.623);
-    font-size:20px;
+
+
+.tower-options {
+    position: absolute;
+    width: 90px;
+    height: 90px;
     
-}
-.cost{
-    filter:brightness(150%)
-}
-.title{
-    font-family:'Sour Gummy', cursive;
-    background:linear-gradient(90deg, #771fd5 , #e40d80);
-    color:transparent;
-    -webkit-background-clip:text;
-    background-clip:text;
-    font-size:70px;
-    font-weight:500;
-}
-.stats-container{
-    margin-left:20px;
-}
-.description{
-    font-family:'Sour Gummy', cursive;
-    background:linear-gradient(90deg, #28d7c0 , #560fda);
-    color:transparent;
-    -webkit-background-clip:text;
-    background-clip:text;
-    font-size:40px;
-    margin:20px;
-}
-.stats{
-    background:linear-gradient(90deg, #771fd5 , #e40d80);
-    color:transparent;
-    -webkit-background-clip:text;
-    background-clip:text;
-    font-size:40px;
-    font-family:'Sour Gummy', cursive;
-}
-.hidden{
-    display:none;
-}
-#archer{
-    position:relative;
-    top:-40px;
-    left:90px;
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;                  
+    box-shadow: none;              
+    border-radius: 0;              
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.tower-stats{
-    position:absolute;
-    top:50px;
-    right:80px;
-    width:500px;
-    height:600px;
-    background:rgba(0,0,0,0.5);
+.tower-options:hover {
+    transform: scale(1.05);
+    border: none; 
+}
+.tower-options:hover {
+    transform: scale(1.12);
+    border-color: rgba(200, 200, 200, 0.8);
+    box-shadow: 0 0 12px 2px rgba(100, 150, 200, 0.2);
 }
 
+.tower-options img {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: contain;
+    pointer-events: none;
+}
 
-#mage{
-    position:relative;
-    top:-40px;
-    left:-40px;
+#tower-menu {
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    border: 6px solid rgba(120, 120, 120, 0.9);
+    border-radius: 50%;
+    display: none;
+    background: none;
+    box-shadow: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
 }
-#engineer{
-    position:relative;
-    top:10px;
+
+.close-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -20px;
+    left: 52%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 2px solid rgba(51, 51, 51, 0.8);
+    background:rgb(118, 118, 118);
+    color: rgba(51, 51, 51, 0.8);
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
 }
-#wild-hunter{
-    position:relative;
-    top:-90px;
-    left:180px;
-}
-#barracks{
-    position:relative;
-    top:-340px;
-    left:220px;
+
+.close-btn:hover {
+    background: none;
+    border-color: rgba(200, 200, 200, 0.8);
+    color: rgba(200, 200, 200, 0.8);
+    transform: translateX(-50%) scale(1.15);
+    background:rgb(88, 88, 88);
 }
