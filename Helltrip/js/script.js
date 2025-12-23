@@ -140,6 +140,7 @@ const mouse = {
   y: undefined
 }
 
+const des = document.querySelector('description');
 
 canvas.addEventListener("click", (event) => {
   if (!activeTile || activeTile.isOccupied) return
@@ -192,7 +193,6 @@ canvas.addEventListener("click", (event) => {
   }
   })
 
-
 window.addEventListener('mousemove', (event) => {
   const rect = canvas.getBoundingClientRect()
 
@@ -213,15 +213,23 @@ window.addEventListener('mousemove', (event) => {
     }
   }
 })
-
-
-
+const archerInfo = document.getElementById('archer-info');
 window.addEventListener('click', (event) => {
   const menu = document.getElementById('tower-menu')
   if (!menu.contains(event.target) && event.target !== canvas) {
     menu.style.display = 'none'
     selectedTile = null
   }
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+
+  const clicked = buildings.some(b =>
+    b instanceof ArcherTower &&
+    Math.hypot(x - b.center.x, y - b.center.y) < b.radius
+  );
+
+  archerInfo.style.display = clicked ? 'block' : 'none';
 })
 
 
@@ -258,3 +266,6 @@ function arrangeButtonsInCircle() {
         btn.style.top = `${y}px`;
     });
 }
+
+
+

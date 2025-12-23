@@ -143,3 +143,10 @@ canvas{
     transform: translateX(-50%) scale(1.15);
     background:rgb(88, 88, 88);
 }
+.active{
+    display:block;
+}
+.description{
+    display:none;
+    background:rgba(52, 52, 52, 0.312)
+}
