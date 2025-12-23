@@ -148,7 +148,6 @@ canvas{
     z-index: 1000;
     transform: translate(-50%, -50%);
 }
-
 .close-btn {
     position: absolute;
     width: 40px;
