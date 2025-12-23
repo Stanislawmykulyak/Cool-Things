@@ -221,8 +221,14 @@ canvas.addEventListener("click", (event) => {
       towerOptionsMenu.style.display = "none";
       selectedTower = null;
     };
+    // Wyświetl cenę upgrade'u na przycisku
+    let upgradeCost = 100;
+    if (selectedTower.constructor.name === 'ArcherTower') upgradeCost = 70;
+    if (selectedTower.constructor.name === 'MageTower') upgradeCost = 120;
+    upgradeBtn.textContent = `Upgrade (${upgradeCost}$)`;
     upgradeBtn.onclick = () => {
       if (!selectedTower) return;
+      // Tu możesz dodać warunek na posiadane złoto
       if (selectedTower.towerDamage !== undefined) selectedTower.towerDamage += 10;
       towerOptionsMenu.style.display = "none";
       selectedTower = null;

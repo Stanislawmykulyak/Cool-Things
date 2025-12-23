@@ -1,4 +1,31 @@
-/* Styl dla menu opcji wieży */
+.tower-options-menu {
+    display: none;
+    position: absolute;
+    background: #22222236;
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px #9026b0;
+    z-index: 1000;
+    min-width: 120px;
+    border-image:linear-gradient(to right, #ff00cc, #3333ff);
+    border-image-slice:1;
+    border:3px solid;
+
+}
+.tower-options-menu-button {
+    width: 100%;
+    margin-bottom: 8px;
+}
+#tower-info-text {
+    margin-top: 10px;
+    font-size: 14px;
+    display: none;
+}
+.tower-options-menu-close {
+    width: 20%;
+    margin-top: 10px;
+}
 #tower-options-menu {
     position: absolute;
     background: #222;
