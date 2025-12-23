@@ -139,59 +139,146 @@ const mouse = {
   x: undefined,
   y: undefined
 }
-
-const des = document.querySelector('description');
+const towerOptionsMenu = document.getElementById("tower-options-menu");
+const sellBtn = document.getElementById("sell-tower");
+const upgradeBtn = document.getElementById("upgrade-tower");
+const infoBtn = document.getElementById("info-tower");
+const infoText = document.getElementById("tower-info-text");
+const closeOptionsBtn = document.getElementById("close-tower-options");
+let selectedTower = null;
 
 canvas.addEventListener("click", (event) => {
-  if (!activeTile || activeTile.isOccupied) return
+  towerOptionsMenu.style.display = "none";
+  const menu = document.getElementById("tower-menu");
+  menu.style.display = "none";
 
-  selectedTile = activeTile
+  const mouseX = event.offsetX;
+  const mouseY = event.offsetY;
 
-  const menu = document.getElementById("tower-menu")
+  let clickedTile = null;
+  for (let i = 0; i < placementTiles.length; i++) {
+    const tile = placementTiles[i];
+    if (
+      mouseX >= tile.position.x &&
+      mouseX <= tile.position.x + tile.size &&
+      mouseY >= tile.position.y &&
+      mouseY <= tile.position.y + tile.size &&
+      !tile.isOccupied
+    ) {
+      clickedTile = tile;
+      break;
+    }
+  }
+  if (clickedTile) {
+    selectedTile = clickedTile;
+    const rect = canvas.getBoundingClientRect();
+    const tileScreenX = rect.left + clickedTile.position.x + clickedTile.size / 2;
+    const tileScreenY = rect.top + clickedTile.position.y + clickedTile.size / 2;
+    menu.style.left = `${tileScreenX}px`;
+    menu.style.top = `${tileScreenY}px`;
+    menu.style.display = "block";
+    arrangeButtonsInCircle();
+    return;
+  }
 
 
-  const rect = canvas.getBoundingClientRect()
+  let foundTower = null;
+  buildings.forEach((tower) => {
+    if (!tower.position || !tower.width || !tower.height) return;
+    if (
+      mouseX >= tower.position.x &&
+      mouseX <= tower.position.x + tower.width &&
+      mouseY >= tower.position.y &&
+      mouseY <= tower.position.y + tower.height
+    ) {
+      foundTower = tower;
+    }
+  });
+  if (foundTower) {
+    selectedTower = foundTower;
 
-  const tileScreenX = rect.left + activeTile.position.x + activeTile.size / 2
-  const tileScreenY = rect.top + activeTile.position.y + activeTile.size / 2
+    const rect = canvas.getBoundingClientRect();
+    towerOptionsMenu.style.left = (rect.left + foundTower.center.x + 40) + "px";
+    towerOptionsMenu.style.top = (rect.top + foundTower.center.y - 20) + "px";
+    towerOptionsMenu.style.display = "block";
+    infoText.style.display = "none";
 
+    sellBtn.onclick = () => {
+      if (!selectedTower) return;
+      const idx = buildings.indexOf(selectedTower);
+      if (idx > -1) {
+        // Odblokuj tile pod wieżą
+        placementTiles.forEach(tile => {
+          if (
+            selectedTower.position.x === tile.position.x &&
+            selectedTower.position.y === tile.position.y
+          ) {
+            tile.isOccupied = false;
+          }
+        });
+        buildings.splice(idx, 1);
+      }
+      towerOptionsMenu.style.display = "none";
+      selectedTower = null;
+    };
+    upgradeBtn.onclick = () => {
+      if (!selectedTower) return;
+      if (selectedTower.towerDamage !== undefined) selectedTower.towerDamage += 10;
+      towerOptionsMenu.style.display = "none";
+      selectedTower = null;
+    };
+    infoBtn.onclick = () => {
+      if (!selectedTower) return;
+      infoText.style.display = "block";
+      infoText.textContent = `Typ: ${selectedTower.constructor.name}\nDamage: ${selectedTower.towerDamage || "?"}`;
+    };
+    closeOptionsBtn.onclick = () => {
+      towerOptionsMenu.style.display = "none";
+      selectedTower = null;
+    };
+    return;
+  }
 
-  menu.style.left = `${tileScreenX}px`
-  menu.style.top = `${tileScreenY}px`
+  // Jeśli kliknięcie nie jest na wieżę ani tile, nie pokazuj żadnego menu
+  selectedTile = null;
+  selectedTower = null;
+});
 
-  menu.style.display = "block"
-  arrangeButtonsInCircle()
+// Dodaj obsługę zamykania menu wyboru wieży
+const closeTowerMenuBtn = document.getElementById("close-tower-menu");
+if (closeTowerMenuBtn) {
+  closeTowerMenuBtn.onclick = () => {
+    const menu = document.getElementById("tower-menu");
+    menu.style.display = "none";
+    selectedTile = null;
+  };
+}
 
-  const archerButton = document.getElementById("archer-tower")
-  const mageButton = document.getElementById("mage-tower")
-  const closeButton = document.getElementById("close-tower-menu")
-
-  menu.addEventListener("click", (e) => e.stopPropagation())
-
+// Dodaj obsługę stawiania wież
+const archerButton = document.getElementById("archer-tower");
+if (archerButton) {
   archerButton.onclick = (e) => {
-      e.stopPropagation()
-      if (!selectedTile) return;
-
-      buildings.push(new ArcherTower({ position: selectedTile.position }))
-      selectedTile.isOccupied = true
-      menu.style.display = "none"
-  }
-
+    e.stopPropagation();
+    if (!selectedTile) return;
+    buildings.push(new ArcherTower({ position: selectedTile.position }));
+    selectedTile.isOccupied = true;
+    const menu = document.getElementById("tower-menu");
+    menu.style.display = "none";
+  };
+}
+const mageButton = document.getElementById("mage-tower");
+if (mageButton) {
   mageButton.onclick = (e) => {
-      e.stopPropagation()
-      if (!selectedTile) return;
+    e.stopPropagation();
+    if (!selectedTile) return;
+    buildings.push(new MageTower({ position: selectedTile.position }));
+    selectedTile.isOccupied = true;
+    const menu = document.getElementById("tower-menu");
+    menu.style.display = "none";
+  };
+}
 
-      buildings.push(new MageTower({ position: selectedTile.position }))
-      selectedTile.isOccupied = true
-      menu.style.display = "none"
-  }
-
-  closeButton.onclick = (e) => {
-      e.stopPropagation()
-      menu.style.display = "none"
-      selectedTile = null
-  }
-  })
+// ...istniejący kod...
 
 window.addEventListener('mousemove', (event) => {
   const rect = canvas.getBoundingClientRect()
@@ -213,24 +300,7 @@ window.addEventListener('mousemove', (event) => {
     }
   }
 })
-const archerInfo = document.getElementById('archer-info');
-window.addEventListener('click', (event) => {
-  const menu = document.getElementById('tower-menu')
-  if (!menu.contains(event.target) && event.target !== canvas) {
-    menu.style.display = 'none'
-    selectedTile = null
-  }
-  const rect = canvas.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
 
-  const clicked = buildings.some(b =>
-    b instanceof ArcherTower &&
-    Math.hypot(x - b.center.x, y - b.center.y) < b.radius
-  );
-
-  archerInfo.style.display = clicked ? 'block' : 'none';
-})
 
 
 
@@ -266,6 +336,3 @@ function arrangeButtonsInCircle() {
         btn.style.top = `${y}px`;
     });
 }
-
-
-
