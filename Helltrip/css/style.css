@@ -31,7 +31,7 @@ canvas{
     position:absolute;
 }
 .stats{
-    position: fixed;
+    position: absolute;
     top:8px;
     left: 310px;
     padding: 10px;
@@ -53,8 +53,8 @@ canvas{
 
 .tower-options {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     background-size: 100% 100%; 
     background-repeat: no-repeat;
     background-position: center;
@@ -69,7 +69,7 @@ canvas{
 }
 .tower-cost{
     position:absolute;
-    top:90px;
+    top:80px;
     background:linear-gradient(90deg, #939393 , #bbb8bd);
     display:flex;
     justify-content:center;
@@ -120,8 +120,8 @@ canvas{
     position: absolute;
     width: 40px;
     height: 40px;
-    bottom:-50px;
-    left: 54%;
+    bottom:-30px;
+    left: 52%;
     transform: translateX(-50%);
     border-radius: 50%;
     border: 2px solid rgba(51, 51, 51, 0.8);
