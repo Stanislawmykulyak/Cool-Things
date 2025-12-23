@@ -47,24 +47,13 @@
         <button id="close-tower-menu" class="close-btn">✕</button>
 
     </div>
-    <div id="tower-options-menu" class="tower-options-menu">
-        <div class="stats-container">
-                <div class="stats-info">
-
-            </div>
-            <div class="stats-upgrade">
-                <div class="upgrade-content">
-                    
-                </div>
-                <button id="upgrade-tower" style="width:180px; font-size:22px; padding:10px 0; border-radius:12px; background:linear-gradient(90deg,#ff00cc,#3333ff); color:#fff; border:none; font-family:'Sour Gummy',Arial,sans-serif; font-weight:600; box-shadow:0 2px 8px #9026b0; margin-top:10px;">Upgrade</button>
-            </div>
-            
-        </div>
-        
-        <button id="sell-tower" class="tower-options-menu-button">Sell</button>
-        
-        <button id="close-tower-options" class="tower-options-menu-close">X</button>
-    </div>
+    <div id="tower-options-menu" style="display:none; position:absolute; background:#222; color:#fff; border-radius:10px; padding:15px; box-shadow:0 2px 8px #000; z-index:1000; min-width:120px;">
+        <button id="sell-tower" style="width:100%;margin-bottom:8px;">Sell</button>
+        <button id="upgrade-tower" style="width:100%;margin-bottom:8px;">Upgrade</button>
+        <button id="info-tower" style="width:100%;margin-bottom:8px;">Tower Info</button>
+        <div id="tower-info-text" style="margin-top:10px; font-size:14px; display:none;"></div>
+        <button id="close-tower-options" style="width:100%;margin-top:10px;">Close</button>
+    
     <script src="js/placement.js"></script>
     <script src="js/waypoints.js"></script>
     <script src="js/classes.js"></script>

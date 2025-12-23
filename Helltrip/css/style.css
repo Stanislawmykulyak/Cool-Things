@@ -1,3 +1,35 @@
+/* Prosty styl dla menu wieży */
+#tower-options-menu {
+    position: absolute;
+    background: #222;
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px #000;
+    z-index: 1000;
+    min-width: 120px;
+}
+#tower-options-menu button {
+    width: 100%;
+    margin-bottom: 8px;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#tower-options-menu button:hover {
+    background: #666;
+}
+#tower-info-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffd700;
+    white-space: pre-line;
+}
 .tower-options-menu {
     display: none;
     position: absolute;
