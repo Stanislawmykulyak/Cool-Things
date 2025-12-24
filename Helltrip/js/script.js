@@ -146,30 +146,25 @@ function populateTowerStats(div, header, stats) {
     div.innerHTML = `<h4>${header}</h4>`;
     if (!stats) return;
 
-    const statIcons = {
-        'Damage': 'media/sword.png',
-        'Range': 'media/bullseye.png',
-        'Cooldown': 'media/wind.png',
-        'Sell Value': 'media/coin.png'
-    };
+    const labels = GAME_STATS.STAT_LABELS;
+    const statConfig = [
+        { label: labels.DAMAGE, value: stats.DAMAGE, icon: 'media/sword.png' },
+        { label: labels.RANGE, value: stats.RANGE, icon: 'media/bullseye.png' },
+        { label: labels.COOLDOWN, value: stats.COOLDOWN, icon: 'media/wind.png' },
+        { label: labels.SELL_VALUE, value: stats.SELL_VALUE, icon: 'media/coin.png' }
+    ];
 
-    const statsMap = {
-        'Damage': stats.DAMAGE,
-        'Range': stats.RANGE,
-        'Cooldown': stats.COOLDOWN,
-        'Sell Value': stats.SELL_VALUE
-    };
-
-    for (const [label, value] of Object.entries(statsMap)) {
-        if (value === undefined) continue;
+    statConfig.forEach(config => {
+        if (config.value === undefined) return;
         const p = document.createElement('p');
         
         p.className = 'stat-line'; 
         p.innerHTML = `
-            <img src="${statIcons[label]}" class="stat-icon" />
-            <span class="stat-value">${value}</span>`;
+            <img src="${config.icon}" class="stat-icon" />
+            <span class="stat-label">${config.label}: </span>
+            <span class="stat-value">${config.value}</span>`;
         div.appendChild(p);
-    }
+    });
 }
 
 

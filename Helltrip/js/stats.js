@@ -1,4 +1,12 @@
 const GAME_STATS = {
+    STAT_LABELS: {
+        DAMAGE: 'Damage',
+        RANGE: 'Range',
+        COOLDOWN: 'Cooldown',
+        UPGRADE_COST: 'Upgrade',
+        SELL_VALUE: 'Sellback',
+        COST: 'Cost'
+    },
     TOWERS: {
         ARCHER: {
             LVL1: {
