@@ -2,7 +2,7 @@ const GAME_STATS = {
     TOWERS: {
         ARCHER: {
             LVL1: {
-                NAME: 'Archer Tower',
+                NAME: '<br> Archer',
                 COST: 100,
                 DAMAGE: 10,
                 RANGE: 250,
@@ -11,18 +11,18 @@ const GAME_STATS = {
                 SELL_VALUE: 50,
             },
             LVL2: {
-                NAME: 'Marksman Tower',
-                COST: 170, // Cost of Lvl 1 + Upgrade Cost
+                NAME: 'Marksman',
+                COST: 170,
                 DAMAGE: 25,
                 RANGE: 300,
                 COOLDOWN: 35,
-                UPGRADE_COST: 0, // Cannot be upgraded further for now
+                UPGRADE_COST: 0,
                 SELL_VALUE: 120,
             }
         },
         MAGE: {
             LVL1: {
-                NAME: 'Mage Tower',
+                NAME: '<br> Mage',
                 COST: 170,
                 DAMAGE: 40,
                 RANGE: 200,
@@ -31,12 +31,12 @@ const GAME_STATS = {
                 SELL_VALUE: 85,
             },
             LVL2: {
-                NAME: 'Archmage Tower',
-                COST: 290, // Cost of Lvl 1 + Upgrade Cost
+                NAME: 'Archmage',
+                COST: 290,
                 DAMAGE: 85,
                 RANGE: 225,
                 COOLDOWN: 90,
-                UPGRADE_COST: 0, // Cannot be upgraded further for now
+                UPGRADE_COST: 0,
                 SELL_VALUE: 205,
             }
         },
@@ -46,11 +46,11 @@ const GAME_STATS = {
         },
         WILD_HUNTER: {
             LVL1: { NAME: 'Wild Hunter', COST: 310, DAMAGE: 50, RANGE: 400, COOLDOWN: 80, UPGRADE_COST: 150, SELL_VALUE: 155, },
-            LVL2: { NAME: 'Beastmaster', COST: 460, DAMAGE: 90, RANGE: 450, COOLDOWN: 70, UPGRADE_COST: 0, SELL_VALUE: 310, }
+            LVL2: { NAME: 'Beast Hunter', COST: 460, DAMAGE: 90, RANGE: 450, COOLDOWN: 70, UPGRADE_COST: 0, SELL_VALUE: 310, }
         },
         ENGINEER: {
             LVL1: { NAME: 'Engineer', COST: 230, DAMAGE: 20, RANGE: 150, COOLDOWN: 60, UPGRADE_COST: 110, SELL_VALUE: 115, },
-            LVL2: { NAME: 'Tinkerer', COST: 340, DAMAGE: 45, RANGE: 175, COOLDOWN: 50, UPGRADE_COST: 0, SELL_VALUE: 225, }
+            LVL2: { NAME: 'Workshop ', COST: 340, DAMAGE: 45, RANGE: 175, COOLDOWN: 50, UPGRADE_COST: 0, SELL_VALUE: 225, }
         }
     },
     ENEMIES: {

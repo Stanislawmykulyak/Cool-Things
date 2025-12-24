@@ -145,6 +145,14 @@ function populateTowerStats(div, header, stats) {
     div.innerHTML = `<h4>${header}</h4>`;
     if (!stats) return;
 
+    // As requested, using icons instead of text labels
+    const statIcons = {
+        'Damage': 'media/sword.png',
+        'Range': 'media/bullseye.png',
+        'Cooldown': 'media/wind.png',
+        'Sell Value': 'media/images.jpg' // Assuming a coin icon
+    };
+
     const statsMap = {
         'Damage': stats.DAMAGE,
         'Range': stats.RANGE,
@@ -153,8 +161,13 @@ function populateTowerStats(div, header, stats) {
     };
 
     for (const [label, value] of Object.entries(statsMap)) {
+        if (value === undefined) continue;
         const p = document.createElement('p');
-        p.innerHTML = `<span class="stat-label">${label}: </span><span class="stat-value">${value}</span>`;
+        // The new CSS will style this class to align icon and text
+        p.className = 'stat-line'; 
+        p.innerHTML = `
+            <img src="${statIcons[label]}" class="stat-icon" />
+            <span class="stat-value">${value}</span>`;
         div.appendChild(p);
     }
 }
