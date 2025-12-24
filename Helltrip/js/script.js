@@ -1,26 +1,26 @@
-const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
 
-canvas.width = 1280
-canvas.height = 768
+canvas.width = 1280;
+canvas.height = 768;
 
-c.fillStyle = 'white'
-c.fillRect(0, 0, canvas.width, canvas.height)
+c.fillStyle = 'white';
+c.fillRect(0, 0, canvas.width, canvas.height);
 
-const placementTilesData2D = []
+const placementTilesData2D = [];
 
-const waveDisplay = document.querySelector('.wave-display')
+const waveDisplay = document.querySelector('.wave-display');
 function WaveUpdate() {
-  waveDisplay.textContent = `Wave: ${waveCount} / ${waves}`
+  waveDisplay.textContent = `Wave: ${waveCount} / ${waves}`;
 }
 
 for (let i = 0; i < placementTilesData.length; i += 20) {
-  placementTilesData2D.push(placementTilesData.slice(i, i + 20))
+  placementTilesData2D.push(placementTilesData.slice(i, i + 20));
 }
 
-const tileImage = new Image()
-tileImage.src = 'media/Free-Spot.png'
-const placementTiles = []
+const tileImage = new Image();
+tileImage.src = 'media/Free-Spot.png';
+const placementTiles = [];
 
 placementTilesData2D.forEach((row, y) => {
   row.forEach((symbol, x) => {
@@ -32,159 +32,143 @@ placementTilesData2D.forEach((row, y) => {
             y: y * 64
           }
         })
-      )
+      );
     }
-  })
-})
+  });
+});
 
-const image = new Image()
-
+const image = new Image();
 image.onload = () => {
-  animate()
-}
-image.src = 'media/map.png'
+  animate();
+};
+image.src = 'media/map.png';
 
-const enemies = []
-
+const enemies = [];
 function spawnEnemies(enemyCount) {
   for (let i = 1; i < enemyCount + 1; i++) {
-    const xOffset = i * 100
+    const xOffset = i * 100;
     enemies.push(
       new Enemy({
         position: { x: waypoints[0].x - xOffset, y: waypoints[0].y }
       })
-    )
+    );
   }
 }
 
-const buildings = []
-let activeTile = undefined
-let enemyCount = 3
-let waveCount = 1
-let waves = 50
-let hearts = 10
-let selectedTile = null
+const buildings = [];
+let activeTile = undefined;
+let enemyCount = 3;
+let waveCount = 1;
+let waves = 50;
+let hearts = 10;
+let selectedTile = null;
 
-spawnEnemies(3)
+spawnEnemies(3);
 
 function animate() {
-  const animationID = requestAnimationFrame(animate)
-
-  c.drawImage(image, 0, 0)
+  const animationID = requestAnimationFrame(animate);
+  c.drawImage(image, 0, 0);
 
   for (let i = enemies.length - 1; i >= 0; i--) {
-    const enemy = enemies[i]
-    enemy.update()
+    const enemy = enemies[i];
+    enemy.update();
 
     if (enemy.position.x > canvas.width) {
-      hearts -= 1
-      enemies.splice(i, 1)
-
+      hearts -= 1;
+      enemies.splice(i, 1);
       if (hearts === 0) {
-        console.log('game over')
-        cancelAnimationFrame(animationID)
+        console.log('game over');
+        cancelAnimationFrame(animationID);
+        document.querySelector('.game-over').style.display = 'block';
       }
     }
   }
 
   if (enemies.length === 0) {
-    enemyCount += 2
-    spawnEnemies(enemyCount)
-    waveCount += 1
+    enemyCount += 2;
+    spawnEnemies(enemyCount);
+    waveCount += 1;
   }
 
   placementTiles.forEach((tile) => {
-    tile.update(mouse)
-  })
+    tile.update(mouse);
+  });
 
   buildings.forEach((building) => {
-    building.update()
-    building.target = null
-
+    building.update();
+    building.target = null;
     const validEnemies = enemies.filter(enemy => {
-      const xDifference = enemy.center.x - building.center.x
-      const yDifference = enemy.center.y - building.center.y
-      const distance = Math.hypot(xDifference, yDifference)
-      return distance < enemy.radius + building.radius
-    })
-
-    building.target = validEnemies[0]
+      const xDifference = enemy.center.x - building.center.x;
+      const yDifference = enemy.center.y - building.center.y;
+      const distance = Math.hypot(xDifference, yDifference);
+      return distance < enemy.radius + building.radius;
+    });
+    building.target = validEnemies[0];
 
     for (let i = building.projectiles.length - 1; i >= 0; i--) {
-      const projectile = building.projectiles[i]
-
-      projectile.update()
-
-      const xDifference = projectile.enemy.center.x - projectile.position.x
-      const yDifference = projectile.enemy.center.y - projectile.position.y
-      const distance = Math.hypot(xDifference, yDifference)
+      const projectile = building.projectiles[i];
+      projectile.update();
+      const xDifference = projectile.enemy.center.x - projectile.position.x;
+      const yDifference = projectile.enemy.center.y - projectile.position.y;
+      const distance = Math.hypot(xDifference, yDifference);
 
       if (distance < projectile.enemy.radius + projectile.radius) {
-        projectile.enemy.health -= projectile.damage
-
+        projectile.enemy.health -= projectile.damage;
         if (projectile.enemy.health <= 0) {
-          const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy)
-          if (enemyIndex > -1) enemies.splice(enemyIndex, 1)
+          const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
+          if (enemyIndex > -1) enemies.splice(enemyIndex, 1);
         }
-
-        building.projectiles.splice(i, 1)
+        building.projectiles.splice(i, 1);
       }
     }
-  })
+  });
 
-  WaveUpdate()
+  WaveUpdate();
 }
 
 const mouse = {
   x: undefined,
   y: undefined
-}
+};
+
+// --- TOWER OPTIONS MENU LOGIC ---
 const towerOptionsMenu = document.getElementById("tower-options-menu");
 const sellBtn = document.getElementById("sell-tower");
 const upgradeBtn = document.getElementById("upgrade-tower");
-const infoBtn = document.getElementById("info-tower");
-const infoText = document.getElementById("tower-info-text");
 const closeOptionsBtn = document.getElementById("close-tower-options");
+const currentStatsDiv = document.getElementById("current-stats");
+const upgradeStatsDiv = document.getElementById("upgrade-stats");
+
 let selectedTower = null;
 
-canvas.addEventListener("click", (event) => {
-  towerOptionsMenu.style.display = "none";
-  const menu = document.getElementById("tower-menu");
-  menu.style.display = "none";
+function populateTowerStats(div, header, stats) {
+    div.innerHTML = `<h4>${header}</h4>`;
+    if (!stats) return;
 
+    const statsMap = {
+        'Damage': stats.DAMAGE,
+        'Range': stats.RANGE,
+        'Cooldown': stats.COOLDOWN,
+        'Sell Value': stats.SELL_VALUE
+    };
+
+    for (const [label, value] of Object.entries(statsMap)) {
+        const p = document.createElement('p');
+        p.innerHTML = `<span class="stat-label">${label}: </span><span class="stat-value">${value}</span>`;
+        div.appendChild(p);
+    }
+}
+
+
+canvas.addEventListener("click", (event) => {
+  const menu = document.getElementById("tower-menu");
   const mouseX = event.offsetX;
   const mouseY = event.offsetY;
+  let handledClick = false;
 
-  let clickedTile = null;
-  for (let i = 0; i < placementTiles.length; i++) {
-    const tile = placementTiles[i];
-    if (
-      mouseX >= tile.position.x &&
-      mouseX <= tile.position.x + tile.size &&
-      mouseY >= tile.position.y &&
-      mouseY <= tile.position.y + tile.size &&
-      !tile.isOccupied
-    ) {
-      clickedTile = tile;
-      break;
-    }
-  }
-  if (clickedTile) {
-    selectedTile = clickedTile;
-    const rect = canvas.getBoundingClientRect();
-    const tileScreenX = rect.left + clickedTile.position.x + clickedTile.size / 2;
-    const tileScreenY = rect.top + clickedTile.position.y + clickedTile.size / 2;
-    menu.style.left = `${tileScreenX}px`;
-    menu.style.top = `${tileScreenY}px`;
-    menu.style.display = "block";
-    arrangeButtonsInCircle();
-    return;
-  }
-
-
+  // 1. Check if a placed tower was clicked
   let foundTower = null;
-  buildings.forEach((tower) => {
-    if (!tower.position || !tower.width || !tower.height) return;
+  for (const tower of buildings) {
     if (
       mouseX >= tower.position.x &&
       mouseX <= tower.position.x + tower.width &&
@@ -192,152 +176,176 @@ canvas.addEventListener("click", (event) => {
       mouseY <= tower.position.y + tower.height
     ) {
       foundTower = tower;
+      break;
     }
-  });
-  if (foundTower) {
-    selectedTower = foundTower;
-
-    const rect = canvas.getBoundingClientRect();
-    towerOptionsMenu.style.left = (rect.left + foundTower.center.x + 40) + "px";
-    towerOptionsMenu.style.top = (rect.top + foundTower.center.y - 20) + "px";
-    towerOptionsMenu.style.display = "block";
-    infoText.style.display = "none";
-
-    sellBtn.onclick = () => {
-      if (!selectedTower) return;
-      const idx = buildings.indexOf(selectedTower);
-      if (idx > -1) {
-        // Odblokuj tile pod wieżą
-        placementTiles.forEach(tile => {
-          if (
-            selectedTower.position.x === tile.position.x &&
-            selectedTower.position.y === tile.position.y
-          ) {
-            tile.isOccupied = false;
-          }
-        });
-        buildings.splice(idx, 1);
-      }
-      towerOptionsMenu.style.display = "none";
-      selectedTower = null;
-    };
-    // Wyświetl cenę upgrade'u na przycisku
-    let upgradeCost = 100;
-    if (selectedTower.constructor.name === 'ArcherTower') upgradeCost = 70;
-    if (selectedTower.constructor.name === 'MageTower') upgradeCost = 120;
-    upgradeBtn.textContent = `Upgrade (${upgradeCost}$)`;
-    upgradeBtn.onclick = () => {
-      if (!selectedTower) return;
-      // Tu możesz dodać warunek na posiadane złoto
-      if (selectedTower.towerDamage !== undefined) selectedTower.towerDamage += 10;
-      towerOptionsMenu.style.display = "none";
-      selectedTower = null;
-    };
-    infoBtn.onclick = () => {
-      if (!selectedTower) return;
-      infoText.style.display = "block";
-      infoText.textContent = `Typ: ${selectedTower.constructor.name}\nDamage: ${selectedTower.towerDamage || "?"}`;
-    };
-    closeOptionsBtn.onclick = () => {
-      towerOptionsMenu.style.display = "none";
-      selectedTower = null;
-    };
-    return;
   }
 
-  // Jeśli kliknięcie nie jest na wieżę ani tile, nie pokazuj żadnego menu
-  selectedTile = null;
-  selectedTower = null;
+  if (foundTower) {
+    selectedTower = foundTower;
+    const towerType = selectedTower.constructor.name.replace('Lvl2', '').replace('Tower', '').toUpperCase();
+    const currentLvl = selectedTower.level;
+    const currentStats = GAME_STATS.TOWERS[towerType][`LVL${currentLvl}`];
+
+    // Populate current stats
+    populateTowerStats(currentStatsDiv, `LVL ${currentLvl}: ${currentStats.NAME}`, currentStats);
+
+    // Populate upgrade stats
+    const upgradeId = selectedTower.upgradeId;
+    if (upgradeId) {
+        const upgradeLvl = currentLvl + 1;
+        const upgradeStats = GAME_STATS.TOWERS[towerType][`LVL${upgradeLvl}`];
+        populateTowerStats(upgradeStatsDiv, `LVL ${upgradeLvl}: ${upgradeStats.NAME}`, upgradeStats);
+        upgradeBtn.textContent = `Upgrade ($${currentStats.UPGRADE_COST})`;
+        upgradeBtn.disabled = false;
+        upgradeStatsDiv.classList.add('has-upgrade');
+    } else {
+        upgradeStatsDiv.innerHTML = '<h4>MAX LEVEL</h4>';
+        upgradeBtn.textContent = 'Max Level';
+        upgradeBtn.disabled = true;
+        upgradeStatsDiv.classList.remove('has-upgrade');
+    }
+
+    sellBtn.textContent = `Sell ($${currentStats.SELL_VALUE})`;
+
+    const rect = canvas.getBoundingClientRect();
+    towerOptionsMenu.style.left = (rect.left + foundTower.center.x - towerOptionsMenu.offsetWidth / 2) + "px";
+    towerOptionsMenu.style.top = (rect.top + foundTower.position.y - towerOptionsMenu.offsetHeight - 10) + "px";
+    towerOptionsMenu.style.display = "block";
+    menu.style.display = "none";
+    handledClick = true;
+  }
+
+  // 2. If not a tower, check if an empty placement tile was clicked
+  if (!handledClick) {
+      let clickedTile = null;
+      for (const tile of placementTiles) {
+        if (
+          mouseX >= tile.position.x && mouseX <= tile.position.x + tile.size &&
+          mouseY >= tile.position.y && mouseY <= tile.position.y + tile.size &&
+          !tile.isOccupied
+        ) {
+          clickedTile = tile;
+          break;
+        }
+      }
+
+      if (clickedTile) {
+        selectedTile = clickedTile;
+        const rect = canvas.getBoundingClientRect();
+        menu.style.left = `${rect.left + clickedTile.position.x + clickedTile.size / 2}px`;
+        menu.style.top = `${rect.top + clickedTile.position.y + clickedTile.size / 2}px`;
+        menu.style.display = "block";
+        arrangeButtonsInCircle();
+        towerOptionsMenu.style.display = "none";
+        handledClick = true;
+      }
+  }
+
+  // 3. If nothing was clicked, hide all menus
+  if (!handledClick) {
+    towerOptionsMenu.style.display = "none";
+    menu.style.display = "none";
+    selectedTile = null;
+    selectedTower = null;
+  }
 });
 
-// Dodaj obsługę zamykania menu wyboru wieży
+sellBtn.onclick = () => {
+    if (!selectedTower) return;
+    const idx = buildings.indexOf(selectedTower);
+    if (idx > -1) {
+        const tileX = selectedTower.position.x;
+        const tileY = selectedTower.position.y;
+        const correspondingTile = placementTiles.find(t => t.position.x === tileX && t.position.y === tileY);
+        if (correspondingTile) {
+            correspondingTile.isOccupied = false;
+        }
+        buildings.splice(idx, 1);
+    }
+    towerOptionsMenu.style.display = "none";
+    selectedTower = null;
+};
+
+upgradeBtn.onclick = () => {
+    if (!selectedTower || !selectedTower.upgradeId) return;
+
+    const towerIndex = buildings.indexOf(selectedTower);
+    if (towerIndex === -1) return;
+
+    const newTower = towerFactory[selectedTower.upgradeId](selectedTower.position);
+    buildings[towerIndex] = newTower;
+    
+    towerOptionsMenu.style.display = "none";
+    selectedTower = null;
+};
+
+closeOptionsBtn.onclick = () => {
+  towerOptionsMenu.style.display = "none";
+  selectedTower = null;
+};
+
+
+// --- TOWER PLACEMENT LOGIC ---
 const closeTowerMenuBtn = document.getElementById("close-tower-menu");
 if (closeTowerMenuBtn) {
   closeTowerMenuBtn.onclick = () => {
-    const menu = document.getElementById("tower-menu");
-    menu.style.display = "none";
+    document.getElementById("tower-menu").style.display = "none";
     selectedTile = null;
   };
 }
 
-// Dodaj obsługę stawiania wież
-const archerButton = document.getElementById("archer-tower");
-if (archerButton) {
-  archerButton.onclick = (e) => {
+document.getElementById("archer-tower").onclick = (e) => {
     e.stopPropagation();
     if (!selectedTile) return;
     buildings.push(new ArcherTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
-    const menu = document.getElementById("tower-menu");
-    menu.style.display = "none";
-  };
-}
-const mageButton = document.getElementById("mage-tower");
-if (mageButton) {
-  mageButton.onclick = (e) => {
+    document.getElementById("tower-menu").style.display = "none";
+};
+
+document.getElementById("mage-tower").onclick = (e) => {
     e.stopPropagation();
     if (!selectedTile) return;
     buildings.push(new MageTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
-    const menu = document.getElementById("tower-menu");
-    menu.style.display = "none";
-  };
-}
+    document.getElementById("tower-menu").style.display = "none";
+};
 
-// ...istniejący kod...
 
 window.addEventListener('mousemove', (event) => {
-  const rect = canvas.getBoundingClientRect()
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = event.clientX - rect.left;
+  mouse.y = event.clientY - rect.top;
 
-  mouse.x = event.clientX - rect.left
-  mouse.y = event.clientY - rect.top
-
-  activeTile = null
+  activeTile = null;
   for (let i = 0; i < placementTiles.length; i++) {
-    const tile = placementTiles[i]
+    const tile = placementTiles[i];
     if (
-      mouse.x > tile.position.x &&
-      mouse.x < tile.position.x + tile.size &&
-      mouse.y > tile.position.y &&
-      mouse.y < tile.position.y + tile.size
+      mouse.x > tile.position.x && mouse.x < tile.position.x + tile.size &&
+      mouse.y > tile.position.y && mouse.y < tile.position.y + tile.size
     ) {
-      activeTile = tile
-      break
+      activeTile = tile;
+      break;
     }
   }
-})
-
-
-
+});
 
 function arrangeButtonsInCircle() {
     const menu = document.getElementById("tower-menu");
     const buttons = menu.querySelectorAll(".tower-options");
-
     const count = buttons.length;
-    
-
     const menuRadius = 80;
-    
     const buttonSize = 80;
     const buttonHalfSize = buttonSize / 2;
-    
-
-    const outerRadius = menuRadius + buttonHalfSize; 
-    
+    const outerRadius = menuRadius + buttonHalfSize;
     const centerX = 125;
     const centerY = 125;
 
     buttons.forEach((btn, i) => {
-
         const angle = (i / count) * (2 * Math.PI) - Math.PI / 2;
-
         const buttonCenterX = centerX + Math.cos(angle) * outerRadius;
         const buttonCenterY = centerY + Math.sin(angle) * outerRadius;
-
-        const x = buttonCenterX - buttonHalfSize; 
+        const x = buttonCenterX - buttonHalfSize;
         const y = buttonCenterY - buttonHalfSize;
-
         btn.style.left = `${x}px`;
         btn.style.top = `${y}px`;
     });
