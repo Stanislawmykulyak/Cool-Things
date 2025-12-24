@@ -69,10 +69,5 @@ const GAME_STATS = {
             ARMOR: 10.5,
             SPEED: 0.7
         },
-        CHUNKUS: {
-            HEALTH: 300,
-            ARMOR: 15,
-            SPEED: 0.5
-        }
     }
 };

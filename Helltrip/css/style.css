@@ -8,6 +8,11 @@
     z-index: 1000;
     min-width: 120px;
 }
+img{
+    margin-top:15px;
+    height:30px;
+    width:30px;
+}
 #tower-options-menu button {
     width: 100%;
     margin-bottom: 8px;
@@ -85,12 +90,13 @@ body{
     background:linear-gradient(to right , rgb(129, 170, 216) , rgb(145, 196, 222));
     font-size:35px;
     color:aliceblue;
+    height:Auto;
 }
 canvas{
     display:block;
     margin:0 auto;
 }
-.game-container {
+#game-container {
     position: relative;
     width: 1280px;
     height: 768px;
@@ -102,21 +108,29 @@ canvas{
     font-size: 50px;
     font-weight: bold;
 }
+.hearts{
+    color: white;
+    font-family: 'Sour Gummy', cursive;
+}
 .game-over{
     font-size: 200px;
     font-weight: bold;
-    background:linear-gradient(to right , #00eeff , #078da2);
-    background-clip:text;
-    -webkit-background-clip: text;
-    -webkit-color:transparent;
-    color:transparent;
+    color:#d1d1d1;
     font-family: 'Sour Gummy', cursive;
     position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    -webkit-text-stroke: 3px rgb(42, 42, 42);
 }
 .stats{
-    position: absolute;
-    top:8px;
-    left: 310px;
+    position:absolute;
+    top:0px;
+    left:0px;
     padding: 10px;
     color: white;
     background: rgba(0, 0, 0, 0.5);
@@ -225,12 +239,10 @@ canvas{
     transform: translateX(-50%) scale(1.15);
     background:rgb(88, 88, 88);
 }
-
-/* Styles for Tower Options Menu */
 #tower-stats-container h4 {
     margin-top: 0;
     margin-bottom: 10px;
-    color: #ffd700;
+    color: #18c5b6;
     text-align: center;
     border-bottom: 1px solid #ffffff55;
     padding-bottom: 5px;

@@ -61,6 +61,7 @@ let enemyCount = 3;
 let waveCount = 1;
 let waves = 50;
 let hearts = 10;
+let coins = 300;
 let selectedTile = null;
 
 spawnEnemies(3);
@@ -77,9 +78,10 @@ function animate() {
       hearts -= 1;
       enemies.splice(i, 1);
       if (hearts === 0) {
+
         console.log('game over');
         cancelAnimationFrame(animationID);
-        document.querySelector('.game-over').style.display = 'block';
+        document.querySelector('.game-over').style.display = 'flex';
       }
     }
   }
@@ -131,7 +133,6 @@ const mouse = {
   y: undefined
 };
 
-// --- TOWER OPTIONS MENU LOGIC ---
 const towerOptionsMenu = document.getElementById("tower-options-menu");
 const sellBtn = document.getElementById("sell-tower");
 const upgradeBtn = document.getElementById("upgrade-tower");
@@ -145,12 +146,11 @@ function populateTowerStats(div, header, stats) {
     div.innerHTML = `<h4>${header}</h4>`;
     if (!stats) return;
 
-    // As requested, using icons instead of text labels
     const statIcons = {
         'Damage': 'media/sword.png',
         'Range': 'media/bullseye.png',
         'Cooldown': 'media/wind.png',
-        'Sell Value': 'media/images.jpg' // Assuming a coin icon
+        'Sell Value': 'media/coin.png'
     };
 
     const statsMap = {
@@ -163,7 +163,7 @@ function populateTowerStats(div, header, stats) {
     for (const [label, value] of Object.entries(statsMap)) {
         if (value === undefined) continue;
         const p = document.createElement('p');
-        // The new CSS will style this class to align icon and text
+        
         p.className = 'stat-line'; 
         p.innerHTML = `
             <img src="${statIcons[label]}" class="stat-icon" />
@@ -179,7 +179,6 @@ canvas.addEventListener("click", (event) => {
   const mouseY = event.offsetY;
   let handledClick = false;
 
-  // 1. Check if a placed tower was clicked
   let foundTower = null;
   for (const tower of buildings) {
     if (
