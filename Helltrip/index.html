@@ -47,14 +47,21 @@
         <button id="close-tower-menu" class="close-btn">✕</button>
 
     </div>
-    <div id="tower-options-menu" style="display:none; position:absolute; background:#22222235; border:3px solid #9222b7; padding:15px; box-shadow:0 2px 8px #9222b7; z-index:1000; min-width:200px; min-height:250px; padding:10px;">
-        <button id="sell-tower" style="width:70%;position:absolute; right:0; bottom:5px; height:35px;">Sell $</button> 
-        <button id="upgrade-tower" style="width:45%;margin-bottom:8px; position:absolute; right:5px;top:145px; height:50px;">Upgrade</button>
-        <button id="info-tower" style="width:45%;margin-bottom:8px; position:absolute; left:5px;top:145px; height:50px;">Tower Info</button>
-        <div id="tower-info-text" style="margin-top:10px; font-size:14px; display:none;"></div>
-        <button id="close-tower-options" style="width:35px ; height:35px;margin-bottom:8px; position:absolute; left:5px; bottom:5px;">X</button>
+    <div id="tower-options-menu" style="display:none; position:absolute; background:#222222b5; border:3px solid #9222b7; box-shadow:0 2px 8px #9222b7; z-index:1000; min-width:350px; min-height:220px; padding:10px; color:white; font-family: monospace;">
+        <div id="tower-stats-container" style="display: flex; justify-content: space-between; width: 100%;">
+            <div id="current-stats" style="width: 50%; padding-right: 5px; border-right: 1px solid #9222b7;">
+                <!-- Current stats will be populated by JS -->
+            </div>
+            <div id="upgrade-stats" style="width: 50%; padding-left: 5px;">
+                <!-- Upgrade stats will be populated by JS -->
+            </div>
+        </div>
+        <button id="upgrade-tower" style="width: calc(100% - 95px); position:absolute; right: 50px; bottom:5px; height:35px;">Upgrade</button>
+        <button id="sell-tower" style="width: 40px; position:absolute; right: 5px; bottom:5px; height:35px;">Sell</button>
+        <button id="close-tower-options" style="width:40px; height:35px; position:absolute; left:5px; bottom:5px;">X</button>
     </div>
 
+    <script src="js/stats.js"></script>
     <script src="js/placement.js"></script>
     <script src="js/waypoints.js"></script>
     <script src="js/classes.js"></script>
