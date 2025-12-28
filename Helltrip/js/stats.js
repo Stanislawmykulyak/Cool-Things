@@ -79,3 +79,11 @@ const GAME_STATS = {
         },
     }
 };
+
+const cost = {
+    lvl1: {
+        archer:100,
+        mage:170,
+    },
+}
+

@@ -65,7 +65,9 @@ let coins = 300;
 let selectedTile = null;
 
 spawnEnemies(3);
-
+function updateCoins () {
+  document.querySelector('.coins').innerHTML = 'Coins: ' + coins + '<img src="media/coin.png" class="stats-img">';
+}
 function animate() {
   const animationID = requestAnimationFrame(animate);
   c.drawImage(image, 0, 0);
@@ -77,6 +79,9 @@ function animate() {
     if (enemy.position.x > canvas.width) {
       hearts -= 1;
       enemies.splice(i, 1);
+      document.querySelector('.hearts').innerHTML = 'Hearts : ' + hearts + '<img src="media/hearts.png" class="stats-img">';
+
+
       if (hearts === 0) {
 
         console.log('game over');
@@ -118,7 +123,9 @@ function animate() {
         projectile.enemy.health -= projectile.damage;
         if (projectile.enemy.health <= 0) {
           const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
-          if (enemyIndex > -1) enemies.splice(enemyIndex, 1);
+          if (enemyIndex > -1) {
+            enemies.splice(enemyIndex, 1);
+          }
         }
         building.projectiles.splice(i, 1);
       }
@@ -126,6 +133,7 @@ function animate() {
   });
 
   WaveUpdate();
+  updateCoins();
 }
 
 const mouse = {
@@ -193,10 +201,8 @@ canvas.addEventListener("click", (event) => {
     const currentLvl = selectedTower.level;
     const currentStats = GAME_STATS.TOWERS[towerType][`LVL${currentLvl}`];
 
-    // Populate current stats
     populateTowerStats(currentStatsDiv, `LVL ${currentLvl}: ${currentStats.NAME}`, currentStats);
 
-    // Populate upgrade stats
     const upgradeId = selectedTower.upgradeId;
     if (upgradeId) {
         const upgradeLvl = currentLvl + 1;
@@ -222,7 +228,6 @@ canvas.addEventListener("click", (event) => {
     handledClick = true;
   }
 
-  // 2. If not a tower, check if an empty placement tile was clicked
   if (!handledClick) {
       let clickedTile = null;
       for (const tile of placementTiles) {
@@ -248,7 +253,7 @@ canvas.addEventListener("click", (event) => {
       }
   }
 
-  // 3. If nothing was clicked, hide all menus
+
   if (!handledClick) {
     towerOptionsMenu.style.display = "none";
     menu.style.display = "none";
@@ -291,8 +296,6 @@ closeOptionsBtn.onclick = () => {
   selectedTower = null;
 };
 
-
-// --- TOWER PLACEMENT LOGIC ---
 const closeTowerMenuBtn = document.getElementById("close-tower-menu");
 if (closeTowerMenuBtn) {
   closeTowerMenuBtn.onclick = () => {
@@ -304,6 +307,8 @@ if (closeTowerMenuBtn) {
 document.getElementById("archer-tower").onclick = (e) => {
     e.stopPropagation();
     if (!selectedTile) return;
+      if (coins - cost.lvl1.archer < 0) return;
+    coins -= cost.lvl1.archer;
     buildings.push(new ArcherTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";

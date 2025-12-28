@@ -1,7 +1,7 @@
 #tower-options-menu {
     position: absolute;
-    background: #222;
-    color: #fff;
+    background: #0891a0;
+    color: #ffffff;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 8px #000;
@@ -12,11 +12,16 @@ img{
     height:20px;
     width:20px;
 }
+.stats-img{
+    height:25px;
+    width:25px;
+    align-items:center;
+}
 #tower-options-menu button {
     width: 100%;
     margin-bottom: 8px;
-    background: #444;
-    color: #fff;
+    background: #0891a0;
+    color: #ffffff;
     border: none;
     border-radius: 6px;
     padding: 8px 0;
@@ -110,6 +115,7 @@ canvas{
 .hearts{
     color: white;
     font-family: 'Sour Gummy', cursive;
+    align-items:center;
 }
 .game-over{
     font-size: 200px;
