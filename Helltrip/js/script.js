@@ -206,9 +206,11 @@ canvas.addEventListener("click", (event) => {
     const upgradeId = selectedTower.upgradeId;
     if (upgradeId) {
         const upgradeLvl = currentLvl + 1;
+        const upgrade_cost = stats.tower_cost.lvl2[towerType.toLowerCase()];
         const upgradeStats = GAME_STATS.TOWERS[towerType][`LVL${upgradeLvl}`];
+
         populateTowerStats(upgradeStatsDiv, `LVL ${upgradeLvl}: ${upgradeStats.NAME}`, upgradeStats);
-        upgradeBtn.textContent = `Upgrade ($${currentStats.UPGRADE_COST})`;
+        upgradeBtn.textContent = `Upgrade ($${upgrade_cost})`;
         upgradeBtn.disabled = false;
         upgradeStatsDiv.classList.add('has-upgrade');
     } else {

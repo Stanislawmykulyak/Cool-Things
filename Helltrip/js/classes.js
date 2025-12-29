@@ -16,14 +16,14 @@ class PlacementTile {
     this.draw();
   
     if (this === selectedTile) {
-      this.color = 'rgba(0, 0, 255, 0.5)';
+      this.color = 'rgba(9, 181, 40, 0.75)';
     } else if (
       mouse.x > this.position.x &&
       mouse.x < this.position.x + this.size &&
       mouse.y > this.position.y &&
       mouse.y < this.position.y + this.size
     ) {
-      this.color = 'rgba(0, 255, 0, 0.5)';
+      this.color = 'rgba(15, 245, 15, 0.29)';
     } else {
       this.color = 'rgba(255, 255, 255, 0.25)';
     }
@@ -236,11 +236,9 @@ class MageTowerLvl2 extends Tower {
     }
 }
 
-// Map to easily create tower instances from an ID string
 const towerFactory = {
     ARCHER_LVL2: (position) => new ArcherTowerLvl2({ position }),
     MAGE_LVL2: (position) => new MageTowerLvl2({ position }),
-    // Add other Lvl2 towers here as they are created
 };
 
 
