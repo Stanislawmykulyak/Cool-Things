@@ -76,7 +76,7 @@ const GAME_STATS = {
         },
         KNIGHT: {
             HEALTH: 125,
-            ARMOR: 10.5,
+            ARMOR: 3.5,
             SPEED: 0.7,
             reward: 15
         },
@@ -94,9 +94,12 @@ const cost = {
 
 const stats = {
     enemy_rewards: {
-        enemy:5,
+        knight:11,    
+        dark_knight:25,
+        bandit:8,
+        rogue:7,
+        goblin:5,
         wolf:2,
-        knight:10,
     }
 }
 

@@ -48,7 +48,7 @@ function spawnEnemies(enemyCount) {
   for (let i = 1; i < enemyCount + 1; i++) {
     const xOffset = i * 100;
     enemies.push(
-      new Enemy({
+      new Knight({
         position: { x: waypoints[0].x - xOffset, y: waypoints[0].y }
       })
     );
@@ -125,7 +125,7 @@ function animate() {
           const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
           if (enemyIndex > -1) {
             enemies.splice(enemyIndex, 1);
-            coins += stats.enemy_rewards.enemy;
+            coins += stats.enemy_rewards.knight;
           }
         }
         building.projectiles.splice(i, 1);
