@@ -85,8 +85,7 @@ const GAME_STATS = {
 
 const cost = {
     lvl1: {
-        archer:100,
-        mage:170,
+        
     },
 }
 
@@ -100,6 +99,15 @@ const stats = {
         rogue:7,
         goblin:5,
         wolf:2,
+    },
+    tower_cost: {
+        lvl1: {
+            archer:75,
+            mage:130,
+            barracks:75,
+            wild_hunter:250,
+            engineer:170,
+        },
     }
 }
 

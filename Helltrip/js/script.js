@@ -61,7 +61,7 @@ let enemyCount = 3;
 let waveCount = 1;
 let waves = 50;
 let hearts = 10;
-let coins = 300;
+let coins = 500;
 let selectedTile = null;
 
 spawnEnemies(3);
@@ -96,7 +96,6 @@ function animate() {
     spawnEnemies(enemyCount);
     waveCount += 1;
   }
-
   placementTiles.forEach((tile) => {
     tile.update(mouse);
   });
@@ -308,8 +307,8 @@ if (closeTowerMenuBtn) {
 document.getElementById("archer-tower").onclick = (e) => {
     e.stopPropagation();
     if (!selectedTile) return;
-      if (coins - cost.lvl1.archer < 0) return;
-    coins -= cost.lvl1.archer;
+      if (coins - stats.tower_cost.lvl1.archer < 0) return;
+    coins -= stats.tower_cost.lvl1.archer;
     buildings.push(new ArcherTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";
@@ -318,6 +317,8 @@ document.getElementById("archer-tower").onclick = (e) => {
 document.getElementById("mage-tower").onclick = (e) => {
     e.stopPropagation();
     if (!selectedTile) return;
+    if (coins - stats.tower_cost.lvl1.mage < 0) return;
+    coins -= stats.tower_cost.lvl1.mage;
     buildings.push(new MageTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";
