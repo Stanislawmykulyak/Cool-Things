@@ -102,12 +102,19 @@ const stats = {
     },
     tower_cost: {
         lvl1: {
-            archer:75,
-            mage:130,
-            barracks:75,
-            wild_hunter:250,
-            engineer:170,
+            archer:100,
+            mage:170,
+            barracks:100,
+            wild_hunter:310,
+            engineer:260,
         },
+        lvl2: {
+            archer:135,
+            mage:190,
+            barracks:120,
+            wild_hunter:260,
+            engineer:170,
+        }
     }
 }
 

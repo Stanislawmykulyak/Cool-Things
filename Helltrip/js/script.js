@@ -281,8 +281,21 @@ sellBtn.onclick = () => {
 upgradeBtn.onclick = () => {
     if (!selectedTower || !selectedTower.upgradeId) return;
 
+    const towerType = selectedTower.constructor.name.replace('Lvl2', '').replace('Tower', '').toUpperCase();
+    const currentLvl = selectedTower.level;
+    const currentStats = GAME_STATS.TOWERS[towerType][`LVL${currentLvl}`];
+    const upgradeCost = currentStats.UPGRADE_COST;
+
+    if (coins < stats.tower_cost.lvl2 ) {
+        console.log("Not enough coins to upgrade!");
+        return;
+    }
+
     const towerIndex = buildings.indexOf(selectedTower);
     if (towerIndex === -1) return;
+
+    coins -= upgradeCost;
+    updateCoins();
 
     const newTower = towerFactory[selectedTower.upgradeId](selectedTower.position);
     buildings[towerIndex] = newTower;
