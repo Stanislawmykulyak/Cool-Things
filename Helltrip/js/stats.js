@@ -94,7 +94,9 @@ const cost = {
 
 const stats = {
     enemy_rewards: {
-        enemy: 10,
+        enemy:5,
+        wolf:2,
+        knight:10,
     }
 }
 

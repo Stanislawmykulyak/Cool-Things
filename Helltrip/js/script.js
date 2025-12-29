@@ -125,6 +125,7 @@ function animate() {
           const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
           if (enemyIndex > -1) {
             enemies.splice(enemyIndex, 1);
+            coins += stats.enemy_rewards.enemy;
           }
         }
         building.projectiles.splice(i, 1);
