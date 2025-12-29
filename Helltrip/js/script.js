@@ -284,9 +284,9 @@ upgradeBtn.onclick = () => {
     const towerType = selectedTower.constructor.name.replace('Lvl2', '').replace('Tower', '').toUpperCase();
     const currentLvl = selectedTower.level;
     const currentStats = GAME_STATS.TOWERS[towerType][`LVL${currentLvl}`];
-    const upgradeCost = currentStats.UPGRADE_COST;
+    const upgradeCost = stats.tower_cost.lvl2[towerType.toLowerCase()];
 
-    if (coins < stats.tower_cost.lvl2 ) {
+    if (coins < upgradeCost) {
         console.log("Not enough coins to upgrade!");
         return;
     }

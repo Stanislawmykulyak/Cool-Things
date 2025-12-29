@@ -92,6 +92,7 @@ const cost = {
 
 
 const stats = {
+    
     enemy_rewards: {
         knight:11,    
         dark_knight:25,
