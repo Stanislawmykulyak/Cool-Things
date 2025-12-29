@@ -90,17 +90,17 @@ const cost = {
 }
 
 
-let coins = 1000;
+let coins = 500;
 let hearts = 10;
 
 const stats = {
     enemy_rewards: {
-        knight:11,    
-        dark_knight:25,
-        bandit:8,
-        rogue:7,
-        goblin:5,
-        wolf:2,
+        knight:7,    
+        dark_knight:18,
+        bandit:5,
+        rogue:3,
+        goblin:2,
+        wolf:1,
     },
     wave_rewards:{
         '1_11':45,
