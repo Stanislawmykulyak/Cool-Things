@@ -15,7 +15,7 @@ const GAME_STATS = {
                 DAMAGE: 10,
                 RANGE: 250,
                 COOLDOWN: 40,
-                UPGRADE_COST: 70,
+                UPGRADE_COST: 0,
                 SELL_VALUE: 50,
             },
             LVL2: {
@@ -92,7 +92,7 @@ const cost = {
 
 
 const stats = {
-    
+
     enemy_rewards: {
         knight:11,    
         dark_knight:25,
