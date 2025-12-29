@@ -147,7 +147,7 @@ class Tower {
     }
 
     draw() {
-        // This method will be overridden by subclasses
+
     }
 
     update() {
@@ -178,10 +178,12 @@ class ArcherTower extends Tower {
         c.fillStyle = 'blue';
         c.fillRect(this.position.x, this.position.y, this.width, 64);
 
-        c.beginPath();
-        c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-        c.fillStyle = 'rgba(0, 179, 255, 0.37)';
-        c.fill();
+        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
+            c.beginPath();
+            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
+            c.fillStyle = 'rgba(0, 179, 255, 0.37)';
+            c.fill();
+        }
     }
 }
 
@@ -195,10 +197,12 @@ class ArcherTowerLvl2 extends Tower {
         c.fillStyle = 'darkblue'; // Darker color for upgraded tower
         c.fillRect(this.position.x, this.position.y, this.width, 64);
 
-        c.beginPath();
-        c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-        c.fillStyle = 'rgba(0, 100, 200, 0.4)';
-        c.fill();
+        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
+            c.beginPath();
+            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
+            c.fillStyle = 'rgba(0, 100, 200, 0.4)';
+            c.fill();
+        }
     }
 }
 
@@ -212,10 +216,12 @@ class MageTower extends Tower {
         c.fillStyle = 'purple';
         c.fillRect(this.position.x, this.position.y, this.width, 64);
 
-        c.beginPath();
-        c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-        c.fillStyle = 'hsla(273, 53.30%, 47.80%, 0.42)';
-        c.fill();
+        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
+            c.beginPath();
+            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
+            c.fillStyle = 'hsla(273, 53.30%, 47.80%, 0.42)';
+            c.fill();
+        }
     }
 }
 
@@ -229,10 +235,12 @@ class MageTowerLvl2 extends Tower {
         c.fillStyle = '#6a0dad'; // A deeper purple
         c.fillRect(this.position.x, this.position.y, this.width, 64);
 
-        c.beginPath();
-        c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-        c.fillStyle = 'hsla(273, 70%, 30%, 0.5)';
-        c.fill();
+        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
+            c.beginPath();
+            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
+            c.fillStyle = 'hsla(273, 70%, 30%, 0.5)';
+            c.fill();
+        }
     }
 }
 
