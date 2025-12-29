@@ -66,16 +66,19 @@ const GAME_STATS = {
             HEALTH: 120,
             ARMOR: 1,
             SPEED: 1.2,
+            reward: 10
         },
         WOLF: {
             HEALTH: 75,
             ARMOR: 0.7,
-            SPEED: 2.5
+            SPEED: 2.5,
+            reward: 7
         },
         KNIGHT: {
             HEALTH: 125,
             ARMOR: 10.5,
-            SPEED: 0.7
+            SPEED: 0.7,
+            reward: 15
         },
     }
 };
@@ -85,5 +88,13 @@ const cost = {
         archer:100,
         mage:170,
     },
+}
+
+
+
+const stats = {
+    enemy_rewards: {
+        enemy: 10,
+    }
 }
 
