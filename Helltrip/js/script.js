@@ -60,8 +60,8 @@ let activeTile = undefined;
 let enemyCount = 3;
 let waveCount = 1;
 let waves = 50;
-let hearts = 10;
-let coins = 500;
+
+
 let selectedTile = null;
 
 spawnEnemies(3);
@@ -94,8 +94,26 @@ function animate() {
   if (enemies.length === 0) {
     enemyCount += 2;
     spawnEnemies(enemyCount);
+
     waveCount += 1;
+      if (waveCount < 11){
+        coins += stats.wave_rewards['1_11'];
+        updateCoins();
+      }
+      if(11 <= waveCount && waveCount < 21){
+        coins += stats.wave_rewards['11_21'];
+        updateCoins();
+      }
+      if(21 <= waveCount && waveCount < 41){
+        coins += stats.wave_rewards['21_41'];
+        updateCoins();
+      }
+      if(41 <= waveCount && waveCount < 47){
+        coins += stats.wave_rewards['41_47'];
+        updateCoins();
+      }
   }
+
   placementTiles.forEach((tile) => {
     tile.update(mouse);
   });
@@ -131,9 +149,9 @@ function animate() {
       }
     }
   });
-
-  WaveUpdate();
   updateCoins();
+  WaveUpdate();
+  
 }
 
 const mouse = {
@@ -268,6 +286,8 @@ sellBtn.onclick = () => {
     if (!selectedTower) return;
     const idx = buildings.indexOf(selectedTower);
     if (idx > -1) {
+        coins += stats.sell_value.lvl1[selectedTower.constructor.name.replace('Tower', '').toLowerCase()];
+        updateCoins();
         const tileX = selectedTower.position.x;
         const tileY = selectedTower.position.y;
         const correspondingTile = placementTiles.find(t => t.position.x === tileX && t.position.y === tileY);

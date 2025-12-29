@@ -90,6 +90,8 @@ const cost = {
 }
 
 
+let coins = 1000;
+let hearts = 10;
 
 const stats = {
     enemy_rewards: {
@@ -100,7 +102,28 @@ const stats = {
         goblin:5,
         wolf:2,
     },
-    
+    wave_rewards:{
+        1_11:30,
+        11_21:70,
+        21_41:100,
+        41_47:150,
+    },
+    sell_value:{
+        lvl1: {
+            archer:65,
+            mage:100,
+            barracks:65,
+            wild_hunter:200,
+            engineer:150,
+        },
+        lvl2: {
+            archer:155,
+            mage:220,
+            barracks:155,
+            wild_hunter:350,
+            engineer:270,
+        }
+    },
     tower_cost: {
         lvl1: {
             archer:100,
