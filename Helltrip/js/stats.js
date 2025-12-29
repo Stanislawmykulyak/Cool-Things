@@ -82,18 +82,11 @@ const GAME_STATS = {
         },
     }
 };
-
-const cost = {
-    lvl1: {
-        
-    },
-}
-
-
 let coins = 500;
 let hearts = 10;
 
 const stats = {
+    
     enemy_rewards: {
         knight:7,    
         dark_knight:18,
