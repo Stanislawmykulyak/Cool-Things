@@ -92,7 +92,6 @@ const cost = {
 
 
 const stats = {
-
     enemy_rewards: {
         knight:11,    
         dark_knight:25,
@@ -101,6 +100,7 @@ const stats = {
         goblin:5,
         wolf:2,
     },
+    
     tower_cost: {
         lvl1: {
             archer:100,
@@ -116,6 +116,7 @@ const stats = {
             wild_hunter:260,
             engineer:170,
         }
-    }
+    },
+
 }
 
