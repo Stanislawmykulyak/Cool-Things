@@ -86,7 +86,7 @@ let coins = 500;
 let hearts = 10;
 
 const stats = {
-    
+
     enemy_rewards: {
         knight:7,    
         dark_knight:18,
@@ -95,6 +95,7 @@ const stats = {
         goblin:2,
         wolf:1,
     },
+    
     wave_rewards:{
         '1_11':45,
         '11_21':75,
@@ -103,6 +104,7 @@ const stats = {
         '47_50':145,
         miniboss:260,
     },
+
     sell_value:{
         lvl1: {
             archer:65,
@@ -119,7 +121,9 @@ const stats = {
             engineer:270,
         }
     },
+
     tower_cost: {
+        
         lvl1: {
             archer:100,
             mage:170,
@@ -127,12 +131,39 @@ const stats = {
             wild_hunter:310,
             engineer:260,
         },
+
         lvl2: {
             archer:135,
             mage:190,
             barracks:120,
             wild_hunter:260,
             engineer:170,
+        },
+
+        lvl3: {
+            archer:185,
+            mage:250,
+            barracks:180,
+            wild_hunter:350,
+            engineer:230,
+        },
+
+        lvl4:{
+            //archer lvl4 //
+            ranger:310,
+            royal_archer:410,
+            //mage lvl4 //
+            sorcerer:480,
+            archmage:530,
+            //barracks lvl4 //
+            paladin:410,
+            viking:330,
+            //wild hunter lvl4 //
+            beast_master:410,
+            soul_hunter:520,
+            //engineer lvl4 //
+            workshop:440,
+            master_engineer:470,
         }
     },
 
