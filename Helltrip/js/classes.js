@@ -120,15 +120,6 @@ class Knight extends Enemy {
     this.maxHealth = stats.HEALTH;
   }
 }
-
-
-
-
-
-
-
-
-
 class Projectile {
   constructor({ position = { x: 0, y: 0 }, enemy , damage}) {
     this.position = position;

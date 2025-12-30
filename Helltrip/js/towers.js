@@ -51,12 +51,22 @@ class Tower {
 class ArcherTower extends Tower {
     constructor({ position }) {
         const stats = { ...GAME_STATS.TOWERS.ARCHER.LVL1, LEVEL: 1, UPGRADE_ID: 'ARCHER_LVL2' };
-        super({ position, stats, baseTowerType: 'ARCHER' });
-    }
-
+        super({ 
+            position,
+            stats,
+            baseTowerType: 'ARCHER' ,
+            imageSrc: './media/archer-tower.png',
+            frames: {
+                max: 19
+            },
+            offset: {
+                x: 0,
+            }
+            })
+        };
+    
     draw() {
-        c.fillStyle = 'blue';
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
+       super.draw();
 
         if (typeof selectedTower !== 'undefined' && selectedTower === this) {
             c.beginPath();

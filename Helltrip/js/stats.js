@@ -138,6 +138,11 @@ const stats = {
             barracks:155,
             wild_hunter:350,
             engineer:270,
+        },
+        lvl3: {
+            archer:275,
+            mage:340,
+            
         }
     },
 
