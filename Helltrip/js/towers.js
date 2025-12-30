@@ -1,7 +1,7 @@
 //Tower Template //
 
 class Tower {
-    constructor({ position = { x: 0, y: 0 }, stats, baseTowerType}) {
+    constructor({ position = { x: 0, y: 0 }, stats, baseTowerType, imageSrc, frames, offset }) {
         this.position = position;
         this.width = 64 * 2 + 20;
         this.height = 64 + 20;
@@ -23,20 +23,31 @@ class Tower {
         this.level = stats.LEVEL;
         this.upgradeId = stats.UPGRADE_ID;
         this.baseTowerType = baseTowerType;
+
+        if (imageSrc) {
+            this.sprite = new Sprite({ position: this.position, imageSrc, frames, offset });
+        }
     }
 
     draw() {
-
+        if (this.sprite) {
+            this.sprite.position = this.position;
+            this.sprite.draw();
+        }
     }
 
     update() {
         this.draw();
+        if (this.sprite) {
+            this.sprite.update();
+        }
+
         if (this.damage > 0 && this.frames % this.cooldown === 0 && this.target) {
             this.projectiles.push(
                 new Projectile({
                     position: {
                         x: this.center.x,
-                        y: this.center.y
+                        y: this.center.y + -80,
                     },
                     enemy: this.target,
                     damage: this.damage / this.target.armor
@@ -54,16 +65,17 @@ class ArcherTower extends Tower {
         super({ 
             position,
             stats,
-            baseTowerType: 'ARCHER' ,
-            imageSrc: './media/archer-tower.png',
+            baseTowerType: 'ARCHER',
+            imageSrc: 'media/archer-tower.png',
             frames: {
                 max: 19
             },
             offset: {
-                x: 0,
+                x: -10,
+                y:-80,
             }
-            })
-        };
+        });
+    }
     
     draw() {
        super.draw();
