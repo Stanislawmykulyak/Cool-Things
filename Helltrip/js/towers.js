@@ -107,45 +107,6 @@ class ArcherTowerLvl3 extends Tower {
     }
 }
 
-//Archer Tower lvl 4//
-class RangerTower extends Tower {
-    constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.ARCHER.LVL4_RANGER, LEVEL: 4, UPGRADE_ID: null };
-        super({ position, stats, baseTowerType: 'ARCHER' });
-    }
-
-    draw() {
-        c.fillStyle = '#00E5EE'; // A cyan color
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-
-        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
-            c.beginPath();
-            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-            c.fillStyle = 'rgba(0, 229, 238, 0.4)';
-            c.fill();
-        }
-    }
-}
-
-class RoyalArcherTower extends Tower {
-    constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.ARCHER.LVL4_ROYAL_ARCHER, LEVEL: 4, UPGRADE_ID: null };
-        super({ position, stats, baseTowerType: 'ARCHER' });
-    }
-
-    draw() {
-        c.fillStyle = '#00BFFF'; // Deep sky blue
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-
-        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
-            c.beginPath();
-            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-            c.fillStyle = 'rgba(0, 191, 255,.4)';
-            c.fill();
-        }
-    }
-}
-
 
 //Mage Tower lvl 1//
 class MageTower extends Tower {
@@ -206,57 +167,14 @@ class MageTowerLvl3 extends Tower {
     }
 }
 
-//Mage Tower lvl 4//
-
-class SorcererTower extends Tower {
-    constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.MAGE.LVL4_SORCERER, LEVEL: 4, UPGRADE_ID: null };
-        super({ position, stats, baseTowerType: 'MAGE' });
-    }
-
-    draw() {
-        c.fillStyle = '#4B0082'; // Indigo
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-
-        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
-            c.beginPath();
-            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-            c.fillStyle = 'hsla(274, 100%, 25.5%, 0.5)';
-            c.fill();
-        }
-    }
-}
-
-class ArchmageTower extends Tower {
-    constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.MAGE.LVL4_ARCHMAGE, LEVEL: 4, UPGRADE_ID: null };
-        super({ position, stats, baseTowerType: 'MAGE' });
-    }
-
-    draw() {
-        c.fillStyle = '#DA70D6'; // Orchid
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-
-        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
-            c.beginPath();
-            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-            c.fillStyle = 'hsla(302, 59%, 64.3%, 0.5)';
-            c.fill();
-        }
-    }
-}
 const towerFactory = {
     //Archer Towers//
     
     ARCHER_LVL2: (position) => new ArcherTowerLvl2({ position }),
     ARCHER_LVL3: (position) => new ArcherTowerLvl3({ position }),
-    ARCHER_LVL4_RANGER: (position) => new RangerTower({ position }),
-    ARCHER_LVL4_ROYAL_ARCHER: (position) => new RoyalArcherTower({ position }),
 
     //Mage Towers//
 
     MAGE_LVL2: (position) => new MageTowerLvl2({ position }),
     MAGE_LVL3: (position) => new MageTowerLvl3({ position }),
-    MAGE_LVL4_SORCERER: (position) => new SorcererTower({ position }),
-    MAGE_LVL4_ARCHMAGE: (position) => new ArchmageTower({ position }),
 };

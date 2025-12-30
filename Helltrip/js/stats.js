@@ -36,24 +36,6 @@ const GAME_STATS = {
                 UPGRADE_COST: 100,
                 SELL_VALUE: 200,
             },
-            LVL4_RANGER: {
-                NAME: 'Ranger',
-                COST: 350,
-                DAMAGE: 55,
-                RANGE: 450,
-                COOLDOWN: 25,
-                UPGRADE_COST: 0,
-                SELL_VALUE: 300,
-            },
-            LVL4_ROYAL_ARCHER: {
-                NAME: 'Royal Archer',
-                COST: 450,
-                DAMAGE: 75,
-                RANGE: 375,
-                COOLDOWN: 30,
-                UPGRADE_COST: 0,
-                SELL_VALUE: 400,
-            }
         },
         MAGE: {
             LVL1: {
@@ -83,25 +65,6 @@ const GAME_STATS = {
                 UPGRADE_COST: 120,
                 SELL_VALUE: 300,
             },
-            LVL4_SORCERER: {
-                NAME: 'Sorcerer',
-                COST: 500,
-                DAMAGE: 250,
-                RANGE: 275,
-                COOLDOWN: 100,
-                UPGRADE_COST: 0,
-                SELL_VALUE: 400,
-            },
-            LVL4_ARCHMAGE: {
-                NAME: 'Archmage',
-                COST: 500,
-                DAMAGE: 150,
-                RANGE: 250,
-                COOLDOWN: 60,
-                UPGRADE_COST: 0,
-                SELL_VALUE: 400,
-
-            }
         },
         BARRACKS: {
             LVL1: { NAME: 'Barracks', COST: 100, DAMAGE: 0, RANGE: 0, COOLDOWN: 0, UPGRADE_COST: 50, SELL_VALUE: 50, },
@@ -137,6 +100,7 @@ const GAME_STATS = {
         },
     }
 };
+
 let coins = 500;
 let hearts = 10;
 
@@ -202,24 +166,6 @@ const stats = {
             wild_hunter:350,
             engineer:230,
         },
-
-        lvl4:{
-            //archer lvl4 //
-            ranger:310,
-            royal_archer:410,
-            //mage lvl4 //
-            sorcerer:480,
-            archmage:530,
-            //barracks lvl4 //
-            paladin:410,
-            viking:330,
-            //wild hunter lvl4 //
-            beast_master:410,
-            soul_hunter:520,
-            //engineer lvl4 //
-            workshop:440,
-            master_engineer:470,
-        }
     },
 
 }
