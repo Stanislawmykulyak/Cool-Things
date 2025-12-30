@@ -19,7 +19,7 @@ const GAME_STATS = {
                 SELL_VALUE: 50,
             },
             LVL2: {
-                NAME: 'Marksman',
+                NAME: '<br>Marksman',
                 COST: 170,
                 DAMAGE: 25,
                 RANGE: 300,
