@@ -3,8 +3,8 @@
 class Tower {
     constructor({ position = { x: 0, y: 0 }, stats, baseTowerType}) {
         this.position = position;
-        this.width = 64 * 2;
-        this.height = 64;
+        this.width = 64 * 2 + 20;
+        this.height = 64 + 20;
         this.center = {
             x: this.position.x + this.width / 2,
             y: this.position.y + this.height / 2
