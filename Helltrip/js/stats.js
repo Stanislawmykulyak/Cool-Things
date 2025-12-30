@@ -100,6 +100,7 @@ const GAME_STATS = {
                 COOLDOWN: 60,
                 UPGRADE_COST: 0,
                 SELL_VALUE: 400,
+
             }
         },
         BARRACKS: {
@@ -177,7 +178,7 @@ const stats = {
     },
 
     tower_cost: {
-        
+
         lvl1: {
             archer:100,
             mage:170,
