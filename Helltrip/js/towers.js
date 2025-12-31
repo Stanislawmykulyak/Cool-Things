@@ -46,8 +46,8 @@ class Tower {
             this.projectiles.push(
                 new Projectile({
                     position: {
-                        x: this.center.x,
-                        y: this.center.y + -80,
+                        x: this.center.x - 10,
+                        y: this.center.y - 80,
                     },
                     enemy: this.target,
                     damage: this.damage / this.target.armor
@@ -66,7 +66,7 @@ class ArcherTower extends Tower {
             position,
             stats,
             baseTowerType: 'ARCHER',
-            imageSrc: 'media/archer-tower.png',
+            imageSrc: 'media/tower-models/images/archer-tower-lvl1.png',
             frames: {
                 max: 19
             },
