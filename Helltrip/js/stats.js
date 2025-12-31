@@ -83,7 +83,7 @@ const GAME_STATS = {
         ENEMY: {
             HEALTH: 120,
             ARMOR: 1,
-            SPEED: 1.2,
+            SPEED: 1,
             reward: 10
         },
         WOLF: {

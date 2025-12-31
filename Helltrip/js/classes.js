@@ -32,8 +32,16 @@ class PlacementTile {
   }
 }
 
-class Enemy {
+class Enemy extends Sprite{
   constructor({ position = { x: 0, y: 0 } }) {
+    super({position , imageSrc:'media/tower-models/enemies/orc.png' , 
+      frames:{
+        max:7,
+      }
+
+
+
+    })
     const stats = GAME_STATS.ENEMIES.ENEMY;
     this.position = position;
     this.width = 60;
@@ -55,10 +63,9 @@ class Enemy {
   }
 
   draw() {
-    c.fillStyle = 'red';
-    c.beginPath();
-    c.arc(this.center.x ,this.center.y ,this.radius ,0 , Math.PI * 2);
-    c.fill();
+    
+
+    super.draw()
 
     //health bar
     c.fillStyle= 'red';
@@ -124,7 +131,7 @@ class Knight extends Enemy {
 }
 class Projectile extends Sprite{
   constructor({ position = { x: 0, y: 0 }, enemy , damage}) {
-    super({position})
+    super({position , imageSrc : 'media/tower-models/projectiles/projectile.png'})
     this.position = position;
     this.velocity = {
       x: 0,
@@ -135,13 +142,6 @@ class Projectile extends Sprite{
     this.damage = damage;
   }
 
-  draw() {
-    c.drawImage(this.image , this.position.x , this.position.y)
-    //c.beginPath();
-    //c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
-    //c.fillStyle = 'orange';
-    //c.fill();
-  }
 
   update() {
     this.draw();
