@@ -14,7 +14,7 @@ const GAME_STATS = {
                 COST: 100,
                 DAMAGE: 10,
                 RANGE: 250,
-                COOLDOWN: 40,
+                COOLDOWN: 50,
                 UPGRADE_COST: 70,
                 SELL_VALUE: 50,
             },

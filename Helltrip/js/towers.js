@@ -1,7 +1,17 @@
 //Tower Template //
-
+class Sprite {
+    constructor(position = {x:0 , y:0} ){
+        this.position = position
+        this.image = new Image()
+        this.image.src = 'media/tower-models/projectiles/projectile.png'
+    }
+    
+    draw(){
+        c.drawImage(this.image , this.position.x , this.position.y)
+    }
+}
 class Tower {
-    constructor({ position = { x: 0, y: 0 }, stats, baseTowerType, imageSrc, frames, offset }) {
+    constructor({ position = { x: 0, y: 0 }, stats, baseTowerType}) {
         this.position = position;
         this.width = 64 * 2 + 20;
         this.height = 64 + 20;
@@ -23,31 +33,20 @@ class Tower {
         this.level = stats.LEVEL;
         this.upgradeId = stats.UPGRADE_ID;
         this.baseTowerType = baseTowerType;
-
-        if (imageSrc) {
-            this.sprite = new Sprite({ position: this.position, imageSrc, frames, offset });
-        }
     }
 
     draw() {
-        if (this.sprite) {
-            this.sprite.position = this.position;
-            this.sprite.draw();
-        }
+
     }
 
     update() {
         this.draw();
-        if (this.sprite) {
-            this.sprite.update();
-        }
-
         if (this.damage > 0 && this.frames % this.cooldown === 0 && this.target) {
             this.projectiles.push(
                 new Projectile({
                     position: {
-                        x: this.center.x - 10,
-                        y: this.center.y - 80,
+                        x: this.center.x,
+                        y: this.center.y
                     },
                     enemy: this.target,
                     damage: this.damage / this.target.armor
@@ -65,20 +64,11 @@ class ArcherTower extends Tower {
         super({ 
             position,
             stats,
-            baseTowerType: 'ARCHER',
-            imageSrc: 'media/tower-models/images/archer-tower-lvl1.png',
-            frames: {
-                max: 19
-            },
-            offset: {
-                x: -10,
-                y:-80,
-            }
-        });
-    }
-    
+            baseTowerType: 'ARCHER' , });
+        }
     draw() {
-       super.draw();
+        c.fillStyle = 'blue';
+        c.fillRect(this.position.x, this.position.y, this.width, 64);
 
         if (typeof selectedTower !== 'undefined' && selectedTower === this) {
             c.beginPath();
