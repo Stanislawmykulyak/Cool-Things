@@ -51,8 +51,8 @@ class Sprite {
 class Tower {
     constructor({ position = { x: 0, y: 0 }, stats, baseTowerType, imageSrc, frames, offset }) {
         this.position = position;
-        this.width = 64 * 2 + 20;
-        this.height = 64 + 20;
+        this.width = 64 * 2;
+        this.height = 64 * 2 ;
         this.center = {
             x: this.position.x + this.width / 2,
             y: this.position.y + this.height / 2
@@ -85,9 +85,12 @@ class Tower {
     }
 
     update() {
-        this.draw();
-        if (this.sprite) {
+    this.draw();
+
+    if (this.target && this.sprite) {
             this.sprite.update();
+        } else if (this.sprite) {
+            this.sprite.frames.current = 0;
         }
 
         if (this.damage > 0 && this.elapsedSpawnCooldown % this.cooldown === 0 && this.target) {
@@ -95,13 +98,14 @@ class Tower {
                 new Projectile({
                     position: {
                         x: this.center.x,
-                        y: this.center.y + -80,
+                        y: this.center.y - 150,
                     },
                     enemy: this.target,
                     damage: this.damage / this.target.armor
                 })
             );
         }
+        
         this.elapsedSpawnCooldown++;
     }
 }
