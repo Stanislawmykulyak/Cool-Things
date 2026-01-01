@@ -180,10 +180,8 @@ const mouse = {
 
 const towerOptionsMenu = document.getElementById("tower-options-menu");
 const sellBtn = document.getElementById("sell-tower");
-const upgradeBtn = document.getElementById("upgrade-tower");
 const closeOptionsBtn = document.getElementById("close-tower-options");
 const currentStatsDiv = document.getElementById("current-stats");
-const upgradeStatsDiv = document.getElementById("upgrade-stats");
 
 let selectedTower = null;
 
@@ -191,7 +189,12 @@ function populateTowerStats(div, header, stats) {
     div.innerHTML = `<h4>${header}</h4>`;
     if (!stats) return;
 
-    const labels = GAME_STATS.STAT_LABELS;
+    const labels = {
+        DAMAGE: 'Damage',
+        RANGE: 'Range',
+        COOLDOWN: 'Cooldown',
+        SELL_VALUE: 'Sellback',
+    };
     const statConfig = [
         { label: labels.DAMAGE, value: stats.DAMAGE, icon: 'media/sword.png' },
         { label: labels.RANGE, value: stats.RANGE, icon: 'media/bullseye.png' },
@@ -234,28 +237,10 @@ canvas.addEventListener("click", (event) => {
 
   if (foundTower) {
     selectedTower = foundTower;
-    const towerType = selectedTower.constructor.name.replace('Lvl2', '').replace('Tower', '').toUpperCase();
-    const currentLvl = selectedTower.level;
-    const currentStats = GAME_STATS.TOWERS[towerType][`LVL${currentLvl}`];
+    const towerType = selectedTower.constructor.name.replace('Tower', '').toUpperCase();
+    const currentStats = stats.tower_stats[towerType.toLowerCase()]['LVL1'];
 
-    populateTowerStats(currentStatsDiv, `LVL ${currentLvl}: ${currentStats.NAME}`, currentStats);
-
-    const upgradeId = selectedTower.upgradeId;
-    if (upgradeId) {
-        const upgradeLvl = currentLvl + 1;
-        const upgrade_cost = stats.tower_cost.lvl2[towerType.toLowerCase()];
-        const upgradeStats = GAME_STATS.TOWERS[towerType][`LVL${upgradeLvl}`];
-
-        populateTowerStats(upgradeStatsDiv, `LVL ${upgradeLvl}: ${upgradeStats.NAME}`, upgradeStats);
-        upgradeBtn.textContent = `Upgrade ($${upgrade_cost})`;
-        upgradeBtn.disabled = false;
-        upgradeStatsDiv.classList.add('has-upgrade');
-    } else {
-        upgradeStatsDiv.innerHTML = '<h4>MAX LEVEL</h4>';
-        upgradeBtn.textContent = 'Max Level';
-        upgradeBtn.disabled = true;
-        upgradeStatsDiv.classList.remove('has-upgrade');
-    }
+    populateTowerStats(currentStatsDiv, `${currentStats.NAME}`, currentStats);
 
     sellBtn.textContent = `Sell ($${currentStats.SELL_VALUE})`;
 
@@ -315,32 +300,6 @@ sellBtn.onclick = () => {
         }
         buildings.splice(idx, 1);
     }
-    towerOptionsMenu.style.display = "none";
-    selectedTower = null;
-};
-
-upgradeBtn.onclick = () => {
-    if (!selectedTower || !selectedTower.upgradeId) return;
-
-    const towerType = selectedTower.constructor.name.replace('Lvl2', '').replace('Tower', '').toUpperCase();
-    const currentLvl = selectedTower.level;
-    const currentStats = GAME_STATS.TOWERS[towerType][`LVL${currentLvl}`];
-    const upgradeCost = stats.tower_cost.lvl2[towerType.toLowerCase()];
-
-    if (coins < upgradeCost) {
-        console.log("Not enough coins to upgrade!");
-        return;
-    }
-
-    const towerIndex = buildings.indexOf(selectedTower);
-    if (towerIndex === -1) return;
-
-    coins -= upgradeCost;
-    updateCoins();
-
-    const newTower = towerFactory[selectedTower.upgradeId](selectedTower.position);
-    buildings[towerIndex] = newTower;
-    
     towerOptionsMenu.style.display = "none";
     selectedTower = null;
 };

@@ -66,10 +66,7 @@ class Tower {
         this.damage = stats.DAMAGE;
         this.radius = stats.RANGE;
         this.cooldown = stats.COOLDOWN;
-        this.upgradeCost = stats.UPGRADE_COST;
         this.sellValue = stats.SELL_VALUE;
-        this.level = stats.LEVEL;
-        this.upgradeId = stats.UPGRADE_ID;
         this.baseTowerType = baseTowerType;
 
         if (imageSrc) {
@@ -91,7 +88,7 @@ class Tower {
             this.sprite.frames.current = 0;
         }
 
-        if (this.damage > 0 && this.elapsedSpawnCooldown % this.cooldown === 0 && this.target) {
+        if (this.damage > 0 && this.elapsedSpawnCooldown % (this.cooldown*100) === 0 && this.target) {
             this.projectiles.push(
                 new Projectile({
                     position: {
@@ -111,7 +108,7 @@ class Tower {
 //Archer Tower lvl 1//
 class ArcherTower extends Tower {
     constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.ARCHER.LVL1, LEVEL: 1, UPGRADE_ID: 'ARCHER_LVL2' };
+        const stats = { ...stats.tower_stats.archer.LVL1 };
         super({ 
             position,
             stats,
@@ -138,52 +135,11 @@ class ArcherTower extends Tower {
         }
     }
 }
-//Archer Tower lvl 2//
-
-class ArcherTowerLvl2 extends Tower {
-    constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.ARCHER.LVL2, LEVEL: 2, UPGRADE_ID: 'ARCHER_LVL3' };
-        super({ position, stats, baseTowerType: 'ARCHER' });
-    }
-
-    draw() {
-        c.fillStyle = 'darkblue'; // Darker color for upgraded tower
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-
-        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
-            c.beginPath();
-            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-            c.fillStyle = 'rgba(0, 100, 200, 0.4)';
-            c.fill();
-        }
-    }
-}
-
-//Archer Tower lvl 3//
-class ArcherTowerLvl3 extends Tower {
-    constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.ARCHER.LVL3, LEVEL: 3, UPGRADE_ID: 'ARCHER_LVL4_CHOICE' };
-        super({ position, stats, baseTowerType: 'ARCHER' });
-    }
-
-    draw() {
-        c.fillStyle = '#0000CD'; // A brighter blue
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-
-        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
-            c.beginPath();
-            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-            c.fillStyle = 'rgba(0, 100, 200, 0.4)';
-            c.fill();
-        }
-    }
-}
-
 
 //Mage Tower lvl 1//
 class MageTower extends Tower {
     constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.MAGE.LVL1, LEVEL: 1, UPGRADE_ID: 'MAGE_LVL2' };
+        const stats = { ...stats.tower_stats.mage.LVL1 };
         super({ position, stats, baseTowerType: 'MAGE' });
     }
 
@@ -199,54 +155,3 @@ class MageTower extends Tower {
         }
     }
 }
-//Mage Tower lvl 2//
-class MageTowerLvl2 extends Tower {
-    constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.MAGE.LVL2, LEVEL: 2, UPGRADE_ID: 'MAGE_LVL3' };
-        super({ position, stats, baseTowerType: 'MAGE' });
-    }
-
-    draw() {
-        c.fillStyle = '#6a0dad'; // A deeper purple
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-
-        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
-            c.beginPath();
-            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-            c.fillStyle = 'hsla(273, 70%, 30%, 0.5)';
-            c.fill();
-        }
-    }
-}
-
-//Mage Tower lvl 3//
-class MageTowerLvl3 extends Tower {
-    constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.MAGE.LVL3, LEVEL: 3, UPGRADE_ID: 'MAGE_LVL4_CHOICE' };
-        super({ position, stats, baseTowerType: 'MAGE' });
-    }
-
-    draw() {
-        c.fillStyle = '#800080'; // A true purple
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-
-        if (typeof selectedTower !== 'undefined' && selectedTower === this) {
-            c.beginPath();
-            c.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2);
-            c.fillStyle = 'hsla(300, 100%, 25.1%, 0.5)';
-            c.fill();
-        }
-    }
-}
-
-const towerFactory = {
-    //Archer Towers//
-    
-    ARCHER_LVL2: (position) => new ArcherTowerLvl2({ position }),
-    ARCHER_LVL3: (position) => new ArcherTowerLvl3({ position }),
-
-    //Mage Towers//
-
-    MAGE_LVL2: (position) => new MageTowerLvl2({ position }),
-    MAGE_LVL3: (position) => new MageTowerLvl3({ position }),
-};
