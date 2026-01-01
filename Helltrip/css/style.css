@@ -192,11 +192,8 @@ canvas{
 .tower-options:hover {
     transform: scale(1.05);
     border-color: #3e3e3e;
-}
-.tower-options:hover {
     box-shadow: 0 0 12px 2px rgba(100, 150, 200, 0.2);
 }
-
 .tower-options img {
     width: 100%;
     height: 100%;

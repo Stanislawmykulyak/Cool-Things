@@ -107,71 +107,117 @@ let hearts = 10;
 const stats = {
 
     enemy_rewards: {
-        knight:7,    
-        dark_knight:18,
-        bandit:5,
-        rogue:3,
-        goblin:2,
-        wolf:1,
-    },
-    
-    wave_rewards:{
-        '1_11':45,
-        '11_21':75,
-        '21_41':100,
-        '41_47':130,
-        '47_50':145,
-        miniboss:260,
+        knight: 7,
+        dark_knight: 18,
+        bandit: 5,
+        rogue: 3,
+        goblin: 2,
+        wolf: 1,
     },
 
-    sell_value:{
+    wave_rewards: {
+        '1_11': 45,
+        '11_21': 75,
+        '21_41': 100,
+        '41_47': 130,
+        '47_50': 145,
+        miniboss: 260,
+    },
+
+    sell_value: {
         lvl1: {
-            archer:65,
-            mage:100,
-            barracks:65,
-            wild_hunter:200,
-            engineer:150,
+            archer: 65,
+            mage: 100,
+            barracks: 65,
+            wild_hunter: 200,
+            engineer: 150,
         },
         lvl2: {
-            archer:155,
-            mage:220,
-            barracks:155,
-            wild_hunter:350,
-            engineer:270,
+            archer: 155,
+            mage: 220,
+            barracks: 155,
+            wild_hunter: 350,
+            engineer: 270,
         },
         lvl3: {
-            archer:275,
-            mage:340,
-            
+            archer: 275,
+            mage: 340,
+
         }
     },
 
     tower_cost: {
 
         lvl1: {
-            archer:100,
-            mage:170,
-            barracks:100,
-            wild_hunter:310,
-            engineer:260,
+            archer: 100,
+            mage: 170,
+            barracks: 100,
+            wild_hunter: 310,
+            engineer: 260,
         },
 
         lvl2: {
-            archer:135,
-            mage:190,
-            barracks:120,
-            wild_hunter:260,
-            engineer:170,
+            archer: 135,
+            mage: 190,
+            barracks: 120,
+            wild_hunter: 260,
+            engineer: 170,
         },
 
         lvl3: {
-            archer:185,
-            mage:250,
-            barracks:180,
-            wild_hunter:350,
-            engineer:230,
+            archer: 185,
+            mage: 250,
+            barracks: 180,
+            wild_hunter: 350,
+            engineer: 230,
         },
     },
 
+
 }
 
+
+
+
+const tower_stats = {
+    archer: {
+        name: 'Archer Tower',
+        description: '"A basic tower which shoots arrows at enemies from a great distance."',
+        attackSpeed: '1.0s',
+        damage: '15',
+        range: '120',
+        ability: 'None'
+    },
+    mage: {
+        name: 'Mage Tower',
+        description: 'A magic tower that casts spells on enemies.',
+        attackSpeed: '1.5s',
+        damage: '20',
+        range: '150',
+        ability: 'Chain Lightning'
+    },
+    engineer: {
+        name: 'Engineer Tower',
+        description: 'A utility tower that builds defensive structures.',
+        attackSpeed: '2.0s',
+        damage: '10',
+        range: '100',
+        ability: 'Deploy Turret'
+    },
+    'wild-hunter': {
+        name: 'Wild Hunter Tower',
+        description: 'A fast tower that shoots multiple targets.',
+        attackSpeed: '0.8s',
+        damage: '12',
+        range: '130',
+        ability: 'Multi-Shot'
+    },
+    barracks: {
+        name: 'Barracks',
+        description: 'A support tower that trains units.',
+        attackSpeed: '3.0s',
+        damage: '8',
+        range: '80',
+        ability: 'Summon Unit'
+    }
+}

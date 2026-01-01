@@ -8,20 +8,19 @@
 </head>
 <body>
     <div id="game-container">
-        <canvas>
-            
-    
-        </canvas>
+        <canvas></canvas>
+
         <div class="stats">
             <p class="wave-display">Wave: 1</p>
             <div class="hearts" >Hearts :10<img src="media/hearts.png" class="stats-img"></div>
             <div class="coins">Coins: 300<img src="media/coin.png" class="stats-img"></div>
         </div>
-        
-        
+
+        <div class="game-over">Game Over</div>
     </div>
     
-    <div class="game-over">Game Over</div>
+    
+
     <div id="tower-menu">
 
         <button id="archer-tower" class="tower-options">
@@ -66,6 +65,16 @@
         <button id="close-tower-options" style="width:40px; height:35px; position:absolute; left:5px; bottom:5px;">X</button>
     </div>
 
+
+    <div id="tower-stats" class="tower-stats hidden">
+        <div class="title" id="stats-title">Tower Stats</div>
+        <div class="stats-container">
+        <div class="description " id="stats-description"></div>
+        <div class="attack-speed stats" id="stats-attack-speed"></div>
+        <div class="damage stats" id="stats-damage"></div>
+        <div class="range stats" id="stats-range"></div>
+        <div class="special-ability stats" id="stats-ability"></div>
+    </div>
 
 
     <script src="js/towers.js"></script>
