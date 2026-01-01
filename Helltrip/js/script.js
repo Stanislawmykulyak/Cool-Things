@@ -70,8 +70,9 @@ function updateCoins () {
 }
 function animate() {
   const animationID = requestAnimationFrame(animate);
-  c.drawImage(image, 0, 0);
 
+  // 1. UPDATE GAME STATE
+  // Update enemies
   for (let i = enemies.length - 1; i >= 0; i--) {
     const enemy = enemies[i];
     enemy.update();
@@ -81,9 +82,7 @@ function animate() {
       enemies.splice(i, 1);
       document.querySelector('.hearts').innerHTML = 'Hearts : ' + hearts + '<img src="media/hearts.png" class="stats-img">';
 
-
       if (hearts === 0) {
-
         console.log('game over');
         cancelAnimationFrame(animationID);
         document.querySelector('.game-over').style.display = 'flex';
@@ -91,33 +90,30 @@ function animate() {
     }
   }
 
+  // Handle waves
   if (enemies.length === 0) {
     enemyCount += 2;
     spawnEnemies(enemyCount);
 
     waveCount += 1;
-      if (waveCount < 11){
-        coins += stats.wave_rewards['1_11'];
-        updateCoins();
-      }
-      if(11 <= waveCount && waveCount < 21){
-        coins += stats.wave_rewards['11_21'];
-        updateCoins();
-      }
-      if(21 <= waveCount && waveCount < 41){
-        coins += stats.wave_rewards['21_41'];
-        updateCoins();
-      }
-      if(41 <= waveCount && waveCount < 47){
-        coins += stats.wave_rewards['41_47'];
-        updateCoins();
-      }
+    if (waveCount < 11) {
+      coins += stats.wave_rewards['1_11'];
+    } else if (waveCount < 21) {
+      coins += stats.wave_rewards['11_21'];
+    } else if (waveCount < 41) {
+      coins += stats.wave_rewards['21_41'];
+    } else if (waveCount < 47) {
+      coins += stats.wave_rewards['41_47'];
+    }
+    updateCoins();
   }
 
+  // Update placement tiles (this also draws them)
   placementTiles.forEach((tile) => {
     tile.update(mouse);
   });
 
+  // Update buildings and projectiles
   buildings.forEach((building) => {
     building.update();
     building.target = null;
@@ -143,15 +139,39 @@ function animate() {
           if (enemyIndex > -1) {
             enemies.splice(enemyIndex, 1);
             coins += stats.enemy_rewards.knight;
+            updateCoins();
           }
         }
         building.projectiles.splice(i, 1);
       }
     }
   });
+
+
+  // 2. DRAW EVERYTHING IN ORDER
+  // Draw map first
+  c.drawImage(image, 0, 0);
+  
+  
+  // Create a single list of all dynamic objects
+  //Kolejnosc ma znaczenie //
+  const drawableObjects = [...enemies,...placementTiles, ...buildings,];
+  buildings.forEach(building => {
+      drawableObjects.push(...building.projectiles);
+  });
+  
+  // Sort them by Y position
+  drawableObjects.sort((a, b) => a.position.y - b.position.y);
+  
+  // Draw them
+  drawableObjects.forEach(obj => {
+      obj.draw();
+  });
+
+
+  // 3. UPDATE UI
   updateCoins();
   WaveUpdate();
-  
 }
 
 const mouse = {

@@ -18,16 +18,16 @@ class PlacementTile {
     this.draw();
   
     if (this === selectedTile) {
-      this.color = 'rgba(9, 181, 40, 0.75)';
+      this.color = 'rgba(146, 146, 146, 0.55)';
     } else if (
       mouse.x > this.position.x &&
       mouse.x < this.position.x + this.size &&
       mouse.y > this.position.y &&
       mouse.y < this.position.y + this.size
     ) {
-      this.color = 'rgba(15, 245, 15, 0.29)';
+      this.color = 'rgba(15, 245, 15, 0.06)';
     } else {
-      this.color = 'rgba(255, 255, 255, 0.25)';
+      this.color = 'rgba(255, 255, 255, 0)';
     }
   }
 }
@@ -77,7 +77,6 @@ class Enemy extends Sprite{
 
   update() {
     super.update()
-    this.draw();
     const waypoint = waypoints[this.waypointIndex];
     const yDistance = waypoint.y - this.center.y;
     const xDistance = waypoint.x - this.center.x;
@@ -145,7 +144,6 @@ class Projectile extends Sprite{
 
 
   update() {
-    this.draw();
 
     const angle = Math.atan2(
       this.enemy.center.y - this.position.y,

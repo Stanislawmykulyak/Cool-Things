@@ -52,7 +52,7 @@ class Tower {
     constructor({ position = { x: 0, y: 0 }, stats, baseTowerType, imageSrc, frames, offset }) {
         this.position = position;
         this.width = 64 * 2;
-        this.height = 64 * 2 ;
+        this.height = 64 + 30;
         this.center = {
             x: this.position.x + this.width / 2,
             y: this.position.y + this.height / 2
@@ -85,8 +85,6 @@ class Tower {
     }
 
     update() {
-    this.draw();
-
     if (this.target && this.sprite) {
             this.sprite.update();
         } else if (this.sprite) {
