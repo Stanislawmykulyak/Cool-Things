@@ -40,7 +40,7 @@ class Enemy extends Sprite{
 
 
     })
-    const stats = stats.enemies.ENEMY;
+    const stats = GAME_STATS.ENEMIES.ENEMY;
     this.position = position;
     this.width = 60;
     this.height = 60;
@@ -103,7 +103,7 @@ class Enemy extends Sprite{
 class Wolf extends Enemy {
   constructor({ position = { x: 0, y: 0 } }) {
     super({ position });
-    const stats = stats.enemies.WOLF;
+    const stats = GAME_STATS.ENEMIES.WOLF;
     this.width = 50;
     this.height = 50;
     this.radius = 25;
@@ -117,7 +117,7 @@ class Wolf extends Enemy {
 class Knight extends Enemy {
   constructor({ position = { x: 0, y: 0 } }) {
     super({ position });
-    const stats = stats.enemies.KNIGHT;
+    const stats = GAME_STATS.ENEMIES.KNIGHT;
     this.width = 70;
     this.height = 70;
     this.radius = 35;
