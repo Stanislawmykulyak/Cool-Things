@@ -9,7 +9,7 @@ class Sprite {
             max: frames.max,
             current: 0,
             elapsed: 0,
-            hold: 5,
+            hold: 7,
         };
         this.offset = offset;
     }
@@ -95,8 +95,8 @@ class Tower {
             this.projectiles.push(
                 new Projectile({
                     position: {
-                        x: this.center.x,
-                        y: this.center.y - 150,
+                        x: this.center.x -30,
+                        y: this.center.y - 135,
                     },
                     enemy: this.target,
                     damage: this.damage / this.target.armor
@@ -106,7 +106,7 @@ class Tower {
         
         this.elapsedSpawnCooldown++;
     }
-}
+} 
 
 //Archer Tower lvl 1//
 class ArcherTower extends Tower {

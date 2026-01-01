@@ -89,7 +89,6 @@ function animate() {
       }
     }
   }
-
   // Handle waves
   if (enemies.length === 0) {
     enemyCount += 2;
@@ -367,6 +366,7 @@ document.getElementById("archer-tower").onclick = (e) => {
     buildings.push(new ArcherTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";
+    selectedTile = null
 };
 
 document.getElementById("mage-tower").onclick = (e) => {
@@ -377,6 +377,7 @@ document.getElementById("mage-tower").onclick = (e) => {
     buildings.push(new MageTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";
+    selectedTile = null
 };
 
 
