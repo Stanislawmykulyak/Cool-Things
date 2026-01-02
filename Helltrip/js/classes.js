@@ -34,7 +34,7 @@ class Enemy extends Sprite{
   constructor({ position = { x: 0, y: 0 } }) {
     super({position , imageSrc:'media/tower-models/enemies/orc.png' , 
       frames:{
-        max:7,
+        max:20,
       }
 
 
@@ -67,10 +67,10 @@ class Enemy extends Sprite{
 
     //health bar
     c.fillStyle= 'red';
-    c.fillRect(this.position.x + 20, this.position.y - 15, this.width , 9);
+    c.fillRect(this.position.x , this.position.y - 15, this.width , 9);
 
     c.fillStyle= 'rgba(39, 199, 216, 1)';
-    c.fillRect(this.position.x + 20, this.position.y - 15, this.width * this.health / this.maxHealth, 9);
+    c.fillRect(this.position.x , this.position.y - 15, this.width * this.health / this.maxHealth, 9);
   }
 
   update() {
