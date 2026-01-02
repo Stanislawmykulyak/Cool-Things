@@ -38,9 +38,19 @@ placementTilesData2D.forEach((row, y) => {
 });
 
 const image = new Image();
-image.onload = () => {
-  animate();
-};
+const play = document.querySelector('.play');
+const switcher = document.querySelector('.off')
+
+play.addEventListener('click', () => {
+  switcher.classList.toggle('off')
+  if (switcher.classList.contains('on')) {
+    animate();
+    play.style.display = 'none'
+  }
+})
+
+
+
 image.src = 'media/map.png';
 
 const enemies = [];
@@ -60,13 +70,18 @@ let activeTile = undefined;
 let enemyCount = 3;
 let waveCount = 1;
 let waves = 50;
-
-
 let selectedTile = null;
+
+
+
+
 
 spawnEnemies(3);
 function updateCoins () {
   document.querySelector('.coins').innerHTML = 'Coins: ' + coins + '<img src="media/coin.png" class="stats-img">';
+}
+function updateHearts () {
+  document.querySelector('.hearts').innerHTML = 'Hearts: ' + hearts + '<img src="media/hearts.png" class="stats-img">';
 }
 function animate() {
   const animationID = requestAnimationFrame(animate);
@@ -80,7 +95,6 @@ function animate() {
     if (enemy.position.x > canvas.width) {
       hearts -= 1;
       enemies.splice(i, 1);
-      document.querySelector('.hearts').innerHTML = 'Hearts : ' + hearts + '<img src="media/hearts.png" class="stats-img">';
 
       if (hearts === 0) {
         console.log('game over');
@@ -171,6 +185,7 @@ function animate() {
   // 3. UPDATE UI
   updateCoins();
   WaveUpdate();
+  updateHearts()
 }
 
 const mouse = {

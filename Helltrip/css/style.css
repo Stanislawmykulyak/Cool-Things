@@ -155,3 +155,29 @@ canvas{
     transform: translateX(-50%) scale(1.15);
     background:rgb(88, 88, 88);
 }
+.play{
+    background-color:rgba(62, 62, 62, 0.31);
+    color:rgb(255, 255, 255);
+    font-family: 'Sour Gummy', cursive;
+    font-size:90px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:absolute;
+    top:0;
+    width:1280px;
+    height:768px;
+    cursor:pointer;
+}
+.play-button {
+	width: 90;
+	height: 90;
+	border-top: 25px solid transparent;
+	border-left: 50px solid #ffffff;
+	border-bottom: 25px solid transparent;
+    position:relative;
+    margin:20px;
+}
+.not_visible{
+    display:none;
+}
