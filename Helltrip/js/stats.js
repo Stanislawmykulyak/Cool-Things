@@ -2,58 +2,56 @@ let coins = 500;
 let hearts = 10;
 
 const stats = {
-    STAT_LABELS: {
-        DAMAGE: 'Damage',
-        RANGE: 'Range',
-        COOLDOWN: 'Cooldown',
-        COST: 'Cost'
-    },
-    TOWERS: {
-        ARCHER: {
-            LVL1: {
-                NAME: '<br> Archer',
-                COST: 100,
-                DAMAGE: 10,
-                RANGE: 250,
-                COOLDOWN: 50,
+    towers: {
+        archer: {
+            lvl1: {
+                name: 'Archer',
+                damage: 10,
+                range: 250,
+                cooldown: 50,
+                cost: 100,
             },
         },
-        MAGE: {
-            LVL1: {
-                NAME: '<br> Mage',
-                COST: 170,
-                DAMAGE: 40,
-                RANGE: 200,
-                COOLDOWN: 100,
+        mage: {
+            lvl1: {
+                name: 'Mage',      
+                damage: 40,
+                range: 200,
+                cooldown: 100,
+                cost: 170,
             },
         },
-        BARRACKS: {
-            LVL1: { NAME: 'Barracks', COST: 100, DAMAGE: 0, RANGE: 0, COOLDOWN: 0, },
+        barracks: {
+            lvl1:{
+                name: 'Barracks',
+                range:150,
+                cost: 100,
+            }
         },
-        WILD_HUNTER: {
-            LVL1: { NAME: 'Wild Hunter', COST: 310, DAMAGE: 50, RANGE: 400, COOLDOWN: 80, },
+        wild_hunter: {
+            lvl1: { name: 'Wild Hunter', cost: 310, damage: 50, range: 400, cooldown: 80, },
         },
-        ENGINEER: {
-            LVL1: { NAME: 'Engineer', COST: 230, DAMAGE: 20, RANGE: 150, COOLDOWN: 60, },
+        engineer: {
+            lvl1: { name: 'Engineer', cost: 230, damage: 20, range: 150, cooldown: 60, },
         }
     },
-    ENEMIES: {
-        ENEMY: {
-            HEALTH: 120,
-            ARMOR: 1,
-            SPEED: 1,
+    enemies: {
+        enemy: {
+            health: 120,
+            armor: 1,
+            speed: 1,
             reward: 10
         },
-        WOLF: {
-            HEALTH: 75,
-            ARMOR: 0.7,
-            SPEED: 2.5,
+        wolf: {
+            health: 75,
+            armor: 0.7,
+            speed: 2.5,
             reward: 7
         },
-        KNIGHT: {
-            HEALTH: 125,
-            ARMOR: 3.5,
-            SPEED: 0.7,
+        knight: {
+            health: 125,
+            armor: 3.5,
+            speed: 0.7,
             reward: 15
         },
     },

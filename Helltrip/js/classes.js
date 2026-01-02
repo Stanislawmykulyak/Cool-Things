@@ -33,7 +33,7 @@ class PlacementTile {
 class Enemy extends Sprite{
   constructor({ position = { x: 0, y: 0 }, imageSrc = 'media/tower-models/enemies/orc.png', frames = { max: 20 } }) {
     super({ position, imageSrc, frames});
-    const enemyStats = stats.ENEMIES.ENEMY;
+    const enemyStats = stats.enemies.enemy;
     this.position = position;
     this.width = 50;
     this.height = 70;
@@ -43,10 +43,10 @@ class Enemy extends Sprite{
       y: this.position.y + this.height / 2
     };
     this.radius = 30;
-    this.health = enemyStats.HEALTH;
-    this.armor = enemyStats.ARMOR;
-    this.speed = enemyStats.SPEED;
-    this.maxHealth = enemyStats.HEALTH;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
     this.velocity = {
       x:0,
       y:0
@@ -132,41 +132,41 @@ class Wolf extends Enemy {
     super({ position, imageSrc: 'media/tower-models/enemies/wolf.png', frames :{
       max:20,
     } });
-    const enemyStats = stats.ENEMIES.WOLF;
+    const enemyStats = stats.enemies.wolf;
     this.width = 50;
     this.height = 50;
     this.radius = 25;
-    this.health = enemyStats.HEALTH;
-    this.armor = enemyStats.ARMOR;
-    this.speed = enemyStats.SPEED;
-    this.maxHealth = enemyStats.HEALTH;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
   }
 }
 
 class Knight extends Enemy {
   constructor({ position = { x: 0, y: 0 } }) {
     super({ position, imageSrc: 'media/tower-models/enemies/knight.png', frames: { max: 20 } });
-    const enemyStats = stats.ENEMIES.KNIGHT;
+    const enemyStats = stats.enemies.knight;
     this.width = 70;
     this.height = 70;
     this.radius = 35;
-    this.health = enemyStats.HEALTH;
-    this.armor = enemyStats.ARMOR;
-    this.speed = enemyStats.SPEED;
-    this.maxHealth = enemyStats.HEALTH;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
   }
 }
 class Orc extends Enemy {
   constructor({ position = { x: 0, y: 0 } }) {
     super({ position, imageSrc: 'media/tower-models/enemies/orc.png', frames: { max: 20 } });
-    const enemyStats = stats.ENEMIES.KNIGHT;
+    const enemyStats = stats.enemies.knight;
     this.width = 50;
     this.height = 70;
     this.radius = 30;
-    this.health = enemyStats.HEALTH;
-    this.armor = enemyStats.ARMOR;
-    this.speed = enemyStats.SPEED;
-    this.maxHealth = enemyStats.HEALTH;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
   }
 }
 class Projectile extends Sprite{

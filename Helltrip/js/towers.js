@@ -61,11 +61,11 @@ class Tower {
         this.target = null;
         this.elapsedSpawnCooldown = 0;
 
-        this.name = stats.NAME;
-        this.cost = stats.COST;
-        this.damage = stats.DAMAGE;
-        this.radius = stats.RANGE;
-        this.cooldown = stats.COOLDOWN;
+        this.name = stats.name;
+        this.cost = stats.cost;
+        this.damage = stats.damage;
+        this.radius = stats.range;
+        this.cooldown = stats.cooldown;
         this.baseTowerType = baseTowerType;
 
         if (imageSrc) {
@@ -107,11 +107,11 @@ class Tower {
 //Archer Tower lvl 1//
 class ArcherTower extends Tower {
     constructor({ position }) {
-        const towerStats = { ...stats.TOWERS.ARCHER.LVL1 };
+        const towerStats = { ...stats.towers.archer.lvl1 };
         super({ 
             position,
             stats: towerStats,
-            baseTowerType: 'ARCHER',
+            baseTowerType: 'Archer',
             imageSrc: 'media/tower-models/towers/archer-tower-lvl1.png',
             frames: {
                 max: 19
@@ -131,7 +131,7 @@ class ArcherTower extends Tower {
 //Mage Tower lvl 1 //
 class MageTower extends Tower {
     constructor({ position }) {
-        const towerStats = { ...stats.TOWERS.MAGE.LVL1 };
+        const towerStats = { ...stats.towers.mage.lvl1 };
         super({ position, stats: towerStats, baseTowerType: 'MAGE' });
     }
 
@@ -143,7 +143,7 @@ class MageTower extends Tower {
 //Baraki Tower lvl 1 //
 class Barracks extends Tower {
     constructor({ position }) {
-        const towerStats = { ...stats.TOWERS.BARRACKS.LVL1 };
+        const towerStats = { ...stats.towers.barracks.lvl1 };
         super({ position, stats: towerStats, baseTowerType: 'BARRACKS' });
     }
 

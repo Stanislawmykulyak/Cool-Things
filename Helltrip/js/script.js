@@ -219,8 +219,8 @@ if (closeTowerMenuBtn) {
 document.getElementById("archer-tower").onclick = (e) => {
     e.stopPropagation();
     if (!selectedTile) return;
-      if (coins - stats.TOWERS.ARCHER.LVL1.COST < 0) return;
-    coins -= stats.TOWERS.ARCHER.LVL1.COST;
+      if (coins - stats.towers.archer.lvl1.cost < 0) return;
+    coins -= stats.towers.archer.lvl1.cost;
     buildings.push(new ArcherTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";
@@ -230,8 +230,8 @@ document.getElementById("archer-tower").onclick = (e) => {
 document.getElementById("mage-tower").onclick = (e) => {
     e.stopPropagation();
     if (!selectedTile) return;
-    if (coins - stats.TOWERS.MAGE.LVL1.COST < 0) return;
-    coins -= stats.TOWERS.MAGE.LVL1.COST;
+    if (coins - stats.towers.mage.lvl1.cost < 0) return;
+    coins -=  stats.towers.mage.lvl1.cost;
     buildings.push(new MageTower({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";
@@ -240,8 +240,8 @@ document.getElementById("mage-tower").onclick = (e) => {
 document.getElementById("barracks").onclick = (e) => {
     e.stopPropagation();
     if (!selectedTile) return;
-    if (coins - stats.TOWERS.BARRACKS.LVL1.COST < 0) return;
-    coins -= stats.TOWERS.BARRACKS.LVL1.COST;
+    if (coins - stats.towers.barracks.lvl1.cost < 0) return;
+    coins -= stats.towers.barracks.lvl1.cost;
     buildings.push(new Barracks({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";
