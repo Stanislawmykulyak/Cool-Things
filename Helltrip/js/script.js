@@ -122,8 +122,6 @@ function animate() {
       }
     }
   }
-  // Handle waves
-  
 
   // Update placement tiles (this also draws them)
   placementTiles.forEach((tile) => {

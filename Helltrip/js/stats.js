@@ -1,4 +1,4 @@
-let coins = 500;
+let coins = 700;
 let hearts = 10;
 
 const stats = {
