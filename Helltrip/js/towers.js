@@ -148,7 +148,7 @@ class Barracks extends Tower {
     }
 
     draw() {
-        c.fillStyle = 'purple';
+        c.fillStyle = 'lime';
         c.fillRect(this.position.x, this.position.y, this.width, 64);
     }
 }
