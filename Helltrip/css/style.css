@@ -156,17 +156,18 @@ canvas{
     background:rgb(88, 88, 88);
 }
 .play{
-    background-color:rgba(62, 62, 62, 0.31);
+    background: rgba(0, 0, 0, 0.5);
     color:rgb(255, 255, 255);
     font-family: 'Sour Gummy', cursive;
-    font-size:90px;
+    font-size:100px;
     display:flex;
     justify-content:center;
     align-items:center;
     position:absolute;
-    top:0;
-    width:1280px;
-    height:768px;
+    bottom:0;
+    right:0;
+    width:400px;
+    height:150px;
     cursor:pointer;
 }
 .play-button {

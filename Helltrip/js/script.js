@@ -44,10 +44,29 @@ const switcher = document.querySelector('.off')
 play.addEventListener('click', () => {
   switcher.classList.toggle('off')
   if (switcher.classList.contains('on')) {
-    animate();
+    spawnEnemies(3);
+    if (enemies.length === 0) {
+    enemyCount += 2;
+    spawnEnemies(enemyCount);
+
+    waveCount += 1;
+    if (waveCount < 11) {
+      coins += stats.wave_rewards['1_11'];
+    } else if (waveCount < 21) {
+      coins += stats.wave_rewards['11_21'];
+    } else if (waveCount < 41) {
+      coins += stats.wave_rewards['21_41'];
+    } else if (waveCount < 47) {
+      coins += stats.wave_rewards['41_47'];
+    }
+    updateCoins();
+  }
     play.style.display = 'none'
   }
 })
+image.onload = () => {
+  animate();
+};
 
 
 
@@ -76,7 +95,7 @@ let selectedTile = null;
 
 
 
-spawnEnemies(3);
+
 function updateCoins () {
   document.querySelector('.coins').innerHTML = 'Coins: ' + coins + '<img src="media/coin.png" class="stats-img">';
 }
@@ -104,22 +123,7 @@ function animate() {
     }
   }
   // Handle waves
-  if (enemies.length === 0) {
-    enemyCount += 2;
-    spawnEnemies(enemyCount);
-
-    waveCount += 1;
-    if (waveCount < 11) {
-      coins += stats.wave_rewards['1_11'];
-    } else if (waveCount < 21) {
-      coins += stats.wave_rewards['11_21'];
-    } else if (waveCount < 41) {
-      coins += stats.wave_rewards['21_41'];
-    } else if (waveCount < 47) {
-      coins += stats.wave_rewards['41_47'];
-    }
-    updateCoins();
-  }
+  
 
   // Update placement tiles (this also draws them)
   placementTiles.forEach((tile) => {
