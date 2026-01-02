@@ -1,4 +1,7 @@
-const GAME_STATS = {
+let coins = 500;
+let hearts = 10;
+
+const stats = {
     STAT_LABELS: {
         DAMAGE: 'Damage',
         RANGE: 'Range',
@@ -53,13 +56,7 @@ const GAME_STATS = {
             SPEED: 0.7,
             reward: 15
         },
-    }
-};
-
-let coins = 500;
-let hearts = 10;
-
-const stats = {
+    },
 
     enemy_rewards: {
         knight: 7,
@@ -78,17 +75,4 @@ const stats = {
         '47_50': 145,
         miniboss: 260,
     },
-
-    tower_cost: {
-
-        lvl1: {
-            archer: 100,
-            mage: 170,
-            barracks: 100,
-            wild_hunter: 310,
-            engineer: 260,
-        },
-    },
-
-
 }

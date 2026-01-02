@@ -107,10 +107,10 @@ class Tower {
 //Archer Tower lvl 1//
 class ArcherTower extends Tower {
     constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.ARCHER.LVL1 };
+        const towerStats = { ...stats.TOWERS.ARCHER.LVL1 };
         super({ 
             position,
-            stats,
+            stats: towerStats,
             baseTowerType: 'ARCHER',
             imageSrc: 'media/tower-models/towers/archer-tower-lvl1.png',
             frames: {
@@ -128,11 +128,23 @@ class ArcherTower extends Tower {
     }
 }
 
-//Mage Tower lvl 1//
+//Mage Tower lvl 1 //
 class MageTower extends Tower {
     constructor({ position }) {
-        const stats = { ...GAME_STATS.TOWERS.MAGE.LVL1 };
-        super({ position, stats, baseTowerType: 'MAGE' });
+        const towerStats = { ...stats.TOWERS.MAGE.LVL1 };
+        super({ position, stats: towerStats, baseTowerType: 'MAGE' });
+    }
+
+    draw() {
+        c.fillStyle = 'purple';
+        c.fillRect(this.position.x, this.position.y, this.width, 64);
+    }
+}
+//Baraki Tower lvl 1 //
+class Barracks extends Tower {
+    constructor({ position }) {
+        const towerStats = { ...stats.TOWERS.BARRACKS.LVL1 };
+        super({ position, stats: towerStats, baseTowerType: 'BARRACKS' });
     }
 
     draw() {
