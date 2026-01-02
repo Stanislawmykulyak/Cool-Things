@@ -54,7 +54,41 @@ class Enemy extends Sprite{
   }
 
   draw() {
-    super.draw();
+    const angle = Math.atan2(this.velocity.y, this.velocity.x);
+    c.save();
+    c.translate(this.center.x, this.center.y);
+
+    if (Math.abs(angle) > Math.PI / 2) {
+      c.scale(-1, 1);
+      let rotation = Math.PI - angle;
+      while (rotation > Math.PI) rotation -= 2 * Math.PI;
+      while (rotation < -Math.PI) rotation += 2 * Math.PI;
+
+      if (Math.abs(rotation) > Math.PI / 4) {
+        c.rotate(0);
+      } else {
+        c.rotate(rotation);
+      }
+    } else {
+      if (Math.abs(angle) > Math.PI / 4) {
+        c.rotate(0);
+      } else {
+        c.rotate(angle);
+      }
+    }
+
+    const cropWidth = this.image.width / this.frames.max;
+    const crop = {
+      position: {
+        x: cropWidth * this.frames.current,
+        y: 0
+      },
+      width: cropWidth,
+      height: this.image.height
+    };
+
+    c.drawImage(this.image, crop.position.x, crop.position.y, crop.width, crop.height, -this.width / 2 + this.offset.x, -this.height / 2 + this.offset.y, crop.width, crop.height);
+    c.restore();
 
 
     //health bar
