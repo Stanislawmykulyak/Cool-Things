@@ -31,19 +31,12 @@ class PlacementTile {
 }
 
 class Enemy extends Sprite{
-  constructor({ position = { x: 0, y: 0 } }) {
-    super({position , imageSrc:'media/tower-models/enemies/orc.png' , 
-      frames:{
-        max:20,
-      }
-
-
-
-    })
+  constructor({ position = { x: 0, y: 0 }, imageSrc = 'media/tower-models/enemies/orc.png', frames = { max: 20 } }) {
+    super({ position, imageSrc, frames});
     const stats = GAME_STATS.ENEMIES.ENEMY;
     this.position = position;
-    this.width = 60;
-    this.height = 60;
+    this.width = 50;
+    this.height = 70;
     this.waypointIndex = 0;
     this.center = {
       x: this.position.x + this.width / 2,
@@ -61,9 +54,8 @@ class Enemy extends Sprite{
   }
 
   draw() {
-    
+    super.draw();
 
-    super.draw()
 
     //health bar
     c.fillStyle= 'red';
@@ -71,6 +63,7 @@ class Enemy extends Sprite{
 
     c.fillStyle= 'rgba(39, 199, 216, 1)';
     c.fillRect(this.position.x , this.position.y - 15, this.width * this.health / this.maxHealth, 9);
+
   }
 
   update() {
@@ -102,7 +95,9 @@ class Enemy extends Sprite{
 
 class Wolf extends Enemy {
   constructor({ position = { x: 0, y: 0 } }) {
-    super({ position });
+    super({ position, imageSrc: 'media/tower-models/enemies/wolf.png', frames :{
+      max:20,
+    } });
     const stats = GAME_STATS.ENEMIES.WOLF;
     this.width = 50;
     this.height = 50;
@@ -116,11 +111,24 @@ class Wolf extends Enemy {
 
 class Knight extends Enemy {
   constructor({ position = { x: 0, y: 0 } }) {
-    super({ position });
+    super({ position, imageSrc: 'media/tower-models/enemies/knight.png', frames: { max: 20 } });
     const stats = GAME_STATS.ENEMIES.KNIGHT;
     this.width = 70;
     this.height = 70;
     this.radius = 35;
+    this.health = stats.HEALTH;
+    this.armor = stats.ARMOR;
+    this.speed = stats.SPEED;
+    this.maxHealth = stats.HEALTH;
+  }
+}
+class Orc extends Enemy {
+  constructor({ position = { x: 0, y: 0 } }) {
+    super({ position, imageSrc: 'media/tower-models/enemies/orc.png', frames: { max: 20 } });
+    const stats = GAME_STATS.ENEMIES.KNIGHT;
+    this.width = 50;
+    this.height = 70;
+    this.radius = 30;
     this.health = stats.HEALTH;
     this.armor = stats.ARMOR;
     this.speed = stats.SPEED;
