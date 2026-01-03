@@ -1,4 +1,4 @@
-let coins = 700;
+let coins = 500;
 let hearts = 10;
 
 const stats = {
@@ -9,7 +9,7 @@ const stats = {
                 damage: 10,
                 range: 250,
                 cooldown: 50,
-                cost: 100,
+                cost: 90,
             },
         },
         mage: {
@@ -18,14 +18,14 @@ const stats = {
                 damage: 40,
                 range: 200,
                 cooldown: 100,
-                cost: 170,
+                cost: 140,
             },
         },
         barracks: {
             lvl1:{
                 name: 'Barracks',
                 range:150,
-                cost: 100,
+                cost: 90,
             }
         },
         wild_hunter: {
@@ -54,6 +54,14 @@ const stats = {
             speed: 0.7,
             reward: 15
         },
+        orc:{
+            health:100,
+            armor:1.5,
+            speed:1.1,
+            reward:9,
+
+
+        }
     },
 
     enemy_rewards: {

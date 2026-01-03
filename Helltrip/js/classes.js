@@ -159,7 +159,7 @@ class Knight extends Enemy {
 class Orc extends Enemy {
   constructor({ position = { x: 0, y: 0 } }) {
     super({ position, imageSrc: 'media/tower-models/enemies/orc.png', frames: { max: 20 } });
-    const enemyStats = stats.enemies.knight;
+    const enemyStats = stats.enemies.orc;
     this.width = 50;
     this.height = 70;
     this.radius = 30;
