@@ -39,9 +39,8 @@ class Sprite {
     }
 
     update() {
-        this.frames.elapsed;
-        if (this.frames.elapsed >= this.frames.hold) {
-            this.frames.elapsed = 0;
+        this.frames.elapsed++;
+        if (this.frames.elapsed % this.frames.hold === 0) {
             this.frames.current++;
             if (this.frames.current >= this.frames.max) {
                 this.frames.current = 0;
@@ -60,9 +59,8 @@ class Tower {
         };
         this.projectiles = [];
         this.target = null;
-        this.cooldownTimer = 0;
+        this.elapsedSpawnCooldown = 0;
 
-        this.hold = stats.hold
         this.name = stats.name;
         this.cost = stats.cost;
         this.damage = stats.damage;
@@ -83,28 +81,13 @@ class Tower {
     }
 
     update() {
-        if (this.target && this.sprite) {
-            this.sprite.update(deltaTime);
+    if (this.target && this.sprite) {
+            this.sprite.update();
         } else if (this.sprite) {
             this.sprite.frames.current = 0;
         }
 
-        this.cooldownTimer;
-
-        if (this.damage > 0 &&(this.elapsedSpawnCooldown % this.cooldown*60) === 0 && this.target) {
-            this.projectiles.push(
-                new Projectile({
-                    position: {
-                        x: this.center.x -30,
-                        y: this.center.y - 135,
-                    },
-                    enemy: this.target,
-                    damage: this.damage / this.target.armor
-                })
-            );
-        }
-        this.elapsedSpawnCooldown++;
-
+        
     }
 } 
 
@@ -130,6 +113,24 @@ class ArcherTower extends Tower {
     draw() {
        super.draw();
     }
+    update(){
+        if (this.damage > 0 && this.elapsedSpawnCooldown % (this.cooldown*100) === 0 && this.target) {
+            this.projectiles.push(
+                new Projectile({
+                    position: {
+                        x: this.center.x -30,
+                        y: this.center.y - 135,
+                    },
+                    enemy: this.target,
+                    damage: this.damage / this.target.armor
+                })
+            );
+        }
+        
+        this.elapsedSpawnCooldown++;
+        
+        super.update();
+    }
 }
 
 //Mage Tower lvl 1 //
@@ -154,6 +155,24 @@ class MageTower extends Tower {
     draw() {
        super.draw();
     }
+    update(){
+        if (this.damage > 0 && this.elapsedSpawnCooldown % (this.cooldown*100) === 0 && this.target) {
+            this.projectiles.push(
+                new Projectile({
+                    position: {
+                        x: this.center.x -30,
+                        y: this.center.y - 135,
+                    },
+                    enemy: this.target,
+                    damage: this.damage / this.target.armor
+                })
+            );
+        }
+        
+        this.elapsedSpawnCooldown++;
+        
+        super.update();
+    }
 }
 //Baraki Tower lvl 1 //
 class Barracks extends Tower {
@@ -166,4 +185,5 @@ class Barracks extends Tower {
         c.fillStyle = 'lime';
         c.fillRect(this.position.x, this.position.y, this.width, 64);
     }
+    
 }

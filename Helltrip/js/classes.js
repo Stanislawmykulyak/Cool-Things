@@ -31,7 +31,7 @@ class PlacementTile {
 }
 
 class Enemy extends Sprite{
-  constructor({ position = { x: 0, y: 0 }, imageSrc = 'media/tower-models/enemies/orc.png', frames = { max: 20 } }) {
+  constructor({ position = { x: 0, y: 0 }, imageSrc , frames = { max: 20 } }) {
     super({ position, imageSrc, frames});
     const enemyStats = stats.enemies.enemy;
     this.position = position;
@@ -197,4 +197,7 @@ class Projectile extends Sprite{
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
   }
+}
+class MageProjectile extends Projectile{
+
 }

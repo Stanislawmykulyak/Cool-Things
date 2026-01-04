@@ -10,7 +10,6 @@ const stats = {
                 range: 250,
                 cooldown: 0.5,
                 cost: 90,
-                hold:1,
             },
         },
         mage: {
@@ -20,7 +19,6 @@ const stats = {
                 range: 200,
                 cooldown: 1,
                 cost: 140,
-                hold:35,
             },
         },
         barracks: {
