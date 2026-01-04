@@ -147,7 +147,7 @@ class MageTower extends Tower {
             },
             offset: {
                 x: -12,
-                y:-90,
+                y:-105,
             }
         });
     }

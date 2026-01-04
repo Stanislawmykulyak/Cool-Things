@@ -6,7 +6,7 @@ const stats = {
         archer: {
             lvl1: {
                 name: 'Archer',
-                damage: 15,
+                damage: 20,
                 range: 250,
                 cooldown: 0.6,
                 cost: 90,
@@ -16,7 +16,7 @@ const stats = {
             lvl1: {
                 name: 'Mage',      
                 damage: 40,
-                range: 200,
+                range: 150,
                 cooldown: 1.4,
                 cost: 140,
             },
