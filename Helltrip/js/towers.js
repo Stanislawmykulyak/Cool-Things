@@ -39,8 +39,9 @@ class Sprite {
     }
 
     update() {
-        this.frames.elapsed++;
-        if (this.frames.elapsed % this.frames.hold === 0) {
+        this.frames.elapsed;
+        if (this.frames.elapsed >= this.frames.hold) {
+            this.frames.elapsed = 0;
             this.frames.current++;
             if (this.frames.current >= this.frames.max) {
                 this.frames.current = 0;
@@ -59,8 +60,9 @@ class Tower {
         };
         this.projectiles = [];
         this.target = null;
-        this.elapsedSpawnCooldown = 0;
+        this.cooldownTimer = 0;
 
+        this.hold = stats.hold
         this.name = stats.name;
         this.cost = stats.cost;
         this.damage = stats.damage;
@@ -81,13 +83,15 @@ class Tower {
     }
 
     update() {
-    if (this.target && this.sprite) {
-            this.sprite.update();
+        if (this.target && this.sprite) {
+            this.sprite.update(deltaTime);
         } else if (this.sprite) {
             this.sprite.frames.current = 0;
         }
 
-        if (this.damage > 0 && this.elapsedSpawnCooldown % this.cooldown === 0 && this.target) {
+        this.cooldownTimer;
+
+        if (this.damage > 0 &&(this.elapsedSpawnCooldown % this.cooldown*60) === 0 && this.target) {
             this.projectiles.push(
                 new Projectile({
                     position: {
@@ -99,8 +103,8 @@ class Tower {
                 })
             );
         }
-        
         this.elapsedSpawnCooldown++;
+
     }
 } 
 
@@ -132,12 +136,23 @@ class ArcherTower extends Tower {
 class MageTower extends Tower {
     constructor({ position }) {
         const towerStats = { ...stats.towers.mage.lvl1 };
-        super({ position, stats: towerStats, baseTowerType: 'MAGE' });
+        super({ 
+            position,
+            stats: towerStats,
+            baseTowerType: 'Mage',
+            imageSrc: 'media/tower-models/towers/mage-tower-lvl1.png',
+            frames: {
+                max: 19
+            },
+            offset: {
+                x: -12,
+                y:-90,
+            }
+        });
     }
-
+    
     draw() {
-        c.fillStyle = 'purple';
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
+       super.draw();
     }
 }
 //Baraki Tower lvl 1 //

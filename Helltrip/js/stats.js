@@ -8,8 +8,9 @@ const stats = {
                 name: 'Archer',
                 damage: 10,
                 range: 250,
-                cooldown: 50,
+                cooldown: 0.5,
                 cost: 90,
+                hold:1,
             },
         },
         mage: {
@@ -17,8 +18,9 @@ const stats = {
                 name: 'Mage',      
                 damage: 40,
                 range: 200,
-                cooldown: 100,
+                cooldown: 1,
                 cost: 140,
+                hold:35,
             },
         },
         barracks: {
