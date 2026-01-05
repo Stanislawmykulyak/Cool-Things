@@ -126,7 +126,6 @@ function animate() {
       coins += stats.wave_rewards['15_17'];
     } else if (waveCount <= 20) {
       coins += stats.wave_rewards['17_20'];
-    
     }
     updateCoins();
   }
@@ -162,7 +161,7 @@ function animate() {
           const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
           if (enemyIndex > -1) {
             enemies.splice(enemyIndex, 1);
-            coins += stats.enemy_rewards.knight;
+            coins += stats.enemies.goblin.reward;
             updateCoins();
           }
         }

@@ -183,8 +183,8 @@ class Goblin extends Enemy {
   }
 }
 class Projectile extends Sprite{
-  constructor({ position = { x: 0, y: 0 }, enemy , damage}) {
-    super({position , imageSrc : 'media/tower-models/projectiles/arrow.png'})
+  constructor({ position = { x: 0, y: 0 }, enemy , damage , power , imageSrc}) {
+    super({position , })
     this.position = position;
     this.velocity = {
       x: 0,
@@ -193,8 +193,18 @@ class Projectile extends Sprite{
     this.radius = 10;
     this.enemy = enemy;
     this.damage = damage;
+    this.power = power
+    this.image.src = imageSrc;
+
   }
 
+  draw(){
+    c.save()
+    c.translate(this.position.x, this.position.y);
+    c.rotate(this.angle);
+    c.drawImage(this.image, -this.image.width / 2, -this.image.height / 2);
+    c.restore()
+  }
 
   update() {
 
@@ -202,14 +212,23 @@ class Projectile extends Sprite{
       this.enemy.center.y - this.position.y,
       this.enemy.center.x - this.position.x
     );
-    const power = 7;
-    this.velocity.x = Math.cos(angle) * power;
-    this.velocity.y = Math.sin(angle) * power;
+    this.angle = angle;
+    this.velocity.x = Math.cos(angle) * this.power;
+    this.velocity.y = Math.sin(angle) * this.power;
 
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
   }
 }
-class MageProjectile extends Projectile{
+class ArcherProjectile extends Projectile{
+  constructor({ position = { x: 0, y: 0 }, enemy, damage }) {
+    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/arrow.png', power: 5 });
+  }
+}
+
+class MageProjectile extends Projectile {
+  constructor({ position = { x: 0, y: 0 }, enemy, damage }) {
+    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/magic_ball.png', power: 3 });
+  }
 
 }

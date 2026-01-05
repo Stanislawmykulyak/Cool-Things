@@ -116,7 +116,7 @@ class ArcherTower extends Tower {
     update(){
         if (this.damage > 0 && this.elapsedSpawnCooldown % (this.cooldown*100) === 0 && this.target) {
             this.projectiles.push(
-                new Projectile({
+                new ArcherProjectile({
                     position: {
                         x: this.center.x -30,
                         y: this.center.y - 135,
@@ -147,7 +147,7 @@ class MageTower extends Tower {
             },
             offset: {
                 x: -12,
-                y:-95,
+                y:-100,
             }
         });
     }
@@ -158,7 +158,7 @@ class MageTower extends Tower {
     update(){
         if (this.damage > 0 && this.elapsedSpawnCooldown % (this.cooldown*100) === 0 && this.target) {
             this.projectiles.push(
-                new Projectile({
+                new MageProjectile({
                     position: {
                         x: this.center.x -30,
                         y: this.center.y - 135,

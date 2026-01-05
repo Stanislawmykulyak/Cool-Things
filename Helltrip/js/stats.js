@@ -17,7 +17,7 @@ const stats = {
                 name: 'Mage',      
                 damage: 35,
                 range: 150,
-                cooldown: 1.3,
+                cooldown: 1.2,
                 cost: 140,
             },
         },
