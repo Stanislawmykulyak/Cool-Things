@@ -57,6 +57,8 @@ image.onload = () => {
 
 image.src = 'media/map.png';
 
+
+
 const enemies = [];
 function spawnEnemies(enemyCount) {
   for (let i = 1; i < enemyCount + 1; i++) {
@@ -114,14 +116,17 @@ function animate() {
     spawnEnemies(enemyCount);
 
     waveCount += 1;
-    if (waveCount < 11) {
-      coins += stats.wave_rewards['1_11'];
-    } else if (waveCount < 21) {
-      coins += stats.wave_rewards['11_21'];
-    } else if (waveCount < 41) {
-      coins += stats.wave_rewards['21_41'];
-    } else if (waveCount < 47) {
-      coins += stats.wave_rewards['41_47'];
+    if (waveCount < 5) {
+      coins += stats.wave_rewards['1_5'];
+    } else if (waveCount < 11) {
+      coins += stats.wave_rewards['5_11'];
+    } else if (waveCount < 15) {
+      coins += stats.wave_rewards['11_15'];
+    } else if (waveCount < 17) {
+      coins += stats.wave_rewards['15_17'];
+    } else if (waveCount <= 20) {
+      coins += stats.wave_rewards['17_20'];
+    
     }
     updateCoins();
   }

@@ -159,7 +159,7 @@ class Knight extends Enemy {
 class Orc extends Enemy {
   constructor({ position = { x: 0, y: 0 } }) {
     super({ position, imageSrc: 'media/tower-models/enemies/orc.png', frames: { max: 20 } });
-    const enemyStats = stats.enemies.orc;
+    const enemyStats = stats.enemies.goblin;
     this.width = 50;
     this.height = 70;
     this.radius = 30;
@@ -184,7 +184,7 @@ class Goblin extends Enemy {
 }
 class Projectile extends Sprite{
   constructor({ position = { x: 0, y: 0 }, enemy , damage}) {
-    super({position , imageSrc : 'media/tower-models/projectiles/projectile.png'})
+    super({position , imageSrc : 'media/tower-models/projectiles/arrow.png'})
     this.position = position;
     this.velocity = {
       x: 0,
@@ -202,7 +202,6 @@ class Projectile extends Sprite{
       this.enemy.center.y - this.position.y,
       this.enemy.center.x - this.position.x
     );
-
     const power = 7;
     this.velocity.x = Math.cos(angle) * power;
     this.velocity.y = Math.sin(angle) * power;
