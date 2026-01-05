@@ -1,4 +1,4 @@
-let coins = 300;
+let coins = 350;
 let hearts = 10;
 
 const stats = {
@@ -8,7 +8,7 @@ const stats = {
                 name: 'Archer',
                 damage: 15,
                 range: 250,
-                cooldown: 0.6,
+                cooldown: 0.5,
                 cost: 90,
             },
         },
@@ -17,7 +17,7 @@ const stats = {
                 name: 'Mage',      
                 damage: 35,
                 range: 150,
-                cooldown: 1.4,
+                cooldown: 1.3,
                 cost: 140,
             },
         },
@@ -68,20 +68,11 @@ const stats = {
         }
     },
 
-    enemy_rewards: {
-        knight: 7,
-        dark_knight: 18,
-        bandit: 5,
-        rogue: 3,
-        goblin: 2,
-        wolf: 1,
-    },
-
     wave_rewards: {
-        '1_11': 45,
-        '11_21': 75,
-        '21_41': 100,
-        '41_47': 130,
+        '1_11': 25,
+        '11_21': 45,
+        '21_41': 70,
+        '41_47': 100,
         '47_50': 145,
         miniboss: 260,
     },
