@@ -169,6 +169,19 @@ class Orc extends Enemy {
     this.maxHealth = enemyStats.health;
   }
 }
+class Goblin extends Enemy {
+  constructor({ position = { x: 0, y: 0 } }) {
+    super({ position, imageSrc: 'media/tower-models/enemies/goblin.png', frames: { max: 20 } });
+    const enemyStats = stats.enemies.goblin;
+    this.width = 50;
+    this.height = 60;
+    this.radius = 30;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
+  }
+}
 class Projectile extends Sprite{
   constructor({ position = { x: 0, y: 0 }, enemy , damage}) {
     super({position , imageSrc : 'media/tower-models/projectiles/projectile.png'})

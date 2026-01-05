@@ -44,7 +44,7 @@ const switcher = document.querySelector('.off')
 play.addEventListener('click', () => {
   switcher.classList.toggle('off')
   if (!switcher.classList.contains('off')) {
-    spawnEnemies(3);
+    spawnEnemies(10);
     
     play.style.display = 'none'
   }
@@ -62,7 +62,7 @@ function spawnEnemies(enemyCount) {
   for (let i = 1; i < enemyCount + 1; i++) {
     const xOffset = i * 100;
     enemies.push(
-      new Orc({
+      new Goblin({
         position: { x: waypoints[0].x - xOffset, y: waypoints[0].y }
       })
     );

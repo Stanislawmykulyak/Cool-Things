@@ -1,4 +1,4 @@
-let coins = 500;
+let coins = 300;
 let hearts = 10;
 
 const stats = {
@@ -6,7 +6,7 @@ const stats = {
         archer: {
             lvl1: {
                 name: 'Archer',
-                damage: 20,
+                damage: 15,
                 range: 250,
                 cooldown: 0.6,
                 cost: 90,
@@ -15,7 +15,7 @@ const stats = {
         mage: {
             lvl1: {
                 name: 'Mage',      
-                damage: 40,
+                damage: 35,
                 range: 150,
                 cooldown: 1.4,
                 cost: 140,
@@ -55,12 +55,16 @@ const stats = {
             reward: 15
         },
         orc:{
-            health:100,
-            armor:1.5,
-            speed:0.9,
+            health:110,
+            armor:1.7,
+            speed:0.5,
             reward:9,
-
-
+        },
+        goblin:{
+            health:70,
+            armor:1,
+            speed:0.7,
+            reward:5,
         }
     },
 
