@@ -58,17 +58,13 @@ image.onload = () => {
 image.src = 'media/map.png';
 
 
-const waveConfig = wavesConfiguration.currentWave.enemies
 
-const count = waveConfig.count
-const type = waveConfig.type
-const goblin = new Goblin()
 const enemies = [];
-function spawnWaves(count) {
-  for (let i = 1; i < count + 1; i++) {
+function spawnEnemies(enemyCount) {
+  for (let i = 1; i < enemyCount + 1; i++) {
     const xOffset = i * 100;
     enemies.push(
-      new type({
+      new Goblin({
         position: { x: waypoints[0].x - xOffset, y: waypoints[0].y }
       })
     );
@@ -81,7 +77,7 @@ let enemyCount = 3;
 let waveCount = 1;
 let waves = 50;
 let selectedTile = null;
-let currentWave = 1
+
 
 
 
@@ -165,7 +161,7 @@ function animate() {
           const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
           if (enemyIndex > -1) {
             enemies.splice(enemyIndex, 1);
-            coins += projectile.enemy.reward
+            coins += stats.enemies.goblin.reward;
             updateCoins();
           }
         }

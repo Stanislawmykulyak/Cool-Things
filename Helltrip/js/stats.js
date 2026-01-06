@@ -79,18 +79,3 @@ const stats = {
     
 }
 
-const wavesConfiguration = {
-    1:{
-        enemies: [
-            {type:'goblin', count: 20},
-            {type:'orc', count: 5}
-        ]
-    },
-    2:{
-        enemies: [
-            {type:'goblin', count: 20},
-            {type:'orc', count: 5}
-        ]
-    }
-}
-
