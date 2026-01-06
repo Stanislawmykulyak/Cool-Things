@@ -44,7 +44,7 @@ const switcher = document.querySelector('.off')
 play.addEventListener('click', () => {
   switcher.classList.toggle('off')
   if (!switcher.classList.contains('off')) {
-    spawnEnemies(10);
+    spawnEnemies(currentWave);
     
     play.style.display = 'none'
   }
@@ -57,25 +57,41 @@ image.onload = () => {
 
 image.src = 'media/map.png';
 
-
+let currentWave = 1;
 
 const enemies = [];
-function spawnEnemies(enemyCount) {
-  for (let i = 1; i < enemyCount + 1; i++) {
-    const xOffset = i * 100;
-    enemies.push(
-      new Goblin({
-        position: { x: waypoints[0].x - xOffset, y: waypoints[0].y }
-      })
-    );
+const enemyClasses = {
+  goblin: Goblin,
+  orc: Orc,
+};
+
+function spawnEnemies(waveNumber) {
+  const wave = stats.waves[waveNumber];
+
+  let totalEnemiesSpawned = 0;
+  for (const enemyType in wave) {
+    const enemyCount = wave[enemyType];
+    const EnemyClass = enemyClasses[enemyType];
+    if (EnemyClass) {
+      for (let i = 1; i < enemyCount + 1; i++) {
+        const xOffset = (totalEnemiesSpawned + i) * 80;
+        enemies.push(
+          new EnemyClass({
+            position: { x: waypoints[0].x - xOffset, y: (waypoints[0].y)}
+          })
+        );
+      }
+      totalEnemiesSpawned += enemyCount;
+    } else {
+      console.error(`Enemy class for type "${enemyType}" not found.`);
+    }
   }
 }
 
 const buildings = [];
 let activeTile = undefined;
-let enemyCount = 3;
 let waveCount = 1;
-let waves = 50;
+let waves = 20;
 let selectedTile = null;
 
 
@@ -112,8 +128,8 @@ function animate() {
   if (!switcher.classList.contains('off')) {
     
     if (enemies.length === 0 ) {
-    enemyCount += 2;
-    spawnEnemies(enemyCount);
+    currentWave += 1;
+    spawnEnemies(currentWave);
 
     waveCount += 1;
     if (waveCount < 5) {
