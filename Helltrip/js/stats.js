@@ -64,17 +64,33 @@ const stats = {
             health:70,
             armor:1,
             speed:0.7,
-            reward:5,
+            reward:3,
         }
     },
 
     wave_rewards: {
-        '1_5': 25,
+        '1_5': 35,
         '5_11': 45,
-        '11_15': 70,
-        '15_17': 100,
-        '17_20': 145,
+        '11_15': 65,
+        '15_17': 80,
+        '17_20': 100,
         miniboss: 260,
     },
     
 }
+
+const wavesConfiguration = {
+    1:{
+        enemies: [
+            {type:'goblin', count: 20},
+            {type:'orc', count: 5}
+        ]
+    },
+    2:{
+        enemies: [
+            {type:'goblin', count: 20},
+            {type:'orc', count: 5}
+        ]
+    }
+}
+

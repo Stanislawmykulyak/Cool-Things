@@ -47,6 +47,7 @@ class Enemy extends Sprite{
     this.armor = enemyStats.armor;
     this.speed = enemyStats.speed;
     this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
     this.velocity = {
       x:0,
       y:0
@@ -140,6 +141,7 @@ class Wolf extends Enemy {
     this.armor = enemyStats.armor;
     this.speed = enemyStats.speed;
     this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
   }
 }
 
@@ -154,6 +156,7 @@ class Knight extends Enemy {
     this.armor = enemyStats.armor;
     this.speed = enemyStats.speed;
     this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
   }
 }
 class Orc extends Enemy {
@@ -167,6 +170,7 @@ class Orc extends Enemy {
     this.armor = enemyStats.armor;
     this.speed = enemyStats.speed;
     this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
   }
 }
 class Goblin extends Enemy {
@@ -180,6 +184,7 @@ class Goblin extends Enemy {
     this.armor = enemyStats.armor;
     this.speed = enemyStats.speed;
     this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
   }
 }
 class Projectile extends Sprite{
@@ -222,13 +227,13 @@ class Projectile extends Sprite{
 }
 class ArcherProjectile extends Projectile{
   constructor({ position = { x: 0, y: 0 }, enemy, damage }) {
-    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/arrow.png', power: 5 });
+    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/arrow.png', power: 7 });
   }
 }
 
 class MageProjectile extends Projectile {
   constructor({ position = { x: 0, y: 0 }, enemy, damage }) {
-    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/magic_ball.png', power: 3 });
+    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/magic_ball.png', power: 5 });
   }
 
 }
