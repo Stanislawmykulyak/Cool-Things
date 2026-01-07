@@ -42,7 +42,7 @@ class Enemy extends Sprite{
     if (enemyStats.isFlying) {
       this.waypoints = this.waypoints.map(waypoint => ({
         x: waypoint.x,
-        y: waypoint.y - 80
+        y: waypoint.y - 60
       }));
     }
     this.center = {
