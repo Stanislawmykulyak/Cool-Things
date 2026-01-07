@@ -1,4 +1,4 @@
-let coins = 300;
+let coins = 350;
 let hearts = 10;
 
 const stats = {
@@ -58,7 +58,7 @@ const stats = {
             health:110,
             armor:1.7,
             speed:0.5,
-            reward:9,
+            reward:7,
         },
         goblin:{
             health:70,
