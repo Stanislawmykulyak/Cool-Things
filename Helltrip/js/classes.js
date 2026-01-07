@@ -31,14 +31,20 @@ class PlacementTile {
 }
 
 class Enemy extends Sprite{
-  constructor({ position = { x: 0, y: 0 }, imageSrc, frames = { max: 20 }, waypoints = [] }) {
+  constructor({ position = { x: 0, y: 0 }, imageSrc, frames = { max: 20 }, waypoints = [], enemyType }) {
     super({ position, imageSrc, frames });
-    const enemyStats = stats.enemies.enemy;
+    const enemyStats = stats.enemies[enemyType];
     this.position = position;
     this.width = 40;
     this.height = 55;
     this.waypointIndex = 0;
     this.waypoints = waypoints;
+    if (enemyStats.isFlying) {
+      this.waypoints = this.waypoints.map(waypoint => ({
+        x: waypoint.x,
+        y: waypoint.y - 80
+      }));
+    }
     this.center = {
       x: this.position.x + this.width / 2,
       y: this.position.y + this.height / 2
@@ -128,39 +134,19 @@ class Enemy extends Sprite{
     }
   }
 }
-
-class Wolf extends Enemy {
+class Bat extends Enemy {
   constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
     super({ 
         position, 
-        imageSrc: 'media/tower-models/enemies/wolf.png', 
-        frames: { max: 20 }, 
-        waypoints 
+        imageSrc: 'media/tower-models/enemies/bat.png', 
+        frames: { max: 18 }, 
+        waypoints,
+        enemyType: 'bat'
     });
-    const enemyStats = stats.enemies.wolf;
-    this.width = 50;
-    this.height = 50;
-    this.radius = 25;
-    this.health = enemyStats.health;
-    this.armor = enemyStats.armor;
-    this.speed = enemyStats.speed;
-    this.maxHealth = enemyStats.health;
-    this.reward = enemyStats.reward;
-  }
-}
-
-class Knight extends Enemy {
-  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
-    super({ 
-        position, 
-        imageSrc: 'media/tower-models/enemies/knight.png', 
-        frames: { max: 20 }, 
-        waypoints 
-    });
-    const enemyStats = stats.enemies.knight;
+    const enemyStats = stats.enemies.bat;
     this.width = 70;
-    this.height = 70;
-    this.radius = 35;
+    this.height = 30;
+    this.radius = 25;
     this.health = enemyStats.health;
     this.armor = enemyStats.armor;
     this.speed = enemyStats.speed;
@@ -174,7 +160,8 @@ class Orc extends Enemy {
         position, 
         imageSrc: 'media/tower-models/enemies/orc.png', 
         frames: { max: 20 }, 
-        waypoints 
+        waypoints,
+        enemyType: 'orc'
     });
     const enemyStats = stats.enemies.orc;
     this.width = 50;
@@ -193,7 +180,8 @@ class Goblin extends Enemy {
         position, 
         imageSrc: 'media/tower-models/enemies/goblin.png', 
         frames: { max: 20 }, 
-        waypoints 
+        waypoints,
+        enemyType: 'goblin'
     });
     const enemyStats = stats.enemies.goblin;
     this.width = 50;

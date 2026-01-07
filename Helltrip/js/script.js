@@ -63,9 +63,8 @@ const enemies = [];
 const enemyClasses = {
   goblin: Goblin,
   orc: Orc,
-  wolf: Wolf,
-  knight: Knight
-};
+  bat: Bat,
+}
 
 const tracks = {
   1: waypoints,
@@ -91,8 +90,9 @@ function spawnEnemies(waveNumber) {
         const xOffset = (totalEnemiesSpawned + i) * offset;
         enemies.push(
           new EnemyClass({
-            position: { x: waypoints[0].x - xOffset, y: waypoints[0].y - 20 },
-            waypoints: waypoints
+            position: { x: waypoints[0].x - xOffset, y: waypoints[0].y },
+            waypoints: waypoints,
+            enemyType: type
           })
         );
       }

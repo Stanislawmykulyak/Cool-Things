@@ -37,34 +37,29 @@ const stats = {
     },
     enemies: {
         enemy: {
-            health: 120,
+            health: 1,
             armor: 1,
             speed: 1,
-            reward: 10
-        },
-        wolf: {
-            health: 75,
-            armor: 0.7,
-            speed: 2.5,
-            reward: 7
-        },
-        knight: {
-            health: 125,
-            armor: 3.5,
-            speed: 0.7,
-            reward: 15
+            reward: 1
         },
         orc:{
             health:110,
             armor:1.7,
             speed:0.5,
-            reward:7,
+            reward:5,
         },
         goblin:{
             health:70,
             armor:1,
             speed:0.7,
             reward:3,
+        },
+        bat:{
+            health:75,
+            armor:1.1,
+            speed:1,
+            reward:5,
+            isFlying: true,
         }
     },
 
@@ -78,10 +73,10 @@ const stats = {
     },
     waves:{
         '1': [
-            { type: 'goblin', count: 15, track: 1 , offset:150 },
+            { type: 'bat', count: 15, track: 1 , offset:150 },
         ],
         '2': [
-            { type: 'goblin', count: 12, track: 1,offset:120 }
+            { type: 'goblin', count: 12, track: 1,offset:120 },
         ],
         '3': [
             { type: 'goblin', count: 15, track: 1 , offset:120},
@@ -89,7 +84,7 @@ const stats = {
         ],
         '4': [
             { type: 'orc', count: 5, track: 2 ,offset:120},
-            { type: 'goblin', count: 20, track: 1,offset:120 }
+            { type: 'goblin', count: 20, track: 1,offset:120 },
         ],
         '5':[
             {type: 'orc', count: 5, track: 2 ,offset:120},
@@ -101,6 +96,9 @@ const stats = {
             {type: 'orc', count: 7, track: 1 ,offset:100},
             {type: 'orc', count: 4, track: 2 ,offset:100},
 
+        ],
+        '7':[
+            {type:'bat', count:1 , track: 1, offset:160, },
         ]
     }
     
