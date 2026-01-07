@@ -78,19 +78,22 @@ const stats = {
     },
     waves:{
         '1': [
-            //{ type: 'goblin', count: 15, track: 1 },
-            { type: 'orc' , count: 5, track: 2 }
+            { type: 'goblin', count: 10, track: 1 ,},
         ],
         '2': [
-            { type: 'goblin', count: 20, track: 1 }
+            { type: 'goblin', count: 12, track: 1 }
         ],
         '3': [
-            { type: 'goblin', count: 20, track: 1 },
-            { type: 'orc', count: 5, track: 2 }
+            { type: 'goblin', count: 15, track: 1 },
+            { type: 'orc', count: 5, track: 1 }
         ],
         '4': [
             { type: 'orc', count: 8, track: 2 },
             { type: 'goblin', count: 25, track: 1 }
+        ],
+        '5':[
+            {type: 'orc', count: 8, track: 2 },
+            {type: 'orc', count: 8, track: 1 },
         ]
     }
     

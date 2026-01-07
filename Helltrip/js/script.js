@@ -107,23 +107,6 @@ let waveCount = 1;
 let waves = 20
 let selectedTile = null;
 
-
-function drawTracks(context, tracksToDraw) {
-  const colors = ['rgba(255, 0, 0, 0.5)', 'rgba(0, 0, 255, 0.5)'];
-  tracksToDraw.forEach((track, index) => {
-    context.strokeStyle = colors[index % colors.length];
-    context.lineWidth = 3;
-    context.beginPath();
-    context.moveTo(track[0].x, track[0].y);
-    for (let i = 1; i < track.length; i++) {
-      context.lineTo(track[i].x, track[i].y);
-    }
-    context.stroke();
-  });
-}
-
-
-
 function updateCoins () {
   document.querySelector('.coins').innerHTML = 'Coins: ' + coins + '<img src="media/coin.png" class="stats-img">';
 }
@@ -219,7 +202,6 @@ function animate() {
   // 2. DRAW EVERYTHING IN ORDER
   // Draw map first
   c.drawImage(image, 0, 0);
-  drawTracks(c, Object.values(tracks));
   
   
   // Create a single list of all dynamic objects
