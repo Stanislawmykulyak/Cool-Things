@@ -1,4 +1,4 @@
-let coins = 350;
+let coins = 300;
 let hearts = 10;
 
 const stats = {
@@ -78,22 +78,29 @@ const stats = {
     },
     waves:{
         '1': [
-            { type: 'goblin', count: 10, track: 1 ,},
+            { type: 'goblin', count: 15, track: 1 , offset:150 },
         ],
         '2': [
-            { type: 'goblin', count: 12, track: 1 }
+            { type: 'goblin', count: 12, track: 1,offset:120 }
         ],
         '3': [
-            { type: 'goblin', count: 15, track: 1 },
-            { type: 'orc', count: 5, track: 1 }
+            { type: 'goblin', count: 15, track: 1 , offset:120},
+            { type: 'orc', count: 5, track: 1 ,offset:120}
         ],
         '4': [
-            { type: 'orc', count: 8, track: 2 },
-            { type: 'goblin', count: 25, track: 1 }
+            { type: 'orc', count: 5, track: 2 ,offset:120},
+            { type: 'goblin', count: 20, track: 1,offset:120 }
         ],
         '5':[
-            {type: 'orc', count: 8, track: 2 },
-            {type: 'orc', count: 8, track: 1 },
+            {type: 'orc', count: 5, track: 2 ,offset:120},
+            {type: 'orc', count: 7, track: 1 ,offset:120},
+        ],
+        '6':[
+            {type: 'goblin', count: 7, track: 1 , offset:80},
+            {type: 'goblin', count: 7, track: 2 , offset:80 },
+            {type: 'orc', count: 7, track: 1 ,offset:100},
+            {type: 'orc', count: 4, track: 2 ,offset:100},
+
         ]
     }
     

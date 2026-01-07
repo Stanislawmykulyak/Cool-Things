@@ -82,13 +82,13 @@ function spawnEnemies(waveNumber) {
 
   let totalEnemiesSpawned = 0;
   wave.forEach(enemyGroup => {
-    const { type, count, track } = enemyGroup;
+    const { type, count, track , offset } = enemyGroup;
     const EnemyClass = enemyClasses[type];
     const waypoints = tracks[track];
 
     if (EnemyClass && waypoints) {
       for (let i = 1; i < count + 1; i++) {
-        const xOffset = (totalEnemiesSpawned + i) * 80;
+        const xOffset = (totalEnemiesSpawned + i) * offset;
         enemies.push(
           new EnemyClass({
             position: { x: waypoints[0].x - xOffset, y: waypoints[0].y - 20 },
@@ -189,7 +189,7 @@ function animate() {
           const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
           if (enemyIndex > -1) {
             enemies.splice(enemyIndex, 1);
-            coins += stats.enemies.goblin.reward;
+            coins += projectile.enemy.reward;
             updateCoins();
           }
         }
