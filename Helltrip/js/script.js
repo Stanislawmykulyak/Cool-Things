@@ -206,7 +206,7 @@ function animate() {
   
   // Create a single list of all dynamic objects
   //Kolejnosc ma znaczenie //
-  const drawableObjects = [...enemies,...placementTiles, ...buildings,];
+  const drawableObjects = [...placementTiles, ...buildings,...enemies];
   buildings.forEach(building => {
       drawableObjects.push(...building.projectiles);
   });
