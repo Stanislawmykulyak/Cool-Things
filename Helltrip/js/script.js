@@ -63,29 +63,42 @@ const enemies = [];
 const enemyClasses = {
   goblin: Goblin,
   orc: Orc,
+  wolf: Wolf,
+  knight: Knight
 };
+
+const tracks = {
+  1: waypoints,
+  2: waypoints2
+};
+
 
 function spawnEnemies(waveNumber) {
   const wave = stats.waves[waveNumber];
+  if (!wave) {
+    console.log(`Wave ${waveNumber} completed or not defined. No more enemies.`);
+    return;
+  }
 
   let totalEnemiesSpawned = 0;
-  for (const enemyType in wave) {
-    const enemyCount = wave[enemyType];
-    const EnemyClass = enemyClasses[enemyType];
-    if (EnemyClass) {
-      for (let i = 1; i < enemyCount + 1; i++) {
+  wave.forEach(enemyGroup => {
+    const { type, count, track } = enemyGroup;
+    const EnemyClass = enemyClasses[type];
+    const waypoints = tracks[track];
+
+    if (EnemyClass && waypoints) {
+      for (let i = 1; i < count + 1; i++) {
         const xOffset = (totalEnemiesSpawned + i) * 80;
         enemies.push(
           new EnemyClass({
-            position: { x: waypoints[0].x - xOffset, y: (waypoints[0].y)}
+            position: { x: waypoints[0].x - xOffset, y: waypoints[0].y - 20 },
+            waypoints: waypoints
           })
         );
       }
-      totalEnemiesSpawned += enemyCount;
-    } else {
-      console.error(`Enemy class for type "${enemyType}" not found.`);
+      totalEnemiesSpawned += count;
     }
-  }
+  });
 }
 
 const buildings = [];
@@ -95,7 +108,19 @@ let waves = 20
 let selectedTile = null;
 
 
-
+function drawTracks(context, tracksToDraw) {
+  const colors = ['rgba(255, 0, 0, 0.5)', 'rgba(0, 0, 255, 0.5)'];
+  tracksToDraw.forEach((track, index) => {
+    context.strokeStyle = colors[index % colors.length];
+    context.lineWidth = 3;
+    context.beginPath();
+    context.moveTo(track[0].x, track[0].y);
+    for (let i = 1; i < track.length; i++) {
+      context.lineTo(track[i].x, track[i].y);
+    }
+    context.stroke();
+  });
+}
 
 
 
@@ -194,6 +219,7 @@ function animate() {
   // 2. DRAW EVERYTHING IN ORDER
   // Draw map first
   c.drawImage(image, 0, 0);
+  drawTracks(c, Object.values(tracks));
   
   
   // Create a single list of all dynamic objects

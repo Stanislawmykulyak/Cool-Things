@@ -55,8 +55,8 @@ const stats = {
             reward: 15
         },
         orc:{
-            health:130,
-            armor:1.9,
+            health:110,
+            armor:1.7,
             speed:0.5,
             reward:9,
         },
@@ -77,20 +77,21 @@ const stats = {
         miniboss: 260,
     },
     waves:{
-        '1':{
-            goblin:15,
-        },
-        '2':{
-            goblin:20,
-        },
-        '3':{
-            goblin:20,
-            orc:5,
-        },
-        '4':{
-            orc:8,
-            goblin:25,
-        }
+        '1': [
+            //{ type: 'goblin', count: 15, track: 1 },
+            { type: 'orc' , count: 5, track: 2 }
+        ],
+        '2': [
+            { type: 'goblin', count: 20, track: 1 }
+        ],
+        '3': [
+            { type: 'goblin', count: 20, track: 1 },
+            { type: 'orc', count: 5, track: 2 }
+        ],
+        '4': [
+            { type: 'orc', count: 8, track: 2 },
+            { type: 'goblin', count: 25, track: 1 }
+        ]
     }
     
 }

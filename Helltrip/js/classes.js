@@ -31,13 +31,14 @@ class PlacementTile {
 }
 
 class Enemy extends Sprite{
-  constructor({ position = { x: 0, y: 0 }, imageSrc , frames = { max: 20 } }) {
-    super({ position, imageSrc, frames});
+  constructor({ position = { x: 0, y: 0 }, imageSrc, frames = { max: 20 }, waypoints = [] }) {
+    super({ position, imageSrc, frames });
     const enemyStats = stats.enemies.enemy;
     this.position = position;
-    this.width = 50;
-    this.height = 70;
+    this.width = 40;
+    this.height = 55;
     this.waypointIndex = 0;
+    this.waypoints = waypoints;
     this.center = {
       x: this.position.x + this.width / 2,
       y: this.position.y + this.height / 2
@@ -65,13 +66,13 @@ class Enemy extends Sprite{
       while (rotation > Math.PI) rotation -= 2 * Math.PI;
       while (rotation < -Math.PI) rotation += 2 * Math.PI;
 
-      if (Math.abs(rotation) > Math.PI / 8) {
+      if (Math.abs(rotation) > Math.PI / 12) {
         c.rotate(0);
       } else {
         c.rotate(rotation);
       }
     } else {
-      if (Math.abs(angle) > Math.PI / 8) {
+      if (Math.abs(angle) > Math.PI / 12) {
         c.rotate(0);
       } else {
         c.rotate(angle);
@@ -103,7 +104,7 @@ class Enemy extends Sprite{
 
   update() {
     super.update()
-    const waypoint = waypoints[this.waypointIndex];
+    const waypoint = this.waypoints[this.waypointIndex];
     const yDistance = waypoint.y - this.center.y;
     const xDistance = waypoint.x - this.center.x;
     const angle = Math.atan2(yDistance, xDistance);
@@ -121,7 +122,7 @@ class Enemy extends Sprite{
     if (
       Math.abs(Math.round(this.center.x) - Math.round(waypoint.x)) < Math.abs(this.velocity.x) &&
       Math.abs(Math.round(this.center.y) - Math.round(waypoint.y)) < Math.abs(this.velocity.y) &&
-      this.waypointIndex < waypoints.length - 1
+      this.waypointIndex < this.waypoints.length - 1
     ) {
       this.waypointIndex++;
     }
@@ -129,10 +130,13 @@ class Enemy extends Sprite{
 }
 
 class Wolf extends Enemy {
-  constructor({ position = { x: 0, y: 0 } }) {
-    super({ position, imageSrc: 'media/tower-models/enemies/wolf.png', frames :{
-      max:20,
-    } });
+  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
+    super({ 
+        position, 
+        imageSrc: 'media/tower-models/enemies/wolf.png', 
+        frames: { max: 20 }, 
+        waypoints 
+    });
     const enemyStats = stats.enemies.wolf;
     this.width = 50;
     this.height = 50;
@@ -146,8 +150,13 @@ class Wolf extends Enemy {
 }
 
 class Knight extends Enemy {
-  constructor({ position = { x: 0, y: 0 } }) {
-    super({ position, imageSrc: 'media/tower-models/enemies/knight.png', frames: { max: 20 } });
+  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
+    super({ 
+        position, 
+        imageSrc: 'media/tower-models/enemies/knight.png', 
+        frames: { max: 20 }, 
+        waypoints 
+    });
     const enemyStats = stats.enemies.knight;
     this.width = 70;
     this.height = 70;
@@ -160,9 +169,14 @@ class Knight extends Enemy {
   }
 }
 class Orc extends Enemy {
-  constructor({ position = { x: 0, y: 0 } }) {
-    super({ position, imageSrc: 'media/tower-models/enemies/orc.png', frames: { max: 20 } });
-    const enemyStats = stats.enemies.goblin;
+  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
+    super({ 
+        position, 
+        imageSrc: 'media/tower-models/enemies/orc.png', 
+        frames: { max: 20 }, 
+        waypoints 
+    });
+    const enemyStats = stats.enemies.orc;
     this.width = 50;
     this.height = 70;
     this.radius = 30;
@@ -174,8 +188,13 @@ class Orc extends Enemy {
   }
 }
 class Goblin extends Enemy {
-  constructor({ position = { x: 0, y: 0 } }) {
-    super({ position, imageSrc: 'media/tower-models/enemies/goblin.png', frames: { max: 20 } });
+  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
+    super({ 
+        position, 
+        imageSrc: 'media/tower-models/enemies/goblin.png', 
+        frames: { max: 20 }, 
+        waypoints 
+    });
     const enemyStats = stats.enemies.goblin;
     this.width = 50;
     this.height = 60;
