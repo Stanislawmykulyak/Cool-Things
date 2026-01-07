@@ -86,6 +86,10 @@ const stats = {
         '3':{
             goblin:20,
             orc:5,
+        },
+        '4':{
+            orc:8,
+            goblin:25,
         }
     }
     

@@ -49,6 +49,21 @@ canvas{
     align-items:center;
     -webkit-text-stroke: 3px rgb(42, 42, 42);
 }
+.win{
+    font-size: 200px;
+    font-weight: bold;
+    color:#d1d1d1;
+    font-family: 'Sour Gummy', cursive;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    -webkit-text-stroke: 3px rgb(42, 42, 42);
+}
 .stats{
     position:absolute;
     top:0px;

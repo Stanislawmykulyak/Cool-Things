@@ -91,7 +91,7 @@ function spawnEnemies(waveNumber) {
 const buildings = [];
 let activeTile = undefined;
 let waveCount = 1;
-let waves = 20;
+let waves = 20
 let selectedTile = null;
 
 
@@ -142,11 +142,15 @@ function animate() {
       coins += stats.wave_rewards['15_17'];
     } else if (waveCount <= 20) {
       coins += stats.wave_rewards['17_20'];
+      if(waveCount >= waves ){
+        cancelAnimationFrame(animationID);
+        document.querySelector('.win').style.display = 'flex';
+      }
     }
+     
     updateCoins();
   }
   }
-  
   // Update placement tiles (this also draws them)
   placementTiles.forEach((tile) => {
     tile.update(mouse);
