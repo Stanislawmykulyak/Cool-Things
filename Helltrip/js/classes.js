@@ -217,6 +217,25 @@ class Goblin extends Enemy {
     this.reward = enemyStats.reward;
   }
 }
+class GoblinChampion extends Enemy {
+  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
+    super({ 
+        position, 
+        imageSrc: 'media/tower-models/enemies/orc.png', 
+        frames: { max: 20 }, 
+        waypoints,
+        enemyType: 'orc'
+    });
+    const enemyStats = stats.enemies.gobChamp;
+    this.width = 100;
+    this.height = 150;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
+  }
+}
 class Projectile extends Sprite{
   constructor({ position = { x: 0, y: 0 }, enemy , damage , power , imageSrc}) {
     super({position , })

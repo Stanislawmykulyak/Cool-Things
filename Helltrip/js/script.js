@@ -64,7 +64,8 @@ const enemyClasses = {
   goblin: Goblin,
   orc: Orc,
   bat: Bat,
-  giantBat: GiantBat
+  giantBat: GiantBat,
+  gobChamp: GoblinChampion,
 }
 
 const tracks = {
@@ -119,11 +120,11 @@ function updateHearts () {
 function animate(timestamp = 0) {
     const animationID = requestAnimationFrame(animate);
     
-    // Calculate Delta Time in seconds
+    
     const deltaTime = (timestamp - lastTime) / 1000;
     lastTime = timestamp;
     
-    // Cap dt to 0.1s to prevent massive "teleporting" after lag or tab switching
+
     const dt = Math.min(deltaTime, 0.1);
 
     // Update dynamic state passing 'dt'
@@ -146,7 +147,6 @@ function animate(timestamp = 0) {
             currentWave += 1;
             spawnEnemies(currentWave);
             waveCount += 1;
-            // (Keep your existing wave reward logic here...)
             updateCoins();
         }
     }

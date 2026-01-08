@@ -1,4 +1,4 @@
-let coins = 300;
+let coins = 350;
 let hearts = 20;
 
 const stats = {
@@ -52,7 +52,15 @@ const stats = {
             reward: 11,
             healthCost:2,
             isFlying: true,
+        },
+        gobChamp:{
+            health:500,
+            armor:3.7,
+            speed:35,
+            reward:250,
+            healthCost:15,
         }
+
     },
     wave_rewards: {
         '1_5': 35,
@@ -60,23 +68,23 @@ const stats = {
         '11_15': 75,
         '15_17': 100,
         '17_20': 135,
-        miniboss: 260,
     },
     waves:{
         '1': [
             { type: 'goblin', count: 7, track: 1 , offset:180, hold: 0 },
         ],
+        
         '2': [
-            { type: 'goblin', count: 10, track: 1, offset:160, hold: 0 },
+            { type: 'goblin', count: 13, track: 1, offset:160, hold: 0 },
         ],
         '3':[
-            { type: 'goblin', count: 15, track: 1,offset:120, hold: 0 },
+            { type: 'goblin', count: 17, track: 1,offset:120, hold: 0 },
         ],
         '4': [
-            { type: 'orc', count: 5, track: 1 ,offset:120 , hold: 0},
+            { type: 'orc', count: 5, track: 1 ,offset:150 , hold: 0},
         ],
         '5': [
-            { type: 'orc', count: 3, track: 2 ,offset:120 , hold:0},
+            { type: 'orc', count: 5, track: 2 ,offset:120 , hold:0},
             { type: 'goblin', count: 15, track: 1 , offset:120, hold:0 },
         ],
         '6':[
@@ -100,7 +108,10 @@ const stats = {
         '10':[
             {type:'goblin', count:25, track:2, offset:100},
             {type:'orc', count:12, track:2, offset:120},
-        ]
+        ],
+        '11': [
+            { type: 'gobChamp', count: 1, track: 1 , offset:180, hold: 0 },
+        ],
     }
     
 }
