@@ -25,8 +25,8 @@ const stats = {
     enemies: {
         orc: {
             health: 110,
-            armor: 1.7,
-            speed: 30, // 30 pixels per second
+            armor: 1.5,
+            speed: 60,
             reward: 5,
         },
         goblin: {
