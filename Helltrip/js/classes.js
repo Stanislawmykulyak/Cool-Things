@@ -247,8 +247,8 @@ class Projectile extends Sprite{
       this.enemy.center.x - this.position.x
     );
     this.angle = angle;
-    this.velocity.x = Math.cos(angle) * (this.power * 60); // Scale power up since it was per-frame
-    this.velocity.y = Math.sin(angle) * (this.power * 60);
+    this.velocity.x = Math.cos(angle) * (this.power * 7);
+    this.velocity.y = Math.sin(angle) * (this.power * 7);
 
     this.position.x += this.velocity.x * dt;
     this.position.y += this.velocity.y * dt;
@@ -256,13 +256,13 @@ class Projectile extends Sprite{
 }
 class ArcherProjectile extends Projectile{
   constructor({ position = { x: 0, y: 0 }, enemy, damage }) {
-    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/arrow.png', power: 7 });
+    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/arrow.png', power: 100 });
   }
 }
 
 class MageProjectile extends Projectile {
   constructor({ position = { x: 0, y: 0 }, enemy, damage }) {
-    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/magic_ball.png', power: 5 });
+    super({ position, enemy, damage, imageSrc: 'media/tower-models/projectiles/magic_ball.png', power: 50});
   }
 
 }
