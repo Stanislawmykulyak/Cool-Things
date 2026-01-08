@@ -64,6 +64,7 @@ const enemyClasses = {
   goblin: Goblin,
   orc: Orc,
   bat: Bat,
+  giantBat: GiantBat
 }
 
 const tracks = {

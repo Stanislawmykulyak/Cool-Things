@@ -84,6 +84,10 @@ const stats = {
             {type:'goblin', count:20, track:2, offset:120},
             {type:'orc', count:10, track:2, offset:150},
             {type:'bat', count:10 , track: 1, offset:150, },
+        ],
+        '9':[
+            {type:'goblin', count:25, track:2, offset:100},
+            {type:'orc', count:12, track:2, offset:120},
         ]
     }
     
