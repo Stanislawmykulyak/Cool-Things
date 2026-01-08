@@ -9,7 +9,7 @@ class Sprite {
             max: frames.max,
             current: 0,
             elapsed: 0,
-            hold: 0.1,
+            hold: 0.07,
         };
         this.offset = offset;
     }
@@ -166,17 +166,4 @@ class MageTower extends Tower {
     }
     super.update(dt);
 }
-}
-//Baraki Tower lvl 1 //
-class Barracks extends Tower {
-    constructor({ position }) {
-        const towerStats = { ...stats.towers.barracks.lvl1 };
-        super({ position, stats: towerStats, baseTowerType: 'BARRACKS' });
-    }
-
-    draw() {
-        c.fillStyle = 'lime';
-        c.fillRect(this.position.x, this.position.y, this.width, 64);
-    }
-    
 }

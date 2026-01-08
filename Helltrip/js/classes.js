@@ -147,6 +147,26 @@ class Bat extends Enemy {
         enemyType: 'bat'
     });
     const enemyStats = stats.enemies.bat;
+    this.width = 50;
+    this.height = 30;
+    this.radius = 25;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
+  }
+}
+class GiantBat extends Enemy {
+  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
+    super({ 
+        position, 
+        imageSrc: 'media/tower-models/enemies/giant-bat.png', 
+        frames: { max: 18 }, 
+        waypoints,
+        enemyType: 'bat'
+    });
+    const enemyStats = stats.enemies.bat;
     this.width = 70;
     this.height = 30;
     this.radius = 25;

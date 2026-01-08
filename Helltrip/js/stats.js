@@ -1,4 +1,4 @@
-let coins = 350;
+let coins = 450;
 let hearts = 10;
 
 const stats = {
@@ -8,7 +8,7 @@ const stats = {
                 name: 'Archer',
                 damage: 15,
                 range: 250,
-                cooldown: 0.83, // Shoots every 0.83 seconds
+                cooldown: 0.64,
                 cost: 90,
             },
         },
@@ -17,18 +17,10 @@ const stats = {
                 name: 'Mage',      
                 damage: 35,
                 range: 150,
-                cooldown: 1.2, // Shoots every 1.2 seconds
+                cooldown: 0.92,
                 cost: 140,
             },
         },
-        barracks: {
-            lvl1:{
-                name: 'Barracks',
-                range: 150,
-                cost: 90,
-            }
-        },
-        // ... (Keep your other stats as they are, but convert cooldowns to seconds if needed)
     },
     enemies: {
         orc: {
@@ -40,13 +32,13 @@ const stats = {
         goblin: {
             health: 70,
             armor: 1,
-            speed: 42, // 42 pixels per second
+            speed: 80,
             reward: 3,
         },
         bat: {
             health: 75,
             armor: 1.1,
-            speed: 120, // 60 pixels per second
+            speed: 120,
             reward: 5,
             isFlying: true,
         }
@@ -61,14 +53,14 @@ const stats = {
     },
     waves:{
         '1': [
-            { type: 'bat', count: 15, track: 1 , offset:150 },
+            { type: 'goblin', count: 10, track: 1 , offset:150 },
         ],
         '2': [
-            { type: 'goblin', count: 12, track: 1,offset:120 },
+            { type: 'goblin', count: 15, track: 1,offset:120 },
         ],
         '3': [
             { type: 'goblin', count: 15, track: 1 , offset:120},
-            { type: 'orc', count: 5, track: 1 ,offset:120}
+            { type: 'orc', count: 5, track: 2 ,offset:120}
         ],
         '4': [
             { type: 'orc', count: 5, track: 2 ,offset:120},
@@ -86,7 +78,12 @@ const stats = {
 
         ],
         '7':[
-            {type:'bat', count:1 , track: 1, offset:160, },
+            {type:'bat', count:10 , track: 1, offset:180, },
+        ],
+        '8':[
+            {type:'goblin', count:20, track:2, offset:120},
+            {type:'orc', count:10, track:2, offset:150},
+            {type:'bat', count:10 , track: 1, offset:150, },
         ]
     }
     
