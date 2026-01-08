@@ -55,52 +55,53 @@ const stats = {
         }
     },
     wave_rewards: {
-        '1_5': 55,
-        '5_11': 75,
-        '11_15': 95,
-        '15_17': 110,
+        '1_5': 35,
+        '5_11': 55,
+        '11_15': 75,
+        '15_17': 100,
         '17_20': 135,
         miniboss: 260,
     },
     waves:{
         '1': [
-            { type: 'goblin', count: 10, track: 1 , offset:150 },
+            { type: 'goblin', count: 7, track: 1 , offset:180, hold: 0 },
         ],
         '2': [
-            { type: 'goblin', count: 15, track: 1,offset:120 },
+            { type: 'goblin', count: 10, track: 1, offset:160, hold: 0 },
         ],
-        '3': [
-            { type: 'goblin', count: 15, track: 1 , offset:120},
-            { type: 'orc', count: 5, track: 2 ,offset:120}
+        '3':[
+            { type: 'goblin', count: 15, track: 1,offset:120, hold: 0 },
         ],
         '4': [
-            { type: 'orc', count: 5, track: 2 ,offset:120},
-            { type: 'goblin', count: 20, track: 1,offset:120 },
+            { type: 'orc', count: 3, track: 1 ,offset:120 , hold:0},
+            { type: 'goblin', count: 10, track: 1 , offset:120, hold:0 },
         ],
-        '5':[
+        '5': [
+            { type: 'orc', count: 3, track: 2 ,offset:120 , hold:0},
+            { type: 'goblin', count: 10, track: 1 , offset:120, hold:0 },
+        ],
+        '6':[
             {type: 'orc', count: 5, track: 2 ,offset:120},
             {type: 'orc', count: 7, track: 1 ,offset:120},
         ],
-        '6':[
-            {type: 'goblin', count: 7, track: 1 , offset:80},
-            {type: 'goblin', count: 7, track: 2 , offset:80 },
-            {type: 'orc', count: 7, track: 1 ,offset:100},
-            {type: 'orc', count: 4, track: 2 ,offset:100},
-
-        ],
         '7':[
-            {type:'bat', count:10 , track: 1, offset:180, },
+            {type: 'goblin', count: 7, track: 2 , offset:80},
+            {type: 'orc', count: 7, track: 1 ,offset:100},
+            {type: 'goblin', count: 7, track: 2 , offset:80 },
+            {type: 'orc', count: 4, track: 1 ,offset:100},
         ],
         '8':[
+            {type:'bat', count:10 , track: 1, offset:180, },
+        ],
+        '9':[
             {type:'goblin', count:20, track:2, offset:120},
             {type:'orc', count:10, track:2, offset:150},
             {type:'bat', count:10 , track: 1, offset:150, },
         ],
-        '9':[
+        '10':[
             {type:'goblin', count:25, track:2, offset:100},
             {type:'orc', count:12, track:2, offset:120},
         ]
     }
     
 }
-

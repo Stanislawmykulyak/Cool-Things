@@ -82,13 +82,14 @@ function spawnEnemies(waveNumber) {
 
   let totalEnemiesSpawned = 0;
   wave.forEach(enemyGroup => {
-    const { type, count, track , offset } = enemyGroup;
+    const { type, count, track , offset, hold } = enemyGroup;
     const EnemyClass = enemyClasses[type];
     const waypoints = tracks[track];
 
     if (EnemyClass && waypoints) {
+      const spacing = hold ? hold * stats.enemies[type].speed : offset;
       for (let i = 1; i < count + 1; i++) {
-        const xOffset = (totalEnemiesSpawned + i) * offset;
+        const xOffset = (totalEnemiesSpawned + i) * spacing;
         const enemy = new EnemyClass({
           position: { x: waypoints[0].x - xOffset, y: waypoints[0].y },
           waypoints: waypoints,
