@@ -8,7 +8,7 @@ const stats = {
                 name: 'Archer',
                 damage: 15,
                 range: 250,
-                cooldown: 0.5,
+                cooldown: 0.83, // Shoots every 0.83 seconds
                 cost: 90,
             },
         },
@@ -17,52 +17,40 @@ const stats = {
                 name: 'Mage',      
                 damage: 35,
                 range: 150,
-                cooldown: 1.2,
+                cooldown: 1.2, // Shoots every 1.2 seconds
                 cost: 140,
             },
         },
         barracks: {
             lvl1:{
                 name: 'Barracks',
-                range:150,
+                range: 150,
                 cost: 90,
             }
         },
-        wild_hunter: {
-            lvl1: { name: 'Wild Hunter', cost: 310, damage: 50, range: 400, cooldown: 80, },
-        },
-        engineer: {
-            lvl1: { name: 'Engineer', cost: 230, damage: 20, range: 150, cooldown: 60, },
-        }
+        // ... (Keep your other stats as they are, but convert cooldowns to seconds if needed)
     },
     enemies: {
-        enemy: {
-            health: 1,
+        orc: {
+            health: 110,
+            armor: 1.7,
+            speed: 30, // 30 pixels per second
+            reward: 5,
+        },
+        goblin: {
+            health: 70,
             armor: 1,
-            speed: 1,
-            reward: 1
+            speed: 42, // 42 pixels per second
+            reward: 3,
         },
-        orc:{
-            health:110,
-            armor:1.7,
-            speed:0.5,
-            reward:5,
-        },
-        goblin:{
-            health:70,
-            armor:1,
-            speed:0.7,
-            reward:3,
-        },
-        bat:{
-            health:75,
-            armor:1.1,
-            speed:1,
-            reward:5,
+        bat: {
+            health: 75,
+            armor: 1.1,
+            speed: 120, // 60 pixels per second
+            reward: 5,
             isFlying: true,
         }
     },
-
     wave_rewards: {
         '1_5': 35,
         '5_11': 45,

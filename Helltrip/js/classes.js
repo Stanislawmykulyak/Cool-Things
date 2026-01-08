@@ -108,8 +108,8 @@ class Enemy extends Sprite{
 
   }
 
-  update() {
-    super.update()
+  update(dt) {
+    super.update(dt);
     const waypoint = this.waypoints[this.waypointIndex];
     const yDistance = waypoint.y - this.center.y;
     const xDistance = waypoint.x - this.center.x;
@@ -118,16 +118,19 @@ class Enemy extends Sprite{
     this.velocity.x = Math.cos(angle) * this.speed;
     this.velocity.y = Math.sin(angle) * this.speed;
     
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
+    // Movement scaled by deltaTime
+    this.position.x += this.velocity.x * dt;
+    this.position.y += this.velocity.y * dt;
+
     this.center = {
       x: this.position.x + this.width / 2,
       y: this.position.y + this.height / 2
     };
 
+    // Waypoint detection needs to be relative to the distance moved this frame
     if (
-      Math.abs(Math.round(this.center.x) - Math.round(waypoint.x)) < Math.abs(this.velocity.x) &&
-      Math.abs(Math.round(this.center.y) - Math.round(waypoint.y)) < Math.abs(this.velocity.y) &&
+      Math.abs(this.center.x - waypoint.x) < Math.abs(this.velocity.x * dt) + 1 &&
+      Math.abs(this.center.y - waypoint.y) < Math.abs(this.velocity.y * dt) + 1 &&
       this.waypointIndex < this.waypoints.length - 1
     ) {
       this.waypointIndex++;
@@ -218,18 +221,17 @@ class Projectile extends Sprite{
     c.restore()
   }
 
-  update() {
-
+  update(dt) {
     const angle = Math.atan2(
       this.enemy.center.y - this.position.y,
       this.enemy.center.x - this.position.x
     );
     this.angle = angle;
-    this.velocity.x = Math.cos(angle) * this.power;
-    this.velocity.y = Math.sin(angle) * this.power;
+    this.velocity.x = Math.cos(angle) * (this.power * 60); // Scale power up since it was per-frame
+    this.velocity.y = Math.sin(angle) * (this.power * 60);
 
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
+    this.position.x += this.velocity.x * dt;
+    this.position.y += this.velocity.y * dt;
   }
 }
 class ArcherProjectile extends Projectile{

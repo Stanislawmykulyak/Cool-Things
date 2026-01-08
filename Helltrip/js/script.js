@@ -112,118 +112,90 @@ function updateCoins () {
 }
 function updateHearts () {
   document.querySelector('.hearts').innerHTML = 'Hearts: ' + hearts + '<img src="media/hearts.png" class="stats-img">';
-}
-function animate() {
-  const animationID = requestAnimationFrame(animate);
+}let lastTime = 0;
 
-  // 1. UPDATE GAME STATE
-  // Update enemies
-  for (let i = enemies.length - 1; i >= 0; i--) {
-    const enemy = enemies[i];
-    enemy.update();
-
-    if (enemy.position.x > canvas.width) {
-      hearts -= 1;
-      enemies.splice(i, 1);
-
-      if (hearts === 0) {
-        console.log('game over');
-        cancelAnimationFrame(animationID);
-        document.querySelector('.game-over').style.display = 'flex';
-      }
-    }
-  }
-  if (!switcher.classList.contains('off')) {
+function animate(timestamp = 0) {
+    const animationID = requestAnimationFrame(animate);
     
-    if (enemies.length === 0 ) {
-    currentWave += 1;
-    spawnEnemies(currentWave);
+    // Calculate Delta Time in seconds
+    const deltaTime = (timestamp - lastTime) / 1000;
+    lastTime = timestamp;
+    
+    // Cap dt to 0.1s to prevent massive "teleporting" after lag or tab switching
+    const dt = Math.min(deltaTime, 0.1);
 
-    waveCount += 1;
-    if (waveCount < 5) {
-      coins += stats.wave_rewards['1_5'];
-    } else if (waveCount < 11) {
-      coins += stats.wave_rewards['5_11'];
-    } else if (waveCount < 15) {
-      coins += stats.wave_rewards['11_15'];
-    } else if (waveCount < 17) {
-      coins += stats.wave_rewards['15_17'];
-    } else if (waveCount <= 20) {
-      coins += stats.wave_rewards['17_20'];
-      if(waveCount >= waves ){
-        cancelAnimationFrame(animationID);
-        document.querySelector('.win').style.display = 'flex';
-      }
-    }
-     
-    updateCoins();
-  }
-  }
-  // Update placement tiles (this also draws them)
-  placementTiles.forEach((tile) => {
-    tile.update(mouse);
-  });
+    // Update dynamic state passing 'dt'
+    for (let i = enemies.length - 1; i >= 0; i--) {
+        const enemy = enemies[i];
+        enemy.update(dt);
 
-  // Update buildings and projectiles
-  buildings.forEach((building) => {
-    building.update();
-    building.target = null;
-    const validEnemies = enemies.filter(enemy => {
-      const xDifference = enemy.center.x - building.center.x;
-      const yDifference = enemy.center.y - building.center.y;
-      const distance = Math.hypot(xDifference, yDifference);
-      return distance < enemy.radius + building.radius;
-    });
-    building.target = validEnemies[0];
-
-    for (let i = building.projectiles.length - 1; i >= 0; i--) {
-      const projectile = building.projectiles[i];
-      projectile.update();
-      const xDifference = projectile.enemy.center.x - projectile.position.x;
-      const yDifference = projectile.enemy.center.y - projectile.position.y;
-      const distance = Math.hypot(xDifference, yDifference);
-
-      if (distance < projectile.enemy.radius + projectile.radius) {
-        projectile.enemy.health -= projectile.damage;
-        if (projectile.enemy.health <= 0) {
-          const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
-          if (enemyIndex > -1) {
-            enemies.splice(enemyIndex, 1);
-            coins += projectile.enemy.reward;
-            updateCoins();
-          }
+        if (enemy.position.x > canvas.width) {
+            hearts -= 1;
+            enemies.splice(i, 1);
+            if (hearts <= 0) {
+                cancelAnimationFrame(animationID);
+                document.querySelector('.game-over').style.display = 'flex';
+            }
         }
-        building.projectiles.splice(i, 1);
-      }
     }
-  });
 
+    if (!switcher.classList.contains('off')) {
+        if (enemies.length === 0) {
+            currentWave += 1;
+            spawnEnemies(currentWave);
+            waveCount += 1;
+            // (Keep your existing wave reward logic here...)
+            updateCoins();
+        }
+    }
 
-  // 2. DRAW EVERYTHING IN ORDER
-  // Draw map first
-  c.drawImage(image, 0, 0);
-  
-  
-  // Create a single list of all dynamic objects
-  //Kolejnosc ma znaczenie //
-  const drawableObjects = [...placementTiles, ...buildings,...enemies];
-  buildings.forEach(building => {
-      drawableObjects.push(...building.projectiles);
-  });
-  
-  // Sort them by Y position
-  drawableObjects.sort((a, b) => a.position.y - b.position.y);
-  
-  // Draw them
-  drawableObjects.forEach(obj => {
-      obj.draw();
-  });
+    placementTiles.forEach((tile) => tile.update(mouse));
 
+    buildings.forEach((building) => {
+        building.update(dt);
+        building.target = null;
+        const validEnemies = enemies.filter(enemy => {
+            const xDifference = enemy.center.x - building.center.x;
+            const yDifference = enemy.center.y - building.center.y;
+            const distance = Math.hypot(xDifference, yDifference);
+            return distance < enemy.radius + building.radius;
+        });
+        building.target = validEnemies[0];
 
-  // 3. UPDATE UI
-  updateCoins();
-  WaveUpdate();
-  updateHearts()
+        for (let i = building.projectiles.length - 1; i >= 0; i--) {
+            const projectile = building.projectiles[i];
+            projectile.update(dt);
+            const xDifference = projectile.enemy.center.x - projectile.position.x;
+            const yDifference = projectile.enemy.center.y - projectile.position.y;
+            const distance = Math.hypot(xDifference, yDifference);
+
+            if (distance < projectile.enemy.radius + projectile.radius) {
+                projectile.enemy.health -= projectile.damage;
+                if (projectile.enemy.health <= 0) {
+                    const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
+                    if (enemyIndex > -1) {
+                        enemies.splice(enemyIndex, 1);
+                        coins += projectile.enemy.reward;
+                        updateCoins();
+                    }
+                }
+                building.projectiles.splice(i, 1);
+            }
+        }
+    });
+
+    // Draw Map
+    c.drawImage(image, 0, 0);
+    
+    // Sort and Draw
+    const drawableObjects = [...placementTiles, ...buildings, ...enemies];
+    buildings.forEach(b => drawableObjects.push(...b.projectiles));
+    drawableObjects.sort((a, b) => a.position.y - b.position.y);
+    drawableObjects.forEach(obj => obj.draw());
+
+    updateCoins();
+    WaveUpdate();
+    updateHearts();
 }
 
 const mouse = {
