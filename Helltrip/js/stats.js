@@ -73,12 +73,11 @@ const stats = {
             { type: 'goblin', count: 15, track: 1,offset:120, hold: 0 },
         ],
         '4': [
-            { type: 'orc', count: 3, track: 1 ,offset:120 , hold:0},
-            { type: 'goblin', count: 10, track: 1 , offset:120, hold:0 },
+            { type: 'orc', count: 5, track: 1 ,offset:120 , hold: 0},
         ],
         '5': [
             { type: 'orc', count: 3, track: 2 ,offset:120 , hold:0},
-            { type: 'goblin', count: 10, track: 1 , offset:120, hold:0 },
+            { type: 'goblin', count: 15, track: 1 , offset:120, hold:0 },
         ],
         '6':[
             {type: 'orc', count: 5, track: 2 ,offset:120},
