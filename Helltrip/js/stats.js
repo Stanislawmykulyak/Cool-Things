@@ -1,5 +1,5 @@
-let coins = 450;
-let hearts = 10;
+let coins = 300;
+let hearts = 20;
 
 const stats = {
     towers: {
@@ -25,30 +25,41 @@ const stats = {
     enemies: {
         orc: {
             health: 110,
-            armor: 1.5,
+            armor: 1.7,
             speed: 60,
-            reward: 5,
+            reward: 9,
+            healthCost:2,
         },
         goblin: {
             health: 70,
             armor: 1,
             speed: 80,
-            reward: 3,
+            reward: 5,
+            healthCost:1,
         },
         bat: {
-            health: 75,
+            health: 65,
             armor: 1.1,
-            speed: 120,
-            reward: 5,
+            speed: 150,
+            reward: 7,
+            healthCost:1,
+            isFlying: true,
+        },
+        giantBat: {
+            health: 105,
+            armor: 1.2,
+            speed: 100,
+            reward: 11,
+            healthCost:2,
             isFlying: true,
         }
     },
     wave_rewards: {
-        '1_5': 35,
-        '5_11': 45,
-        '11_15': 65,
-        '15_17': 80,
-        '17_20': 100,
+        '1_5': 55,
+        '5_11': 75,
+        '11_15': 95,
+        '15_17': 110,
+        '17_20': 135,
         miniboss: 260,
     },
     waves:{

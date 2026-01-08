@@ -89,13 +89,13 @@ function spawnEnemies(waveNumber) {
     if (EnemyClass && waypoints) {
       for (let i = 1; i < count + 1; i++) {
         const xOffset = (totalEnemiesSpawned + i) * offset;
-        enemies.push(
-          new EnemyClass({
-            position: { x: waypoints[0].x - xOffset, y: waypoints[0].y },
-            waypoints: waypoints,
-            enemyType: type
-          })
-        );
+        const enemy = new EnemyClass({
+          position: { x: waypoints[0].x - xOffset, y: waypoints[0].y },
+          waypoints: waypoints,
+          enemyType: type
+        });
+        enemy.healthCost = stats.enemies[type].healthCost;
+        enemies.push(enemy);
       }
       totalEnemiesSpawned += count;
     }
@@ -131,7 +131,7 @@ function animate(timestamp = 0) {
         enemy.update(dt);
 
         if (enemy.position.x > canvas.width) {
-            hearts -= 1;
+            hearts -= enemy.healthCost;
             enemies.splice(i, 1);
             if (hearts <= 0) {
                 cancelAnimationFrame(animationID);
