@@ -60,6 +60,8 @@ const stats = {
             reward:250,
             healthCost:15,
             isBoss:true,
+        },
+        gobGiant:{
         }
 
     },
@@ -106,10 +108,12 @@ const stats = {
         ],
         '11': [
             {type: 'gobChamp', count: 1, track: 1 ,offset:100, hold: 0 },
-            { type: 'goblin', count: 8, track: 1 , offset:100, hold: 3},      
+            { type:'goblin', count: 8, track: 1 , offset:100, hold: 3},      
             {type:'orc', count:5, track:2, offset:100,hold:2},
-            {type:'goblin', count:15, track:1, offset:90, },
-            
+            {type:'goblin', count:15, track:1, offset:90, },   
+        ],
+        '12':[
+            {type: 'gobGiant', count: 1, track: 1 ,offset:100, hold: 0}
         ],
     }
     

@@ -204,6 +204,25 @@ class Orc extends Enemy {
     this.reward = enemyStats.reward;
   }
 }
+class GoblinChampion extends Enemy {
+  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
+    super({ 
+        position, 
+        imageSrc: 'media/tower-models/enemies/goblin-champion.png', 
+        frames: { max: 20 }, 
+        waypoints,
+        enemyType: 'gobChamp'
+    });
+    const enemyStats = stats.enemies.gobChamp;
+    this.width = 95;
+    this.height = 150;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
+  }
+}
 class Goblin extends Enemy {
   constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
     super({ 
@@ -223,19 +242,19 @@ class Goblin extends Enemy {
     this.maxHealth = enemyStats.health;
     this.reward = enemyStats.reward;
   }
-}
-class GoblinChampion extends Enemy {
+}class GoblinGiant extends Enemy {
   constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
     super({ 
         position, 
-        imageSrc: 'media/tower-models/enemies/goblin-champion.png', 
+        imageSrc: 'media/tower-models/enemies/goblin-giant.png', 
         frames: { max: 20 }, 
         waypoints,
-        enemyType: 'gobChamp'
+        enemyType: 'goblin'
     });
-    const enemyStats = stats.enemies.gobChamp;
-    this.width = 95;
-    this.height = 150;
+    const enemyStats = stats.enemies.gobGiant;
+    this.width = 60;
+    this.height = 90;
+    this.radius = 30;
     this.health = enemyStats.health;
     this.armor = enemyStats.armor;
     this.speed = enemyStats.speed;

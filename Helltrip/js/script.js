@@ -66,6 +66,7 @@ const enemyClasses = {
   bat: Bat,
   giantBat: GiantBat,
   gobChamp: GoblinChampion,
+  gobGiant: GoblinGiant,
 }
 
 const tracks = {
