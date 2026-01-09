@@ -1,12 +1,13 @@
 let coins = 350;
 let hearts = 20;
+let currentWave = 13;
 
 const stats = {
     towers: {
         archer: {
             lvl1: {
                 name: 'Archer',
-                damage: 15,
+                damage: 18,
                 range: 300,
                 cooldown: 0.64,
                 cost: 90,
@@ -15,7 +16,7 @@ const stats = {
         mage: {
             lvl1: {
                 name: 'Mage',      
-                damage: 35,
+                damage: 30,
                 range: 220,
                 cooldown: 0.92,
                 cost: 140,
@@ -24,46 +25,46 @@ const stats = {
     },
     enemies: {
         orc: {
-            health: 110,
-            armor: 1.7,
+            health: 130,
+            armor: 2.1,
             speed: 60,
             reward: 9,
             healthCost:2,
         },
         goblin: {
-            health: 70,
-            armor: 1,
+            health: 90,
+            armor: 1.1,
             speed: 80,
             reward: 5,
             healthCost:1,
         },
         bat: {
-            health: 65,
+            health: 85,
             armor: 1.1,
-            speed: 150,
+            speed: 130,
             reward: 7,
             healthCost:1,
             isFlying: true,
         },
         giantBat: {
-            health: 105,
-            armor: 1.2,
-            speed: 100,
+            health: 155,
+            armor: 1.3,
+            speed: 90,
             reward: 11,
             healthCost:2,
             isFlying: true,
         },
         gobChamp:{
-            health:750,
-            armor:2.9,
+            health:850,
+            armor:3.7,
             speed:35,
             reward:250,
             healthCost:15,
             isMiniBoss:true,
         },
         gobGiant:{
-            health:350,
-            armor:2.3,
+            health:500,
+            armor:2.9,
             speed:30,
             reward:35,
             healthCost:10,
@@ -131,9 +132,7 @@ const stats = {
             {type:'giantBat', count:10 , track: 1, offset:120, },
         ],
         '13':[
-            {type:'goblin', count: 8, track: 2 , offset:80,},      
-            {type:'orc', count:10, track:1, offset:100,},
-            {type:'goblin', count:25, track:2, offset:90, },
+            {type:'gobGiant', count:1 , track: 1 ,offset:200,},
         ],
         '14':[
             {type: 'gobGiant', count: 2, track: 1 ,offset:200, hold: 0},
@@ -148,26 +147,26 @@ const stats = {
         '16':[
             {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
             {type:'goblin', count: 8, track: 1 , offset:80,}, 
-            {type:'orc', count:10, track:2, offset:100,},
-            {type:'goblin', count:25, track:1, offset:90, },
+            {type:'orc', count:15, track:2, offset:70,},
+            {type:'goblin', count:25, track:1, offset:60, },
             {type:'bat', count:20, track: 2, offset:80, },
         ],
         '17':[
-            {type: 'gobGiant', count: 3, track: 1 ,offset:200,}, 
+            {type:'gobGiant', count: 3, track: 1 ,offset:200,}, 
             {type:'orc', count:7, track:2, offset:100,},
-            {type: 'gobGiant', count: 2, track: 1 ,offset:200,}, 
+            {type:'gobGiant', count: 2, track: 1 ,offset:200,}, 
             {type:'orc', count:13, track:2, offset:100,},
         ],
         '18':[
             {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
             {type:'bat', count:25, track: 1, offset:80, },
-            {type:'giantBat', count:15 , track: 2, offset:120, },
+            {type:'giantBat', count:15 , track: 2, offset:100, },
             {type: 'gobGiant', count: 1, track: 2 ,offset:200,},
             {type:'bat', count:15, track: 1, offset:70, },
         ],
         '19':[
             {type:'bat', count:20, track: 2, offset:80, },
-            {type: 'gobGiant', count: 5, track: 1 ,offset:130,},
+            {type: 'gobGiant', count: 5, track: 1 ,offset:100,},
             {type:'goblin', count: 8, track: 1 , offset:80,}, 
             {type:'giantBat', count:15 , track: 2, offset:120, },
             {type:'orc', count:10, track:2, offset:100,},

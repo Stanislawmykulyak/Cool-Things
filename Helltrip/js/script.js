@@ -11,7 +11,7 @@ const placementTilesData2D = [];
 
 const waveDisplay = document.querySelector('.wave-display');
 function WaveUpdate() {
-  waveDisplay.textContent = `Wave: ${waveCount} / ${waves}`;
+  waveDisplay.textContent = `Wave: ${currentWave} / ${waves}`;
 }
 
 for (let i = 0; i < placementTilesData.length; i += 20) {
@@ -57,7 +57,7 @@ image.onload = () => {
 
 image.src = 'media/map.png';
 
-let currentWave = 1;
+
 
 const enemies = [];
 const enemyClasses = {
@@ -148,14 +148,15 @@ function animate(timestamp = 0) {
         if (enemies.length === 0) {
             currentWave += 1;
             spawnEnemies(currentWave);
-            waveCount += 1;
             updateCoins();
         }
     }
-    if(currentWave === waves){
+    if(currentWave === (waves + 1)){
       cancelAnimationFrame(animationID);
       document.querySelector('.win').style.display = 'flex';
     }
+    
+    
 
     placementTiles.forEach((tile) => tile.update(mouse));
 
@@ -178,7 +179,17 @@ function animate(timestamp = 0) {
             const distance = Math.hypot(xDifference, yDifference);
 
             if (distance < projectile.enemy.radius + projectile.radius) {
-                projectile.enemy.health -= projectile.damage;
+                
+                if(currentWave > 12){
+                      const r = Math.random()
+                      if(r > 0.8 ){
+                        projectile.damage * 0
+                        console.log("blocked hit")
+                      }
+                    else{
+                      projectile.enemy.health -= projectile.damage;
+                    }
+                }
                 if (projectile.enemy.health <= 0) {
                     const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
                     if (enemyIndex > -1) {
@@ -186,6 +197,7 @@ function animate(timestamp = 0) {
                         coins += projectile.enemy.reward;
                         updateCoins();
                     }
+                    
                 }
                 building.projectiles.splice(i, 1);
             }
@@ -277,16 +289,6 @@ document.getElementById("mage-tower").onclick = (e) => {
     if (coins - stats.towers.mage.lvl1.cost < 0) return;
     coins -=  stats.towers.mage.lvl1.cost;
     buildings.push(new MageTower({ position: selectedTile.position }));
-    selectedTile.isOccupied = true;
-    document.getElementById("tower-menu").style.display = "none";
-    selectedTile = null
-};
-document.getElementById("barracks").onclick = (e) => {
-    e.stopPropagation();
-    if (!selectedTile) return;
-    if (coins - stats.towers.barracks.lvl1.cost < 0) return;
-    coins -= stats.towers.barracks.lvl1.cost;
-    buildings.push(new Barracks({ position: selectedTile.position }));
     selectedTile.isOccupied = true;
     document.getElementById("tower-menu").style.display = "none";
     selectedTile = null

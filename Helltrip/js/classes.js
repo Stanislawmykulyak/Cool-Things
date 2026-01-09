@@ -63,10 +63,15 @@ class Enemy extends Sprite{
       y: this.position.y + this.height / 2
     };
     this.radius = 30;
-    this.health = enemyStats.health;
+    if(currentWave > 5){
+      this.health = ((1 + currentWave *0.1) * enemyStats.health)
+      this.maxHealth = ((1 + currentWave *0.1) * enemyStats.health)
+      if(enemyStats.isBoss){
+        this.health = enemyStats.health
+      } 
+    }
     this.armor = enemyStats.armor;
     this.speed = enemyStats.speed;
-    this.maxHealth = enemyStats.health;
     this.reward = enemyStats.reward;
     this.velocity = {
       x:0,
@@ -163,11 +168,6 @@ class Bat extends Enemy {
     this.width = 50;
     this.height = 30;
     this.radius = 25;
-    this.health = enemyStats.health;
-    this.armor = enemyStats.armor;
-    this.speed = enemyStats.speed;
-    this.maxHealth = enemyStats.health;
-    this.reward = enemyStats.reward;
   }
 }
 class GiantBat extends Enemy {
