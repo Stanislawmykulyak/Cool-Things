@@ -81,7 +81,7 @@ const stats = {
 
     waves:{
         '1': [
-            { type: 'goblinChief', count: 1,track: 1 , offset:180, hold: 0 },
+            { type: 'goblin ', count: 1,track: 1 , offset:180, hold: 0 },
         ],
         
         '2': [
@@ -145,33 +145,25 @@ const stats = {
             {type:'orc', count:10, track:2, offset:100,},
             {type:'goblin', count:25, track:1, offset:90, },
         ],
-        '15':[
+        '16':[
             {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
             {type:'goblin', count: 8, track: 1 , offset:80,}, 
             {type:'orc', count:10, track:2, offset:100,},
             {type:'goblin', count:25, track:1, offset:90, },
             {type:'bat', count:20, track: 2, offset:80, },
         ],
-        '16':[
+        '17':[
             {type: 'gobGiant', count: 3, track: 1 ,offset:200,}, 
             {type:'orc', count:7, track:2, offset:100,},
             {type: 'gobGiant', count: 2, track: 1 ,offset:200,}, 
             {type:'orc', count:13, track:2, offset:100,},
         ],
-        '17':[
+        '18':[
             {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
             {type:'bat', count:25, track: 1, offset:80, },
             {type:'giantBat', count:15 , track: 2, offset:120, },
             {type: 'gobGiant', count: 1, track: 2 ,offset:200,},
             {type:'bat', count:15, track: 1, offset:70, },
-        ],
-        '18':[
-            {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
-            {type:'goblin', count: 8, track: 1 , offset:80,}, 
-            {type:'giantBat', count:15 , track: 2, offset:120, },
-            {type:'orc', count:10, track:2, offset:100,},
-            {type:'goblin', count:25, track:1, offset:90, },
-            {type:'bat', count:20, track: 2, offset:80, },
         ],
         '19':[
             {type:'bat', count:20, track: 2, offset:80, },
@@ -184,10 +176,10 @@ const stats = {
         ],
         '20':[
             {type:'goblinChief',count: 1, track: 1 ,offset:130,},
-            {type:'gobGiant', count: 1, track: 1 ,offset:130, hold:3},
-            {type:'gobChamp', count: 1, track: 2 ,offset:130,},
-            {type:'gobGiant', count: 2, track: 2 ,offset:130,hold:3},
-            {type:'gobChamp', count: 1, track: 1 ,offset:130,hold:2},
+            {type:'gobGiant', count: 1, track: 1 ,offset:130, hold:10},
+            {type:'gobChamp', count: 1, track: 2 ,offset:130,hold:8},
+            {type:'gobGiant', count: 2, track: 2 ,offset:130,hold:7},
+            {type:'gobChamp', count: 1, track: 1 ,offset:130,hold:5},
         ],
 
     }

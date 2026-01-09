@@ -198,7 +198,18 @@ function animate(timestamp = 0) {
     // Sort and Draw
     const drawableObjects = [...placementTiles, ...buildings, ...enemies];
     buildings.forEach(b => drawableObjects.push(...b.projectiles));
-    drawableObjects.sort((a, b) => a.position.y - b.position.y);
+    drawableObjects.sort((a, b) => {
+        let aY = a.position.y;
+        let bY = b.position.y;
+
+        if (a instanceof Enemy) aY += a.height;
+        if (b instanceof Enemy) bY += b.height;
+
+        if (a instanceof Tower) aY += 32;
+        if (b instanceof Tower) bY += 32;
+
+        return aY - bY;
+    });
     drawableObjects.forEach(obj => obj.draw());
 
     updateCoins();
