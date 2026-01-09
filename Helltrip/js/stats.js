@@ -59,16 +59,29 @@ const stats = {
             speed:35,
             reward:250,
             healthCost:15,
-            isBoss:true,
+            isMiniBoss:true,
         },
         gobGiant:{
+            health:350,
+            armor:2.3,
+            speed:30,
+            reward:35,
+            healthCost:10,
+        },
+        goblinChief:{
+            health:2500,
+            armor:3.6,
+            speed:25,
+            reward:500,
+            healthCost:25,
+            isBoss:true,
         }
 
     },
 
     waves:{
         '1': [
-            { type: 'goblin', count: 8, track: 1 , offset:180, hold: 0 },
+            { type: 'goblinChief', count: 1,track: 1 , offset:180, hold: 0 },
         ],
         
         '2': [
@@ -105,16 +118,78 @@ const stats = {
         '10':[
             {type:'goblin', count:25, track:2, offset:100},
             {type:'orc', count:12, track:2, offset:120},
+            {type:'giantBat', count:7 , track: 1, offset:120, },
         ],
         '11': [
             {type: 'gobChamp', count: 1, track: 1 ,offset:100, hold: 0 },
-            { type:'goblin', count: 8, track: 1 , offset:100, hold: 3},      
+            {type:'goblin', count: 8, track: 1 , offset:100, hold: 3},      
             {type:'orc', count:5, track:2, offset:100,hold:2},
             {type:'goblin', count:15, track:1, offset:90, },   
         ],
         '12':[
-            {type: 'gobGiant', count: 1, track: 1 ,offset:100, hold: 0}
+            {type:'bat', count:20, track: 1, offset:80, },
+            {type:'giantBat', count:10 , track: 1, offset:120, },
         ],
+        '13':[
+            {type:'goblin', count: 8, track: 2 , offset:80,},      
+            {type:'orc', count:10, track:1, offset:100,},
+            {type:'goblin', count:25, track:2, offset:90, },
+        ],
+        '14':[
+            {type: 'gobGiant', count: 2, track: 1 ,offset:200, hold: 0},
+        ],
+        '15':[
+            {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
+            {type:'goblin', count: 8, track: 1 , offset:80,},
+            {type: 'gobGiant', count: 1, track: 2 ,offset:200, hold: 2},     
+            {type:'orc', count:10, track:2, offset:100,},
+            {type:'goblin', count:25, track:1, offset:90, },
+        ],
+        '15':[
+            {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
+            {type:'goblin', count: 8, track: 1 , offset:80,}, 
+            {type:'orc', count:10, track:2, offset:100,},
+            {type:'goblin', count:25, track:1, offset:90, },
+            {type:'bat', count:20, track: 2, offset:80, },
+        ],
+        '16':[
+            {type: 'gobGiant', count: 3, track: 1 ,offset:200,}, 
+            {type:'orc', count:7, track:2, offset:100,},
+            {type: 'gobGiant', count: 2, track: 1 ,offset:200,}, 
+            {type:'orc', count:13, track:2, offset:100,},
+        ],
+        '17':[
+            {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
+            {type:'bat', count:25, track: 1, offset:80, },
+            {type:'giantBat', count:15 , track: 2, offset:120, },
+            {type: 'gobGiant', count: 1, track: 2 ,offset:200,},
+            {type:'bat', count:15, track: 1, offset:70, },
+        ],
+        '18':[
+            {type: 'gobGiant', count: 1, track: 1 ,offset:200,},
+            {type:'goblin', count: 8, track: 1 , offset:80,}, 
+            {type:'giantBat', count:15 , track: 2, offset:120, },
+            {type:'orc', count:10, track:2, offset:100,},
+            {type:'goblin', count:25, track:1, offset:90, },
+            {type:'bat', count:20, track: 2, offset:80, },
+        ],
+        '19':[
+            {type:'bat', count:20, track: 2, offset:80, },
+            {type: 'gobGiant', count: 5, track: 1 ,offset:130,},
+            {type:'goblin', count: 8, track: 1 , offset:80,}, 
+            {type:'giantBat', count:15 , track: 2, offset:120, },
+            {type:'orc', count:10, track:2, offset:100,},
+            {type:'goblin', count:25, track:1, offset:90, },
+            {type:'bat', count:20, track: 2, offset:90, }
+        ],
+        '20':[
+            {type:'goblinChief',count: 1, track: 1 ,offset:130,},
+            {type:'gobGiant', count: 1, track: 1 ,offset:130, hold:3},
+            {type:'gobChamp', count: 1, track: 2 ,offset:130,},
+            {type:'gobGiant', count: 2, track: 2 ,offset:130,hold:3},
+            {type:'gobChamp', count: 1, track: 1 ,offset:130,hold:2},
+        ],
+
     }
     
 }

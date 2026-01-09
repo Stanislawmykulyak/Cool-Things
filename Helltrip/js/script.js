@@ -62,11 +62,12 @@ let currentWave = 1;
 const enemies = [];
 const enemyClasses = {
   goblin: Goblin,
-  orc: Orc,
-  bat: Bat,
+  orc:Orc,
+  bat:Bat,
   giantBat: GiantBat,
   gobChamp: GoblinChampion,
   gobGiant: GoblinGiant,
+  goblinChief: GoblinChief,
 }
 
 const tracks = {

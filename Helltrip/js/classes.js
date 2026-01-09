@@ -45,10 +45,16 @@ class Enemy extends Sprite{
         y: waypoint.y - 60
       }));
     }
-    if ( enemyStats.isBoss) {
+    if ( enemyStats.isMiniBoss) {
       this.waypoints = this.waypoints.map(waypoint => ({
         x: waypoint.x,
         y: waypoint.y - 30
+      }));
+    }
+    if ( enemyStats.isBoss) {
+      this.waypoints = this.waypoints.map(waypoint => ({
+        x: waypoint.x,
+        y: waypoint.y - 50
       }));
     }
 
@@ -171,7 +177,7 @@ class GiantBat extends Enemy {
         imageSrc: 'media/tower-models/enemies/giant-bat.png', 
         frames: { max: 18 }, 
         waypoints,
-        enemyType: 'bat'
+        enemyType: 'giantBat'
     });
     const enemyStats = stats.enemies.bat;
     this.width = 70;
@@ -242,18 +248,39 @@ class Goblin extends Enemy {
     this.maxHealth = enemyStats.health;
     this.reward = enemyStats.reward;
   }
-}class GoblinGiant extends Enemy {
+}
+class GoblinGiant extends Enemy {
   constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
     super({ 
         position, 
         imageSrc: 'media/tower-models/enemies/goblin-giant.png', 
         frames: { max: 20 }, 
         waypoints,
-        enemyType: 'goblin'
+        enemyType: 'gobGiant'
     });
     const enemyStats = stats.enemies.gobGiant;
     this.width = 60;
     this.height = 90;
+    this.radius = 30;
+    this.health = enemyStats.health;
+    this.armor = enemyStats.armor;
+    this.speed = enemyStats.speed;
+    this.maxHealth = enemyStats.health;
+    this.reward = enemyStats.reward;
+  }
+}
+class GoblinChief extends Enemy {
+  constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
+    super({ 
+        position, 
+        imageSrc: 'media/tower-models/enemies/goblin-chief.png', 
+        frames: { max: 20 }, 
+        waypoints,
+        enemyType: 'goblinChief'
+    });
+    const enemyStats = stats.enemies.goblinChief;
+    this.width = 150;
+    this.height = 190;
     this.radius = 30;
     this.health = enemyStats.health;
     this.armor = enemyStats.armor;
