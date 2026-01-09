@@ -1,4 +1,4 @@
-let coins = 1050;
+let coins = 350;
 let hearts = 20;
 
 const stats = {
@@ -7,7 +7,7 @@ const stats = {
             lvl1: {
                 name: 'Archer',
                 damage: 15,
-                range: 250,
+                range: 300,
                 cooldown: 0.64,
                 cost: 90,
             },
@@ -16,7 +16,7 @@ const stats = {
             lvl1: {
                 name: 'Mage',      
                 damage: 35,
-                range: 150,
+                range: 220,
                 cooldown: 0.92,
                 cost: 140,
             },
@@ -65,9 +65,9 @@ const stats = {
     },
 
     waves:{
-        /*'1': [
-            { type: 'gobChamp', count: 1, track: 1 , offset:180, hold: 0 },
-        ],*/
+        '1': [
+            { type: 'goblin', count: 8, track: 1 , offset:180, hold: 0 },
+        ],
         
         '2': [
             { type: 'goblin', count: 13, track: 1, offset:160, hold: 0 },
@@ -104,10 +104,11 @@ const stats = {
             {type:'goblin', count:25, track:2, offset:100},
             {type:'orc', count:12, track:2, offset:120},
         ],
-        '1': [
-            {type: 'gobChamp', count: 1, track: 1 , offset:180, hold: 0 },
-            {type:'orc', count:5, track:2, offset:100,hold:5},
-            {type:'goblin', count:10, track:1, offset:50, hold:5},
+        '11': [
+            {type: 'gobChamp', count: 1, track: 1 ,offset:100, hold: 0 },
+            { type: 'goblin', count: 8, track: 1 , offset:100, hold: 3},      
+            {type:'orc', count:5, track:2, offset:100,hold:2},
+            {type:'goblin', count:15, track:1, offset:90, },
             
         ],
     }

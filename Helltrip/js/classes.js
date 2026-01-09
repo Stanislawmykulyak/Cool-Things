@@ -48,7 +48,7 @@ class Enemy extends Sprite{
     if ( enemyStats.isBoss) {
       this.waypoints = this.waypoints.map(waypoint => ({
         x: waypoint.x,
-        y: waypoint.y - 120
+        y: waypoint.y - 30
       }));
     }
 
@@ -231,7 +231,7 @@ class GoblinChampion extends Enemy {
         imageSrc: 'media/tower-models/enemies/goblin-champion.png', 
         frames: { max: 20 }, 
         waypoints,
-        enemyType: 'orc'
+        enemyType: 'gobChamp'
     });
     const enemyStats = stats.enemies.gobChamp;
     this.width = 95;
