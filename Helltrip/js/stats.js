@@ -1,6 +1,6 @@
 let coins = 350;
 let hearts = 20;
-let currentWave = 13;
+let currentWave = 1;
 
 const stats = {
     towers: {
@@ -63,7 +63,7 @@ const stats = {
             isMiniBoss:true,
         },
         gobGiant:{
-            health:500,
+            health:400,
             armor:2.9,
             speed:30,
             reward:35,
@@ -132,7 +132,9 @@ const stats = {
             {type:'giantBat', count:10 , track: 1, offset:120, },
         ],
         '13':[
-            {type:'gobGiant', count:1 , track: 1 ,offset:200,},
+            {type:'goblin', count: 15, track: 1 , offset:90},      
+            {type:'orc', count:13, track:2, offset:100},
+            {type:'goblin', count:15, track:1, offset:80, },
         ],
         '14':[
             {type: 'gobGiant', count: 2, track: 1 ,offset:200, hold: 0},
