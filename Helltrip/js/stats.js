@@ -1,4 +1,4 @@
-let coins = 350;
+let coins = 1050;
 let hearts = 20;
 
 const stats = {
@@ -65,9 +65,9 @@ const stats = {
     },
 
     waves:{
-        '1': [
+        /*'1': [
             { type: 'gobChamp', count: 1, track: 1 , offset:180, hold: 0 },
-        ],
+        ],*/
         
         '2': [
             { type: 'goblin', count: 13, track: 1, offset:160, hold: 0 },
@@ -104,8 +104,11 @@ const stats = {
             {type:'goblin', count:25, track:2, offset:100},
             {type:'orc', count:12, track:2, offset:120},
         ],
-        '11': [
-            { type: 'gobChamp', count: 1, track: 1 , offset:180, hold: 0 },
+        '1': [
+            {type: 'gobChamp', count: 1, track: 1 , offset:180, hold: 0 },
+            {type:'orc', count:5, track:2, offset:100,hold:5},
+            {type:'goblin', count:10, track:1, offset:50, hold:5},
+            
         ],
     }
     

@@ -39,18 +39,19 @@ class Enemy extends Sprite{
     this.height = 55;
     this.waypointIndex = 0;
     this.waypoints = waypoints;
-    if (enemyStats.isFlying) {
+    if (enemyStats.isFlying ) {
       this.waypoints = this.waypoints.map(waypoint => ({
         x: waypoint.x,
         y: waypoint.y - 60
       }));
     }
-    if(enemyStats.isBoss){
+    if ( enemyStats.isBoss) {
       this.waypoints = this.waypoints.map(waypoint => ({
         x: waypoint.x,
-        y: waypoint.y - 70
+        y: waypoint.y - 120
       }));
     }
+
     this.center = {
       x: this.position.x + this.width / 2,
       y: this.position.y + this.height / 2
@@ -227,13 +228,13 @@ class GoblinChampion extends Enemy {
   constructor({ position = { x: 0, y: 0 }, waypoints = [] }) {
     super({ 
         position, 
-        imageSrc: 'media/tower-models/enemies/orc.png', 
+        imageSrc: 'media/tower-models/enemies/goblin-champion.png', 
         frames: { max: 20 }, 
         waypoints,
         enemyType: 'orc'
     });
     const enemyStats = stats.enemies.gobChamp;
-    this.width = 100;
+    this.width = 95;
     this.height = 150;
     this.health = enemyStats.health;
     this.armor = enemyStats.armor;
