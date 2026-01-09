@@ -45,6 +45,12 @@ class Enemy extends Sprite{
         y: waypoint.y - 60
       }));
     }
+    if(enemyStats.isBoss){
+      this.waypoints = this.waypoints.map(waypoint => ({
+        x: waypoint.x,
+        y: waypoint.y - 70
+      }));
+    }
     this.center = {
       x: this.position.x + this.width / 2,
       y: this.position.y + this.height / 2

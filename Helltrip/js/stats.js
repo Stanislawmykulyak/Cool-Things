@@ -54,18 +54,19 @@ const stats = {
             isFlying: true,
         },
         gobChamp:{
-            health:500,
-            armor:3.7,
+            health:750,
+            armor:2.9,
             speed:35,
             reward:250,
             healthCost:15,
+            isBoss:true,
         }
 
     },
 
     waves:{
         '1': [
-            { type: 'goblin', count: 7, track: 1 , offset:180, hold: 0 },
+            { type: 'gobChamp', count: 1, track: 1 , offset:180, hold: 0 },
         ],
         
         '2': [
