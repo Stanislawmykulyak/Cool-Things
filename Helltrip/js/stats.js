@@ -62,13 +62,7 @@ const stats = {
         }
 
     },
-    wave_rewards: {
-        '1_5': 35,
-        '5_11': 55,
-        '11_15': 75,
-        '15_17': 100,
-        '17_20': 135,
-    },
+
     waves:{
         '1': [
             { type: 'goblin', count: 7, track: 1 , offset:180, hold: 0 },

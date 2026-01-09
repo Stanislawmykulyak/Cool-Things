@@ -8,7 +8,7 @@ img{
     align-items:center;
 }
 body{
-    background:linear-gradient(to right , rgb(129, 170, 216) , rgb(145, 196, 222));
+    background: rgb(129, 170, 216);
     font-size:35px;
     color:aliceblue;
     height:Auto;

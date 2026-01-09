@@ -1,4 +1,3 @@
-// Tower stats data
 const towerData = {
     archer: {
         name: 'Archer Tower',

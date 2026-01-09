@@ -150,6 +150,10 @@ function animate(timestamp = 0) {
             updateCoins();
         }
     }
+    if(currentWave === waves){
+      cancelAnimationFrame(animationID);
+      document.querySelector('.win').style.display = 'flex';
+    }
 
     placementTiles.forEach((tile) => tile.update(mouse));
 
