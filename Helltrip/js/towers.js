@@ -95,7 +95,7 @@ class ArcherTower extends Tower {
             },
             offset: {
                 x: -10,
-                y:-120,
+                y:-100,
             }
         });
     }
@@ -111,7 +111,7 @@ class ArcherTower extends Tower {
                 new ArcherProjectile({
                     position: {
                         x: this.center.x - 30,
-                        y: this.center.y - 125,
+                        y: this.center.y - 115,
                     },
                     enemy: this.target,
                     damage: this.damage / this.target.armor
