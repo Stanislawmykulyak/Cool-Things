@@ -89,13 +89,13 @@ class ArcherTower extends Tower {
             position,
             stats: towerStats,
             baseTowerType: 'Archer',
-            imageSrc: 'media/tower-models/towers/archer-tower-lvl1.png',
+            imageSrc: 'media/tower-models/towers/archer-tower.png',
             frames: {
-                max: 19
+                max: 1
             },
             offset: {
                 x: -10,
-                y:-80,
+                y:-120,
             }
         });
     }
@@ -111,7 +111,7 @@ class ArcherTower extends Tower {
                 new ArcherProjectile({
                     position: {
                         x: this.center.x - 30,
-                        y: this.center.y - 135,
+                        y: this.center.y - 125,
                     },
                     enemy: this.target,
                     damage: this.damage / this.target.armor

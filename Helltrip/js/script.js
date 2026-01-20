@@ -146,7 +146,9 @@ function animate(timestamp = 0) {
 
     if (!switcher.classList.contains('off')) {
         if (enemies.length === 0) {
-            currentWave += 1;
+              currentWave += 1;
+
+            
             spawnEnemies(currentWave);
             updateCoins();
         }
@@ -179,16 +181,18 @@ function animate(timestamp = 0) {
             const distance = Math.hypot(xDifference, yDifference);
 
             if (distance < projectile.enemy.radius + projectile.radius) {
-                
+                if(currentWave <= 12){
+                  projectile.enemy.health -= projectile.damage;
+                }
                 if(currentWave > 12){
-                      const r = Math.random()
-                      if(r > 0.8 ){
-                        projectile.damage * 0
-                        console.log("blocked hit")
-                      }
-                    else{
-                      projectile.enemy.health -= projectile.damage;
+                    const r = Math.random()
+                    if(r > 0.9 ){
+                      projectile.damage * 0
+                      console.log("blocked hit")
                     }
+                  else{
+                    projectile.enemy.health -= projectile.damage;
+                  }
                 }
                 if (projectile.enemy.health <= 0) {
                     const enemyIndex = enemies.findIndex(enemy => projectile.enemy === enemy);
