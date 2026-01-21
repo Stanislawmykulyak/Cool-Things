@@ -95,7 +95,7 @@ class ArcherTower extends Tower {
             },
             offset: {
                 x: -10,
-                y:-100,
+                y:-80,
             }
         });
     }
@@ -139,7 +139,7 @@ class MageTower extends Tower {
             },
             offset: {
                 x: -12,
-                y:-100,
+                y:-110,
             }
         });
     }

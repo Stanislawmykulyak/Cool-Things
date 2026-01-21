@@ -113,10 +113,10 @@ let waves = 20
 let selectedTile = null;
 
 function updateCoins () {
-  document.querySelector('.coins').innerHTML = 'Coins: ' + coins + '<img src="media/coin.png" class="stats-img">';
+  document.querySelector('.gold').innerHTML =  coins + '<img src="media/resources/gold.png" class="rss-img" style="margin-top:3px;">';
 }
 function updateHearts () {
-  document.querySelector('.hearts').innerHTML = 'Hearts: ' + hearts + '<img src="media/hearts.png" class="stats-img">';
+  document.querySelector('.hearts').innerHTML =  hearts + '<img src="media/resources/hearts.png" class="rss-img" style="margin-top:3px;">';
 }let lastTime = 0;
 
 function animate(timestamp = 0) {

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Cause:wght@100..900&display=swap');
+.resources{
+    color: white;
+    font-family: 'Cause', cursive;
+    font-weight:800;
+    display:flex;
+    position:absolute;
+    top:0px;
+    left:0px;
+    padding: 10px;
+    background: rgba(30, 30, 30, 0.882);
+    gap:30px;
+    border-radius: 0 0 15px 15px;
+    border: solid #303030;
+    border-width:0px 5px 5px 5px;
+    text-align:center;
+}
+.waves{
+    color: white;
+    font-family: 'Cause', cursive;
+    font-weight:800;
+    display:flex;
+    position:absolute;
+    top:0px;
+    left:0px;
+    padding: 10px;
+    background: rgba(30, 30, 30, 0.882);
+    gap:30px;
+    border-radius: 0 0 15px 15px;
+    border: solid #303030;
+    border-width:0px 5px 5px 5px;
+    text-align:center;
+}
+.rss-img{
+    height:30px;
+    width:30px;
+    align-items:center;
+    margin-left:5px;
+    bottom:-5px;
+}
