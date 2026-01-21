@@ -12,7 +12,15 @@ const stats = {
                 cooldown: 0.64,
                 cost: 90,
             },
+            lvl2:{
+                name: 'Marksman',
+                damage: 27,
+                range: 350,
+                cooldown: 0.58,
+                cost: 150,
+            }
         },
+
         mage: {
             lvl1: {
                 name: 'Mage',      

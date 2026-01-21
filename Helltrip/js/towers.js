@@ -124,6 +124,48 @@ class ArcherTower extends Tower {
     }
     
 }
+class ArcherTowerLvl2 extends Tower {
+    constructor({ position }) {
+        const towerStats = { ...stats.towers.archer.lvl1 };
+        super({ 
+            position,
+            stats: towerStats,
+            baseTowerType: 'Archer',
+            imageSrc: 'media/tower-models/towers/archer-tower-lvl2.png',
+            frames: {
+                max: 19
+            },
+            offset: {
+                x: -10,
+                y:-80,
+            }
+        });
+    }
+    
+    draw() {
+       super.draw();
+    }
+    update(dt) {
+    if (this.target) {
+        this.elapsedSpawnCooldown += dt;
+        if (this.damage > 0 && this.elapsedSpawnCooldown >= this.cooldown) {
+            this.projectiles.push(
+                new ArcherProjectile({
+                    position: {
+                        x: this.center.x - 30,
+                        y: this.center.y - 115,
+                    },
+                    enemy: this.target,
+                    damage: this.damage / this.target.armor
+                })
+            );
+            this.elapsedSpawnCooldown = 0;
+        }
+    }
+    super.update(dt);
+    }
+    
+} 
 
 //Mage Tower lvl 1 //
 class MageTower extends Tower {

@@ -286,6 +286,16 @@ document.getElementById("archer-tower").onclick = (e) => {
     document.getElementById("tower-menu").style.display = "none";
     selectedTile = null
 };
+document.getElementById("archer-tower-lvl2").onclick = (e) => {
+    e.stopPropagation();
+    if (!selectedTile) return;
+      if (coins - stats.towers.archer.lvl2.cost < 0) return;
+    coins -= stats.towers.archer.lvl2.cost;
+    buildings.push(new ArcherTowerLvl2({ position: selectedTile.position }));
+    selectedTile.isOccupied = true;
+    document.getElementById("tower-menu").style.display = "none";
+    selectedTile = null
+};
 
 document.getElementById("mage-tower").onclick = (e) => {
     e.stopPropagation();
