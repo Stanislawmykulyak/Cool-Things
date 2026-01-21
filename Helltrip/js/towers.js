@@ -89,9 +89,9 @@ class ArcherTower extends Tower {
             position,
             stats: towerStats,
             baseTowerType: 'Archer',
-            imageSrc: 'media/tower-models/towers/archer-tower-smoll.png',
+            imageSrc: 'media/tower-models/towers/archer-tower-lvl1.png',
             frames: {
-                max: 1
+                max: 19
             },
             offset: {
                 x: -10,
