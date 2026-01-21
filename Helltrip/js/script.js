@@ -185,10 +185,12 @@ function animate(timestamp = 0) {
                   projectile.enemy.health -= projectile.damage;
                 }
                 if(currentWave > 12){
+                  ;
                     const r = Math.random()
                     if(r > 0.9 ){
                       projectile.damage * 0
                       console.log("blocked hit")
+                      
                     }
                   else{
                     projectile.enemy.health -= projectile.damage;

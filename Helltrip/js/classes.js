@@ -64,10 +64,10 @@ class Enemy extends Sprite{
     };
     this.radius = 30;
     if(currentWave > 5){
-      this.health = ((1 + currentWave *0.1) * enemyStats.health)
-      this.maxHealth = ((1 + currentWave *0.1) * enemyStats.health)
+      this.health = ((1 + currentWave *0.2) * enemyStats.health)
+      this.maxHealth = ((1 + currentWave *0.2) * enemyStats.health)
       if(enemyStats.isBoss){
-        this.health = enemyStats.health
+        this.health = enemyStats.health 
       } 
     }
     this.armor = enemyStats.armor;
@@ -136,7 +136,6 @@ class Enemy extends Sprite{
     this.velocity.x = Math.cos(angle) * this.speed;
     this.velocity.y = Math.sin(angle) * this.speed;
     
-    // Movement scaled by deltaTime
     this.position.x += this.velocity.x * dt;
     this.position.y += this.velocity.y * dt;
 
@@ -145,7 +144,6 @@ class Enemy extends Sprite{
       y: this.position.y + this.height / 2
     };
 
-    // Waypoint detection needs to be relative to the distance moved this frame
     if (
       Math.abs(this.center.x - waypoint.x) < Math.abs(this.velocity.x * dt) + 1 &&
       Math.abs(this.center.y - waypoint.y) < Math.abs(this.velocity.y * dt) + 1 &&
