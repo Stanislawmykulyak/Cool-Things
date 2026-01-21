@@ -1,4 +1,4 @@
-let coins = 350;
+let coins = 1350;
 let hearts = 20;
 let currentWave = 1;
 
@@ -34,7 +34,7 @@ const stats = {
                 damage: 30,
                 range: 220,
                 cooldown: 0.92,
-                cost: 190,
+                cost: 140,
             },
             lvl2:{
                 name: 'Wizard',      
