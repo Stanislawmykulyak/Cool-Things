@@ -18,7 +18,14 @@ const stats = {
                 range: 350,
                 cooldown: 0.58,
                 cost: 150,
-            }
+            },
+            lvl3:{
+                name: 'Sniper',
+                damage: 40,
+                range: 400,
+                cooldown: 0.58,
+                cost: 230,
+            },
         },
 
         mage: {
@@ -27,7 +34,21 @@ const stats = {
                 damage: 30,
                 range: 220,
                 cooldown: 0.92,
-                cost: 140,
+                cost: 190,
+            },
+            lvl2:{
+                name: 'Wizard',      
+                damage: 45,
+                range: 270,
+                cooldown: 0.9,
+                cost: 280,
+            },
+            lvl3:{
+                name: 'Sorcerer',
+                damage: 65,
+                range: 320,
+                cooldown: 0.9,
+                cost: 370,
             },
         },
     },
