@@ -238,35 +238,145 @@ const mouse = {
   y: undefined
 };
 
-canvas.addEventListener("click", (event) => {
-  const menu = document.getElementById("tower-menu");
-  const mouseX = event.offsetX;
-  const mouseY = event.offsetY;
+let selectedBuilding = null;
+const upgradeMenu = document.getElementById("tower-upgrade-menu");
+const towerNameLevel = document.getElementById("tower-name-level");
+const towerDamage = document.getElementById("tower-damage");
+const towerRange = document.getElementById("tower-range");
+const towerCooldown = document.getElementById("tower-cooldown");
+const upgradeButton = document.getElementById("upgrade-button");
+const sellButton = document.getElementById("sell-button");
+const closeUpgradeMenuBtn = document.getElementById("close-upgrade-menu");
 
-  let clickedTile = null;
-  for (const tile of placementTiles) {
-    if (
-      mouseX >= tile.position.x && mouseX <= tile.position.x + tile.size &&
-      mouseY >= tile.position.y && mouseY <= tile.position.y + tile.size &&
-      !tile.isOccupied
-    ) {
-      clickedTile = tile;
-      break;
+function updateUpgradeMenu() {
+    if (!selectedBuilding) {
+        upgradeMenu.style.display = "none";
+        return;
     }
-  }
 
-  if (clickedTile) {
-    selectedTile = clickedTile;
+    const baseTowerStats = stats.towers[selectedBuilding.baseTowerType.toLowerCase()];
+    const nextLevel = selectedBuilding.level + 1;
+    const upgradeStats = baseTowerStats?.[`lvl${nextLevel}`];
+
+    towerNameLevel.textContent = `${selectedBuilding.name} `;
+    towerDamage.textContent = selectedBuilding.damage+'HP';
+    towerRange.textContent = selectedBuilding.radius/10 + 'm';
+    towerCooldown.textContent = selectedBuilding.cooldown + 's';
+
+    if (upgradeStats) {
+        upgradeButton.textContent = `Upgrade (${upgradeStats.cost}g)`;
+        upgradeButton.disabled = coins < upgradeStats.cost;
+    } else {
+        upgradeButton.textContent = "Max Level";
+        upgradeButton.disabled = true;
+    }
+    
+    let totalCost = 0;
+    for (let i = 1; i <= selectedBuilding.level; i++) {
+        totalCost += baseTowerStats[`lvl${i}`].cost;
+    }
+    sellButton.textContent = `Sell (${Math.round(totalCost * 0.7)}g)`;
+
     const rect = canvas.getBoundingClientRect();
-    menu.style.left = `${rect.left + clickedTile.position.x + clickedTile.size / 2}px`;
-    menu.style.top = `${rect.top + clickedTile.position.y + clickedTile.size / 2}px`;
-    menu.style.display = "block";
-    arrangeButtonsInCircle();
-  } else {
-    menu.style.display = "none";
-    selectedTile = null;
-  }
+    upgradeMenu.style.left = `${rect.left + selectedBuilding.position.x + 32}px`;
+    upgradeMenu.style.top = `${rect.top + selectedBuilding.position.y - 64}px`;
+    upgradeMenu.style.display = "block";
+}
+
+canvas.addEventListener("click", (event) => {
+    const menu = document.getElementById("tower-menu");
+    const mouseX = event.offsetX;
+    const mouseY = event.offsetY;
+
+    // Check if a building was clicked
+    let clickedBuilding = null;
+    for (const building of buildings) {
+        if (
+            mouseX >= building.position.x && mouseX <= building.position.x + building.width &&
+            mouseY >= building.position.y && mouseY <= building.position.y + building.height
+        ) {
+            clickedBuilding = building;
+            break;
+        }
+    }
+
+    if (clickedBuilding) {
+        selectedBuilding = clickedBuilding;
+        selectedTile = null; // Deselect any placement tile
+        menu.style.display = "none";
+        updateUpgradeMenu();
+    } else {
+        // If no building was clicked, check for an empty placement tile
+        let clickedTile = null;
+        for (const tile of placementTiles) {
+            if (
+                mouseX >= tile.position.x && mouseX <= tile.position.x + tile.size &&
+                mouseY >= tile.position.y && mouseY <= tile.position.y + tile.size &&
+                !tile.isOccupied
+            ) {
+                clickedTile = tile;
+                break;
+            }
+        }
+
+        if (clickedTile) {
+            selectedTile = clickedTile;
+            selectedBuilding = null; // Deselect any building
+            upgradeMenu.style.display = "none";
+            const rect = canvas.getBoundingClientRect();
+            menu.style.left = `${rect.left + clickedTile.position.x + clickedTile.size / 2}px`;
+            menu.style.top = `${rect.top + clickedTile.position.y + clickedTile.size / 2}px`;
+            menu.style.display = "block";
+            arrangeButtonsInCircle();
+        } else {
+            // Clicked outside of any building or empty tile
+            menu.style.display = "none";
+            selectedTile = null;
+            upgradeMenu.style.display = "none";
+            selectedBuilding = null;
+        }
+    }
 });
+
+closeUpgradeMenuBtn.onclick = () => {
+    upgradeMenu.style.display = "none";
+    selectedBuilding = null;
+};
+
+upgradeButton.onclick = () => {
+    if (selectedBuilding) {
+        selectedBuilding.upgrade();
+        upgradeMenu.style.display = "none";
+        selectedBuilding = null;
+    }
+};
+
+sellButton.onclick = () => {
+    if (selectedBuilding) {
+        const buildingIndex = buildings.findIndex(b => b === selectedBuilding);
+        if (buildingIndex > -1) {
+            const baseTowerStats = stats.towers[selectedBuilding.baseTowerType.toLowerCase()];
+            let totalCost = 0;
+            for (let i = 1; i <= selectedBuilding.level; i++) {
+                totalCost += baseTowerStats[`lvl${i}`].cost;
+            }
+            coins += Math.round(totalCost * 0.7);
+            updateCoins();
+
+            // Find the placement tile and mark it as not occupied
+            for (const tile of placementTiles) {
+                if (tile.position.x === selectedBuilding.position.x && tile.position.y === selectedBuilding.position.y) {
+                    tile.isOccupied = false;
+                    break;
+                }
+            }
+            
+            buildings.splice(buildingIndex, 1);
+        }
+        upgradeMenu.style.display = "none";
+        selectedBuilding = null;
+    }
+};
 
 const closeTowerMenuBtn = document.getElementById("close-tower-menu");
 if (closeTowerMenuBtn) {
@@ -286,16 +396,7 @@ document.getElementById("archer-tower").onclick = (e) => {
     document.getElementById("tower-menu").style.display = "none";
     selectedTile = null
 };
-document.getElementById("archer-tower-lvl2").onclick = (e) => {
-    e.stopPropagation();
-    if (!selectedTile) return;
-      if (coins - stats.towers.archer.lvl2.cost < 0) return;
-    coins -= stats.towers.archer.lvl2.cost;
-    buildings.push(new ArcherTowerLvl2({ position: selectedTile.position }));
-    selectedTile.isOccupied = true;
-    document.getElementById("tower-menu").style.display = "none";
-    selectedTile = null
-};
+
 
 document.getElementById("mage-tower").onclick = (e) => {
     e.stopPropagation();

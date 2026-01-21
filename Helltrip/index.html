@@ -37,13 +37,23 @@
             <img src="media/mage.png" height="60px" width="60px">
             <div class="tower-cost"><p class="cost">140</p></div>
         </button>
-        <button id="archer-tower-lvl2" class="tower-options">
-            <img src="media/archer.png" height="60px" width="60px">
-            <div class="tower-cost"><p class="cost">150 - Lvl2</p></div>
-        </button>
 
         <button id="close-tower-menu" class="close-btn">✕</button>
 
+    </div>
+
+    <div id="tower-upgrade-menu" style="display: none; position: absolute;">
+        <div id="upgrade-menu-header">
+            <span id="tower-name-level"></span>
+            <button id="close-upgrade-menu" class="close-btn">✕</button>
+        </div>
+        <div id="tower-stats-display">
+            <p>Damage: <span id="tower-damage" class="tower-stats"></span></p>
+            <p>Range: <span id="tower-range" class="tower-stats"></span></p>
+            <p>Cooldown: <span id="tower-cooldown" class="tower-stats"></span></p>
+        </div>
+        <button id="upgrade-button"></button>
+        <button id="sell-button"></button>
     </div>
 
 

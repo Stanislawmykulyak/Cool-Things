@@ -6,14 +6,14 @@ const stats = {
     towers: {
         archer: {
             lvl1: {
-                name: 'Archer',
+                name: 'Marksman',
                 damage: 18,
                 range: 300,
                 cooldown: 0.64,
                 cost: 90,
             },
             lvl2:{
-                name: 'Marksman',
+                name: 'Sharpshooter',
                 damage: 27,
                 range: 350,
                 cooldown: 0.58,
