@@ -1,4 +1,4 @@
-let coins = 1350;
+let coins = 450;
 let hearts = 20;
 let currentWave = 1;
 
