@@ -181,7 +181,7 @@ function animate(timestamp = 0) {
             const distance = Math.hypot(xDifference, yDifference);
 
             if (distance < projectile.enemy.radius + projectile.radius) {
-                if(currentWave <= 12){
+                if(currentWave <= 10){
                   projectile.enemy.health -= projectile.damage;
                 }
                 if(currentWave > 10){
